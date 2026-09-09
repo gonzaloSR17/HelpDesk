@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.arelance.helpdesk.modelo.Ticket.Prioridad;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -38,6 +41,14 @@ public enum Prioridad {
         BAJA, MEDIA, ALTA, CRITICA
     }
 
+    public enum Marca {
+    EN_ABIERTO,
+    EN_CURSO,
+    ESCALADO,
+    RESUELTO,
+    CERRADO
+    }
+
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTicket")
@@ -59,6 +70,10 @@ public enum Prioridad {
     @Column(nullable = false)
     private Prioridad prioridad;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Marca marca;
+
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
@@ -70,7 +85,9 @@ public enum Prioridad {
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
+    
 
     @OneToMany(mappedBy = "ticket")
+    @JsonIgnore
     private List<Comentario> comentarios = new ArrayList<>();
 }

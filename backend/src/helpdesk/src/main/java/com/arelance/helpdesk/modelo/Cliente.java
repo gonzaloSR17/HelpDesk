@@ -3,6 +3,7 @@ package com.arelance.helpdesk.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,13 +43,15 @@ public class Cliente {
     @Column
     private String sector;
 
-    @Column
+    @Column(length = 9)
     private String contacto;
 
     @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
     private List<Contrato> contratos = new ArrayList<>();
 
     @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
     private List<Ticket> tickets = new ArrayList<>();
 
 }

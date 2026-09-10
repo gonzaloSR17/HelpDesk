@@ -1,6 +1,10 @@
 package com.arelance.helpdesk.modelo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -56,4 +61,9 @@ public class Contrato {
 
     @OneToOne(mappedBy = "contrato", cascade = CascadeType.ALL)
     private SLA sla;
+
+    @OneToMany(mappedBy = "contrato")
+    @JsonIgnore
+    private List<Ticket> tickets = new ArrayList<>();
+
 }

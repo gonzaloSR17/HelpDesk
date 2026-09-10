@@ -17,31 +17,47 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 // ==========================================================
-// TODO Tecnico:
-//   - Atributos: nombre, especialidad, email
-//   - Relacion: @OneToMany Ticket (1:N)
+
+// TODO Cliente:
+//   - Atributos: nombre, cif, sector, contacto
+//   - Relacion: @OneToMany Contrato (1:N)
 
 @Entity 
 @Data 
-@NoArgsConstructor 
 @AllArgsConstructor 
-@Table (name = "tecnico")
-public class Tecnico {
- @Id
+@NoArgsConstructor 
+@Table(name = "cliente")
+
+public class Cliente {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTecnico")
-    private Integer idTecnico;
+    @Column(name = "idCliente")
+    private Integer idCliente;
 
     @Column(nullable = false)
     private String nombre;
 
+     @Column(nullable = false)
+    private String apellido;
+
+    @Column(nullable = false)
+    private String cif;
+
     @Column
-    private String especialidad;
+    private String sector;
+
+    @Column(length = 9)
+    private String contacto;
 
     @Column
     private String email;
 
-    @OneToMany(mappedBy = "tecnico")
+    @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
+    private List<Contrato> contratos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "cliente")
     @JsonIgnore
     private List<Ticket> tickets = new ArrayList<>();
+
 }

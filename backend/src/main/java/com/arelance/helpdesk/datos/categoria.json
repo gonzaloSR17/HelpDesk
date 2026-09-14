@@ -1,0 +1,82 @@
+[
+  {
+    "nombre": "Acceso a cuenta",
+    "descripcion": "Problemas para acceder a una cuenta de usuario"
+  },
+  {
+    "nombre": "Contraseña olvidada",
+    "descripcion": "Solicitud de restablecimiento o recuperación de contraseña"
+  },
+  {
+    "nombre": "Permisos de usuario",
+    "descripcion": "Problemas relacionados con permisos para acceder a recursos"
+  },
+  {
+    "nombre": "Alta de usuario",
+    "descripcion": "Solicitud de creación de una nueva cuenta de usuario"
+  },
+  {
+    "nombre": "Baja de usuario",
+    "descripcion": "Solicitud de desactivación o eliminación de una cuenta"
+  },
+  {
+    "nombre": "Ordenador",
+    "descripcion": "Problemas generales relacionados con el ordenador"
+  },
+  {
+    "nombre": "Monitor",
+    "descripcion": "Problemas con pantallas, monitores o visualización"
+  },
+  {
+    "nombre": "Teclado",
+    "descripcion": "Problemas o averías relacionadas con el teclado"
+  },
+  {
+    "nombre": "Ratón",
+    "descripcion": "Problemas o averías relacionadas con el ratón"
+  },
+  {
+    "nombre": "Impresora",
+    "descripcion": "Problemas relacionados con impresoras o impresión"
+  },
+  {
+    "nombre": "Sistema operativo",
+    "descripcion": "Errores o problemas relacionados con el sistema operativo"
+  },
+  {
+    "nombre": "Aplicaciones",
+    "descripcion": "Errores o problemas con aplicaciones instaladas"
+  },
+  {
+    "nombre": "Correo electrónico",
+    "descripcion": "Problemas con el correo electrónico o su configuración"
+  },
+  {
+    "nombre": "Instalación de software",
+    "descripcion": "Solicitud de instalación o actualización de programas"
+  },
+  {
+    "nombre": "Conexión a Internet",
+    "descripcion": "Problemas de conexión a Internet"
+  },
+  {
+    "nombre": "WiFi",
+    "descripcion": "Problemas de conexión o acceso a redes WiFi"
+  },
+  {
+    "nombre": "Red local",
+    "descripcion": "Problemas de conexión con la red interna de la empresa"
+  },
+  {
+    "nombre": "VPN",
+    "descripcion": "Problemas para conectarse o utilizar la VPN corporativa"
+  },
+  {
+    "nombre": "Servidor",
+    "descripcion": "Incidencias relacionadas con servidores o servicios internos"
+  },
+  {
+    "nombre": "Seguridad",
+    "descripcion": "Incidencias relacionadas con seguridad informática"
+  }
+]

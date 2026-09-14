@@ -31,7 +31,7 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCategoria")
-    private Integer idCategoria; 
+    private Long idCategoria; 
 
 
     @Column(length = 100, columnDefinition = "VARCHAR(100)", nullable = false)

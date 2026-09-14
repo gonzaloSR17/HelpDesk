@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "Carlos",
+    "apellido": "García",
+    "especialidad": "Red",
+    "email": "carlos.garcia@helpdesk.com"
+  },
+  {
+    "nombre": "Laura",
+    "apellido": "Martínez",
+    "especialidad": "Hardware",
+    "email": "laura.martinez@helpdesk.com"
+  },
+  {
+    "nombre": "Javier",
+    "apellido": "Sánchez",
+    "especialidad": "Software",
+    "email": "javier.sanchez@helpdesk.com"
+  },
+  {
+    "nombre": "Ana",
+    "apellido": "López",
+    "especialidad": "Accesos",
+    "email": "ana.lopez@helpdesk.com"
+  },
+  {
+    "nombre": "Miguel",
+    "apellido": "Fernández",
+    "especialidad": "Red",
+    "email": "miguel.fernandez@helpdesk.com"
+  }
+]

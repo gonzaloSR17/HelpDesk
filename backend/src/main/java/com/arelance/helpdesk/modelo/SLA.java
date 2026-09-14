@@ -27,12 +27,12 @@ public class SLA {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idSla")
-    private Integer idSla;
+    private Long idSla;
 
-    @Column(name = "tiempo_respuesta")
+    @Column(name = "tiempo_respuesta", nullable = false)
     private Integer tiempoRespuesta;
 
-    @Column(name = "tiempo_resolucion_objetivo")
+    @Column(name = "tiempo_resolucion_objetivo", nullable = false)
     private Integer tiempoResolucionObjetivo;
 
     @OneToOne

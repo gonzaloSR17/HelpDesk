@@ -1,0 +1,173 @@
+[
+  {
+    "nombreArchivo": "informe_diagnostico.pdf",
+    "tipoMime": "application/pdf",
+    "contenido": "SW5mb3JtZSBkZSBkaWFnbsOzc3RpY28gdMOpY25pY28gYWRqdW50YWRvIHBvciBlbCB0w6ljbmljby4=",
+    "fechaSubida": "2026-09-21T06:00:00",
+    "ticket": {
+      "idTicket": 1
+    }
+  },
+  {
+    "nombreArchivo": "log_sistema.txt",
+    "tipoMime": "text/plain",
+    "contenido": "TG9nIGRlbCBzaXN0ZW1hIGNvbiBlbCBlcnJvciByZWdpc3RyYWRvIGVuIGVsIG1vbWVudG8gZGUgbGEgaW5jaWRlbmNpYS4=",
+    "fechaSubida": "2026-09-14T17:30:00",
+    "ticket": {
+      "idTicket": 2
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "contenido": "Q2FwdHVyYSBkZSBwYW50YWxsYSBkZWwgZXJyb3IgbW9zdHJhZG8gYWwgdXN1YXJpby4=",
+    "fechaSubida": "2026-09-17T01:15:00",
+    "ticket": {
+      "idTicket": 3
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "contenido": "RXhwb3J0YWNpw7NuIGRlIGxhIGNvbmZpZ3VyYWNpw7NuIGFjdHVhbCBkZWwgZXF1aXBvLg==",
+    "fechaSubida": "2026-09-17T04:15:00",
+    "ticket": {
+      "idTicket": 3
+    }
+  },
+  {
+    "nombreArchivo": "informe_diagnostico.pdf",
+    "tipoMime": "application/pdf",
+    "contenido": "SW5mb3JtZSBkZSBkaWFnbsOzc3RpY28gdMOpY25pY28gYWRqdW50YWRvIHBvciBlbCB0w6ljbmljby4=",
+    "fechaSubida": "2026-09-23T02:00:00",
+    "ticket": {
+      "idTicket": 4
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "contenido": "RXhwb3J0YWNpw7NuIGRlIGxhIGNvbmZpZ3VyYWNpw7NuIGFjdHVhbCBkZWwgZXF1aXBvLg==",
+    "fechaSubida": "2026-09-20T18:45:00",
+    "ticket": {
+      "idTicket": 6
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "contenido": "Q2FwdHVyYSBkZSBwYW50YWxsYSBkZWwgZXJyb3IgbW9zdHJhZG8gYWwgdXN1YXJpby4=",
+    "fechaSubida": "2026-09-14T19:00:00",
+    "ticket": {
+      "idTicket": 7
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "contenido": "Q2FwdHVyYSBkZSBwYW50YWxsYSBkZWwgZXJyb3IgbW9zdHJhZG8gYWwgdXN1YXJpby4=",
+    "fechaSubida": "2026-09-15T14:45:00",
+    "ticket": {
+      "idTicket": 8
+    }
+  },
+  {
+    "nombreArchivo": "foto_equipo.jpg",
+    "tipoMime": "image/jpeg",
+    "contenido": "Rm90b2dyYWbDrWEgZGVsIGVxdWlwbyBhdmVyaWFkbyBlbnZpYWRhIHBvciBlbCBjbGllbnRlLg==",
+    "fechaSubida": "2026-09-20T11:00:00",
+    "ticket": {
+      "idTicket": 9
+    }
+  },
+  {
+    "nombreArchivo": "foto_equipo.jpg",
+    "tipoMime": "image/jpeg",
+    "contenido": "Rm90b2dyYWbDrWEgZGVsIGVxdWlwbyBhdmVyaWFkbyBlbnZpYWRhIHBvciBlbCBjbGllbnRlLg==",
+    "fechaSubida": "2026-09-16T19:45:00",
+    "ticket": {
+      "idTicket": 11
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "contenido": "Q2FwdHVyYSBkZSBwYW50YWxsYSBkZWwgZXJyb3IgbW9zdHJhZG8gYWwgdXN1YXJpby4=",
+    "fechaSubida": "2026-09-20T17:30:00",
+    "ticket": {
+      "idTicket": 12
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "contenido": "Q2FwdHVyYSBkZSBwYW50YWxsYSBkZWwgZXJyb3IgbW9zdHJhZG8gYWwgdXN1YXJpby4=",
+    "fechaSubida": "2026-09-15T07:45:00",
+    "ticket": {
+      "idTicket": 13
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "contenido": "Q2FwdHVyYSBkZSBwYW50YWxsYSBkZWwgZXJyb3IgbW9zdHJhZG8gYWwgdXN1YXJpby4=",
+    "fechaSubida": "2026-09-19T02:30:00",
+    "ticket": {
+      "idTicket": 14
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "contenido": "RXhwb3J0YWNpw7NuIGRlIGxhIGNvbmZpZ3VyYWNpw7NuIGFjdHVhbCBkZWwgZXF1aXBvLg==",
+    "fechaSubida": "2026-09-19T08:30:00",
+    "ticket": {
+      "idTicket": 14
+    }
+  },
+  {
+    "nombreArchivo": "log_sistema.txt",
+    "tipoMime": "text/plain",
+    "contenido": "TG9nIGRlbCBzaXN0ZW1hIGNvbiBlbCBlcnJvciByZWdpc3RyYWRvIGVuIGVsIG1vbWVudG8gZGUgbGEgaW5jaWRlbmNpYS4=",
+    "fechaSubida": "2026-09-22T14:30:00",
+    "ticket": {
+      "idTicket": 16
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "contenido": "RXhwb3J0YWNpw7NuIGRlIGxhIGNvbmZpZ3VyYWNpw7NuIGFjdHVhbCBkZWwgZXF1aXBvLg==",
+    "fechaSubida": "2026-09-15T13:00:00",
+    "ticket": {
+      "idTicket": 17
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "contenido": "RXhwb3J0YWNpw7NuIGRlIGxhIGNvbmZpZ3VyYWNpw7NuIGFjdHVhbCBkZWwgZXF1aXBvLg==",
+    "fechaSubida": "2026-09-18T20:30:00",
+    "ticket": {
+      "idTicket": 18
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "contenido": "Q2FwdHVyYSBkZSBwYW50YWxsYSBkZWwgZXJyb3IgbW9zdHJhZG8gYWwgdXN1YXJpby4=",
+    "fechaSubida": "2026-09-18T01:30:00",
+    "ticket": {
+      "idTicket": 19
+    }
+  },
+  {
+    "nombreArchivo": "log_sistema.txt",
+    "tipoMime": "text/plain",
+    "contenido": "TG9nIGRlbCBzaXN0ZW1hIGNvbiBlbCBlcnJvciByZWdpc3RyYWRvIGVuIGVsIG1vbWVudG8gZGUgbGEgaW5jaWRlbmNpYS4=",
+    "fechaSubida": "2026-09-18T02:30:00",
+    "ticket": {
+      "idTicket": 19
+    }
+  }
+]

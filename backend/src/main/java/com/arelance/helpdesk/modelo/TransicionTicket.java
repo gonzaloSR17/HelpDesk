@@ -29,7 +29,7 @@ public class TransicionTicket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_transicion")
-    private Integer idTransicion;
+    private Long idTransicion;
  
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

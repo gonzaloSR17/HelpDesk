@@ -1,0 +1,450 @@
+[
+  {
+    "texto": "Buenos días, os traslado la incidencia: no puedo acceder a mi cuenta. Quedo a la espera de noticias.",
+    "autor": "Carlos García",
+    "fecha": "2026-09-21T03:05:00",
+    "ticket": {
+      "idTicket": 1
+    }
+  },
+  {
+    "texto": "Ticket asignado. Estoy revisando el caso, en breve os doy novedades.",
+    "autor": "Ana López",
+    "fecha": "2026-09-21T04:00:00",
+    "ticket": {
+      "idTicket": 1
+    }
+  },
+  {
+    "texto": "Sigo con el diagnóstico, necesito comprobar un par de cosas más antes de aplicar una solución.",
+    "autor": "Ana López",
+    "fecha": "2026-09-21T06:00:00",
+    "ticket": {
+      "idTicket": 1
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: olvidé mi contraseña. Quedo a la espera de noticias.",
+    "autor": "Laura Martínez",
+    "fecha": "2026-09-14T14:35:00",
+    "ticket": {
+      "idTicket": 2
+    }
+  },
+  {
+    "texto": "Ticket asignado, comenzando el diagnóstico inicial.",
+    "autor": "Ana López",
+    "fecha": "2026-09-14T15:30:00",
+    "ticket": {
+      "idTicket": 2
+    }
+  },
+  {
+    "texto": "El problema requiere intervención de nivel 2, escalo la incidencia para agilizar la resolución.",
+    "autor": "Ana López",
+    "fecha": "2026-09-14T16:30:00",
+    "ticket": {
+      "idTicket": 2
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: falta de permisos para acceder a carpeta compartida. Quedo a la espera de noticias.",
+    "autor": "Javier Sánchez",
+    "fecha": "2026-09-16T22:20:00",
+    "ticket": {
+      "idTicket": 3
+    }
+  },
+  {
+    "texto": "Ticket asignado. Iniciando el diagnóstico del problema.",
+    "autor": "Ana López",
+    "fecha": "2026-09-16T23:00:00",
+    "ticket": {
+      "idTicket": 3
+    }
+  },
+  {
+    "texto": "Aplicada la solución. Marco el ticket como resuelto, pendiente de confirmación del cliente.",
+    "autor": "Ana López",
+    "fecha": "2026-09-17T06:45:00",
+    "ticket": {
+      "idTicket": 3
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: solicitud de alta de nuevo empleado. Quedo a la espera de noticias.",
+    "autor": "Ana López",
+    "fecha": "2026-09-22T04:05:00",
+    "ticket": {
+      "idTicket": 4
+    }
+  },
+  {
+    "texto": "Ticket asignado. Iniciando el diagnóstico del problema.",
+    "autor": "Ana López",
+    "fecha": "2026-09-22T04:45:00",
+    "ticket": {
+      "idTicket": 4
+    }
+  },
+  {
+    "texto": "Aplicada la solución. Quedo a la espera de confirmación.",
+    "autor": "Ana López",
+    "fecha": "2026-09-23T23:00:00",
+    "ticket": {
+      "idTicket": 4
+    }
+  },
+  {
+    "texto": "Confirmado, todo funciona correctamente. Gracias por la gestión.",
+    "autor": "Ana López",
+    "fecha": "2026-09-24T00:00:00",
+    "ticket": {
+      "idTicket": 4
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: baja de usuario que ha dejado la empresa. Quedo a la espera de noticias.",
+    "autor": "Miguel Fernández",
+    "fecha": "2026-09-22T05:05:00",
+    "ticket": {
+      "idTicket": 5
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: el ordenador no enciende. Quedo a la espera de noticias.",
+    "autor": "Marta Gómez",
+    "fecha": "2026-09-20T15:50:00",
+    "ticket": {
+      "idTicket": 6
+    }
+  },
+  {
+    "texto": "Ticket asignado. Estoy revisando el caso, en breve os doy novedades.",
+    "autor": "Laura Martínez",
+    "fecha": "2026-09-20T16:45:00",
+    "ticket": {
+      "idTicket": 6
+    }
+  },
+  {
+    "texto": "Sigo con el diagnóstico, necesito comprobar un par de cosas más antes de aplicar una solución.",
+    "autor": "Laura Martínez",
+    "fecha": "2026-09-20T18:45:00",
+    "ticket": {
+      "idTicket": 6
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: monitor con parpadeos. Quedo a la espera de noticias.",
+    "autor": "David Ruiz",
+    "fecha": "2026-09-14T16:05:00",
+    "ticket": {
+      "idTicket": 7
+    }
+  },
+  {
+    "texto": "Ticket asignado, comenzando el diagnóstico inicial.",
+    "autor": "Laura Martínez",
+    "fecha": "2026-09-14T17:00:00",
+    "ticket": {
+      "idTicket": 7
+    }
+  },
+  {
+    "texto": "El problema requiere intervención de nivel 2, escalo la incidencia para agilizar la resolución.",
+    "autor": "Laura Martínez",
+    "fecha": "2026-09-14T18:00:00",
+    "ticket": {
+      "idTicket": 7
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: teclado no responde. Quedo a la espera de noticias.",
+    "autor": "Elena Díaz",
+    "fecha": "2026-09-15T07:20:00",
+    "ticket": {
+      "idTicket": 8
+    }
+  },
+  {
+    "texto": "Ticket asignado. Iniciando el diagnóstico del problema.",
+    "autor": "Laura Martínez",
+    "fecha": "2026-09-15T08:00:00",
+    "ticket": {
+      "idTicket": 8
+    }
+  },
+  {
+    "texto": "Aplicada la solución. Marco el ticket como resuelto, pendiente de confirmación del cliente.",
+    "autor": "Laura Martínez",
+    "fecha": "2026-09-15T21:45:00",
+    "ticket": {
+      "idTicket": 8
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: ratón no detectado. Quedo a la espera de noticias.",
+    "autor": "Pablo Moreno",
+    "fecha": "2026-09-19T17:05:00",
+    "ticket": {
+      "idTicket": 9
+    }
+  },
+  {
+    "texto": "Ticket asignado. Iniciando el diagnóstico del problema.",
+    "autor": "Laura Martínez",
+    "fecha": "2026-09-19T17:45:00",
+    "ticket": {
+      "idTicket": 9
+    }
+  },
+  {
+    "texto": "Aplicada la solución. Quedo a la espera de confirmación.",
+    "autor": "Laura Martínez",
+    "fecha": "2026-09-21T04:00:00",
+    "ticket": {
+      "idTicket": 9
+    }
+  },
+  {
+    "texto": "Confirmado, todo funciona correctamente. Gracias por la gestión.",
+    "autor": "Pablo Moreno",
+    "fecha": "2026-09-21T05:00:00",
+    "ticket": {
+      "idTicket": 9
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: impresora no imprime. Quedo a la espera de noticias.",
+    "autor": "Sara Muñoz",
+    "fecha": "2026-09-16T10:50:00",
+    "ticket": {
+      "idTicket": 10
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: actualización del sistema operativo falla. Quedo a la espera de noticias.",
+    "autor": "Daniel Álvarez",
+    "fecha": "2026-09-16T16:50:00",
+    "ticket": {
+      "idTicket": 11
+    }
+  },
+  {
+    "texto": "Ticket asignado. Estoy revisando el caso, en breve os doy novedades.",
+    "autor": "Javier Sánchez",
+    "fecha": "2026-09-16T17:45:00",
+    "ticket": {
+      "idTicket": 11
+    }
+  },
+  {
+    "texto": "Sigo con el diagnóstico, necesito comprobar un par de cosas más antes de aplicar una solución.",
+    "autor": "Javier Sánchez",
+    "fecha": "2026-09-16T19:45:00",
+    "ticket": {
+      "idTicket": 11
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: aplicación se cierra inesperadamente. Quedo a la espera de noticias.",
+    "autor": "Lucía Romero",
+    "fecha": "2026-09-20T14:35:00",
+    "ticket": {
+      "idTicket": 12
+    }
+  },
+  {
+    "texto": "Ticket asignado, comenzando el diagnóstico inicial.",
+    "autor": "Javier Sánchez",
+    "fecha": "2026-09-20T15:30:00",
+    "ticket": {
+      "idTicket": 12
+    }
+  },
+  {
+    "texto": "El problema requiere intervención de nivel 2, escalo la incidencia para agilizar la resolución.",
+    "autor": "Javier Sánchez",
+    "fecha": "2026-09-20T16:30:00",
+    "ticket": {
+      "idTicket": 12
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: no llegan correos electrónicos. Quedo a la espera de noticias.",
+    "autor": "Fernando Navarro",
+    "fecha": "2026-09-14T09:20:00",
+    "ticket": {
+      "idTicket": 13
+    }
+  },
+  {
+    "texto": "Ticket asignado. Iniciando el diagnóstico del problema.",
+    "autor": "Javier Sánchez",
+    "fecha": "2026-09-14T10:00:00",
+    "ticket": {
+      "idTicket": 13
+    }
+  },
+  {
+    "texto": "Aplicada la solución. Marco el ticket como resuelto, pendiente de confirmación del cliente.",
+    "autor": "Javier Sánchez",
+    "fecha": "2026-09-16T05:45:00",
+    "ticket": {
+      "idTicket": 13
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: solicitud de instalación de software. Quedo a la espera de noticias.",
+    "autor": "Carmen Torres",
+    "fecha": "2026-09-18T20:35:00",
+    "ticket": {
+      "idTicket": 14
+    }
+  },
+  {
+    "texto": "Ticket asignado. Iniciando el diagnóstico del problema.",
+    "autor": "Javier Sánchez",
+    "fecha": "2026-09-18T21:15:00",
+    "ticket": {
+      "idTicket": 14
+    }
+  },
+  {
+    "texto": "Aplicada la solución. Quedo a la espera de confirmación.",
+    "autor": "Javier Sánchez",
+    "fecha": "2026-09-19T13:30:00",
+    "ticket": {
+      "idTicket": 14
+    }
+  },
+  {
+    "texto": "Confirmado, todo funciona correctamente. Gracias por la gestión.",
+    "autor": "Carmen Torres",
+    "fecha": "2026-09-19T14:30:00",
+    "ticket": {
+      "idTicket": 14
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: sin conexión a internet. Quedo a la espera de noticias.",
+    "autor": "Álvaro Vázquez",
+    "fecha": "2026-09-15T23:20:00",
+    "ticket": {
+      "idTicket": 15
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: problemas de conexión wifi. Quedo a la espera de noticias.",
+    "autor": "Isabel Ramos",
+    "fecha": "2026-09-22T11:35:00",
+    "ticket": {
+      "idTicket": 16
+    }
+  },
+  {
+    "texto": "Ticket asignado. Estoy revisando el caso, en breve os doy novedades.",
+    "autor": "Miguel Fernández",
+    "fecha": "2026-09-22T12:30:00",
+    "ticket": {
+      "idTicket": 16
+    }
+  },
+  {
+    "texto": "Sigo con el diagnóstico, necesito comprobar un par de cosas más antes de aplicar una solución.",
+    "autor": "Miguel Fernández",
+    "fecha": "2026-09-22T14:30:00",
+    "ticket": {
+      "idTicket": 16
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: no se accede a la red local. Quedo a la espera de noticias.",
+    "autor": "Sergio Gil",
+    "fecha": "2026-09-15T10:05:00",
+    "ticket": {
+      "idTicket": 17
+    }
+  },
+  {
+    "texto": "Ticket asignado, comenzando el diagnóstico inicial.",
+    "autor": "Carlos García",
+    "fecha": "2026-09-15T11:00:00",
+    "ticket": {
+      "idTicket": 17
+    }
+  },
+  {
+    "texto": "El problema requiere intervención de nivel 2, escalo la incidencia para agilizar la resolución.",
+    "autor": "Carlos García",
+    "fecha": "2026-09-15T12:00:00",
+    "ticket": {
+      "idTicket": 17
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: fallo al conectar la vpn. Quedo a la espera de noticias.",
+    "autor": "Patricia Molina",
+    "fecha": "2026-09-18T09:05:00",
+    "ticket": {
+      "idTicket": 18
+    }
+  },
+  {
+    "texto": "Ticket asignado. Iniciando el diagnóstico del problema.",
+    "autor": "Miguel Fernández",
+    "fecha": "2026-09-18T09:45:00",
+    "ticket": {
+      "idTicket": 18
+    }
+  },
+  {
+    "texto": "Aplicada la solución. Marco el ticket como resuelto, pendiente de confirmación del cliente.",
+    "autor": "Miguel Fernández",
+    "fecha": "2026-09-19T07:30:00",
+    "ticket": {
+      "idTicket": 18
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: servidor interno caído. Quedo a la espera de noticias.",
+    "autor": "Raúl Suárez",
+    "fecha": "2026-09-18T00:35:00",
+    "ticket": {
+      "idTicket": 19
+    }
+  },
+  {
+    "texto": "Ticket asignado. Iniciando el diagnóstico del problema.",
+    "autor": "Carlos García",
+    "fecha": "2026-09-18T01:15:00",
+    "ticket": {
+      "idTicket": 19
+    }
+  },
+  {
+    "texto": "Aplicada la solución. Quedo a la espera de confirmación.",
+    "autor": "Carlos García",
+    "fecha": "2026-09-18T02:30:00",
+    "ticket": {
+      "idTicket": 19
+    }
+  },
+  {
+    "texto": "Confirmado, todo funciona correctamente. Gracias por la gestión.",
+    "autor": "Raúl Suárez",
+    "fecha": "2026-09-18T03:30:00",
+    "ticket": {
+      "idTicket": 19
+    }
+  },
+  {
+    "texto": "Buenos días, os traslado la incidencia: alerta de seguridad detectada. Quedo a la espera de noticias.",
+    "autor": "Nuria Ortega",
+    "fecha": "2026-09-22T02:50:00",
+    "ticket": {
+      "idTicket": 20
+    }
+  }
+]

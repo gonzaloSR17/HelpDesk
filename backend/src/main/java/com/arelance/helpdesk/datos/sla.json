@@ -1,0 +1,102 @@
+[
+  {
+    "tiempoRespuesta": 120,
+    "tiempoResolucionObjetivo": 1440,
+    "contrato": { "idContrato": 1 }
+  },
+  {
+    "tiempoRespuesta": 60,
+    "tiempoResolucionObjetivo": 720,
+    "contrato": { "idContrato": 2 }
+  },
+  {
+    "tiempoRespuesta": 30,
+    "tiempoResolucionObjetivo": 240,
+    "contrato": { "idContrato": 3 }
+  },
+  {
+    "tiempoRespuesta": 60,
+    "tiempoResolucionObjetivo": 720,
+    "contrato": { "idContrato": 4 }
+  },
+  {
+    "tiempoRespuesta": 30,
+    "tiempoResolucionObjetivo": 240,
+    "contrato": { "idContrato": 5 }
+  },
+  {
+    "tiempoRespuesta": 120,
+    "tiempoResolucionObjetivo": 1440,
+    "contrato": { "idContrato": 6 }
+  },
+  {
+    "tiempoRespuesta": 60,
+    "tiempoResolucionObjetivo": 720,
+    "contrato": { "idContrato": 7 }
+  },
+  {
+    "tiempoRespuesta": 30,
+    "tiempoResolucionObjetivo": 240,
+    "contrato": { "idContrato": 8 }
+  },
+  {
+    "tiempoRespuesta": 120,
+    "tiempoResolucionObjetivo": 1440,
+    "contrato": { "idContrato": 9 }
+  },
+  {
+    "tiempoRespuesta": 60,
+    "tiempoResolucionObjetivo": 720,
+    "contrato": { "idContrato": 10 }
+  },
+  {
+    "tiempoRespuesta": 30,
+    "tiempoResolucionObjetivo": 240,
+    "contrato": { "idContrato": 11 }
+  },
+  {
+    "tiempoRespuesta": 120,
+    "tiempoResolucionObjetivo": 1440,
+    "contrato": { "idContrato": 12 }
+  },
+  {
+    "tiempoRespuesta": 60,
+    "tiempoResolucionObjetivo": 720,
+    "contrato": { "idContrato": 13 }
+  },
+  {
+    "tiempoRespuesta": 30,
+    "tiempoResolucionObjetivo": 240,
+    "contrato": { "idContrato": 14 }
+  },
+  {
+    "tiempoRespuesta": 120,
+    "tiempoResolucionObjetivo": 1440,
+    "contrato": { "idContrato": 15 }
+  },
+  {
+    "tiempoRespuesta": 60,
+    "tiempoResolucionObjetivo": 720,
+    "contrato": { "idContrato": 16 }
+  },
+  {
+    "tiempoRespuesta": 30,
+    "tiempoResolucionObjetivo": 240,
+    "contrato": { "idContrato": 17 }
+  },
+  {
+    "tiempoRespuesta": 120,
+    "tiempoResolucionObjetivo": 1440,
+    "contrato": { "idContrato": 18 }
+  },
+  {
+    "tiempoRespuesta": 60,
+    "tiempoResolucionObjetivo": 720,
+    "contrato": { "idContrato": 19 }
+  },
+  {
+    "tiempoRespuesta": 30,
+    "tiempoResolucionObjetivo": 240,
+    "contrato": { "idContrato": 20 }
+  }
+]

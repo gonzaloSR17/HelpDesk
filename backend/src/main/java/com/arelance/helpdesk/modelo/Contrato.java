@@ -40,7 +40,7 @@ public class Contrato {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idContrato")
-    private Integer idContrato;
+    private Long idContrato;
 
     @Column(nullable = false)
     private String codigo;

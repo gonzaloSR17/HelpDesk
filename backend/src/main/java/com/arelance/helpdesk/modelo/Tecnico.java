@@ -30,7 +30,7 @@ public class Tecnico {
  @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTecnico")
-    private Integer idTecnico;
+    private Long idTecnico;
 
     @Column(nullable = false)
     private String nombre;

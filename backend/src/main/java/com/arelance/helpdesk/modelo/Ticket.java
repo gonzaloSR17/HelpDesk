@@ -55,7 +55,6 @@ public enum Prioridad {
     Email
     }
 
-
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTicket")

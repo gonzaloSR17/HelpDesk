@@ -1,102 +1,22 @@
 [
   {
-    "tiempoRespuesta": 120,
-    "tiempoResolucionObjetivo": 1440,
-    "contrato": { "idContrato": 1 }
+    "prioridad": "CRITICA",
+    "tiempoRespuestaObjetivoMin": 15,
+    "tiempoResolucionObjetivoMin": 120
   },
   {
-    "tiempoRespuesta": 60,
-    "tiempoResolucionObjetivo": 720,
-    "contrato": { "idContrato": 2 }
+    "prioridad": "ALTA",
+    "tiempoRespuestaObjetivoMin": 30,
+    "tiempoResolucionObjetivoMin": 240
   },
   {
-    "tiempoRespuesta": 30,
-    "tiempoResolucionObjetivo": 240,
-    "contrato": { "idContrato": 3 }
+    "prioridad": "MEDIA",
+    "tiempoRespuestaObjetivoMin": 60,
+    "tiempoResolucionObjetivoMin": 480
   },
   {
-    "tiempoRespuesta": 60,
-    "tiempoResolucionObjetivo": 720,
-    "contrato": { "idContrato": 4 }
-  },
-  {
-    "tiempoRespuesta": 30,
-    "tiempoResolucionObjetivo": 240,
-    "contrato": { "idContrato": 5 }
-  },
-  {
-    "tiempoRespuesta": 120,
-    "tiempoResolucionObjetivo": 1440,
-    "contrato": { "idContrato": 6 }
-  },
-  {
-    "tiempoRespuesta": 60,
-    "tiempoResolucionObjetivo": 720,
-    "contrato": { "idContrato": 7 }
-  },
-  {
-    "tiempoRespuesta": 30,
-    "tiempoResolucionObjetivo": 240,
-    "contrato": { "idContrato": 8 }
-  },
-  {
-    "tiempoRespuesta": 120,
-    "tiempoResolucionObjetivo": 1440,
-    "contrato": { "idContrato": 9 }
-  },
-  {
-    "tiempoRespuesta": 60,
-    "tiempoResolucionObjetivo": 720,
-    "contrato": { "idContrato": 10 }
-  },
-  {
-    "tiempoRespuesta": 30,
-    "tiempoResolucionObjetivo": 240,
-    "contrato": { "idContrato": 11 }
-  },
-  {
-    "tiempoRespuesta": 120,
-    "tiempoResolucionObjetivo": 1440,
-    "contrato": { "idContrato": 12 }
-  },
-  {
-    "tiempoRespuesta": 60,
-    "tiempoResolucionObjetivo": 720,
-    "contrato": { "idContrato": 13 }
-  },
-  {
-    "tiempoRespuesta": 30,
-    "tiempoResolucionObjetivo": 240,
-    "contrato": { "idContrato": 14 }
-  },
-  {
-    "tiempoRespuesta": 120,
-    "tiempoResolucionObjetivo": 1440,
-    "contrato": { "idContrato": 15 }
-  },
-  {
-    "tiempoRespuesta": 60,
-    "tiempoResolucionObjetivo": 720,
-    "contrato": { "idContrato": 16 }
-  },
-  {
-    "tiempoRespuesta": 30,
-    "tiempoResolucionObjetivo": 240,
-    "contrato": { "idContrato": 17 }
-  },
-  {
-    "tiempoRespuesta": 120,
-    "tiempoResolucionObjetivo": 1440,
-    "contrato": { "idContrato": 18 }
-  },
-  {
-    "tiempoRespuesta": 60,
-    "tiempoResolucionObjetivo": 720,
-    "contrato": { "idContrato": 19 }
-  },
-  {
-    "tiempoRespuesta": 30,
-    "tiempoResolucionObjetivo": 240,
-    "contrato": { "idContrato": 20 }
+    "prioridad": "BAJA",
+    "tiempoRespuestaObjetivoMin": 120,
+    "tiempoResolucionObjetivoMin": 1440
   }
 ]

@@ -59,8 +59,8 @@ public class Contrato {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @OneToOne(mappedBy = "contrato", cascade = CascadeType.ALL)
-    private SLA sla;
+    // @OneToOne(mappedBy = "contrato", cascade = CascadeType.ALL)
+    // private SLA sla;
 
     @OneToMany(mappedBy = "contrato")
     @JsonIgnore

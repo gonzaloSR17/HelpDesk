@@ -16,6 +16,7 @@ import com.arelance.helpdesk.modelo.Tecnico;
 import com.arelance.helpdesk.modelo.Ticket;
 import com.arelance.helpdesk.repositorio.TecnicoRepo;
 import com.arelance.helpdesk.repositorio.TicketRepo;
+import com.arelance.helpdesk.servicios.TicketServices;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,9 +31,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class TicketController {
 
     private final TicketRepo ticketRepo;
+    private final TicketServices ticketServices;
 
-    public TicketController(TicketRepo ticketRepo) {
+    
+
+    public TicketController(TicketRepo ticketRepo, TicketServices ticketServices) {
         this.ticketRepo = ticketRepo;
+        this.ticketServices = ticketServices;
     }
 
     @PostMapping("/crear")
@@ -41,6 +46,27 @@ public class TicketController {
         
         return ResponseEntity.status(HttpStatus.CREATED).body(ticketRepo.saveAll(a));
     };
+
+    @GetMapping("/consultar")
+    @Operation(summary = "Consulta una cantidad de ticket", description = "Devuelve una lista limitada de tickets registrados en la base de datos")
+    public ResponseEntity<Page<Ticket>>  consultarTicket(
+        @RequestParam(defaultValue = "0") int pagina
+    ) {
+        // Devulevo la primera pagina 0 para que me imprima los 4 primeros resultados
+        return ResponseEntity.ok(ticketServices.obtenerTickets(pagina));
+    }
+
+    @GetMapping("/contar/hoy")
+    // @Operation(summary = "Consulta una cantidad de ticket", description = "Devuelve una lista limitada de tickets registrados en la base de datos")
+    public ResponseEntity<Long>  contarTicketDeHoy(@RequestParam("estado") Ticket.Estado estado) {
+        return ResponseEntity.ok(ticketRepo.recuentoTicketHoy(estado));
+    }
+
+    @GetMapping("/contar/{categoria}")
+    // @Operation(summary = "Consulta una cantidad de ticket", description = "Devuelve una lista limitada de tickets registrados en la base de datos")
+    public ResponseEntity<Long>  contarTicketCategoria(@PathVariable String categoria) {
+        return ResponseEntity.ok(ticketRepo.recuentoTicketTipo(categoria));
+    }
 
     
 

@@ -33,7 +33,9 @@ public class Categoria {
     @Column(name = "idCategoria")
     private Long idCategoria; 
 
-
+    @Column(nullable = false)
+    private String grupo;
+    
     @Column(length = 100, columnDefinition = "VARCHAR(100)", nullable = false)
     private String nombre;
 

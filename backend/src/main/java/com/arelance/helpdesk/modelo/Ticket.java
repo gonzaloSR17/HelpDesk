@@ -57,7 +57,7 @@ public enum Prioridad {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTicket")
+    @Column(name = "id_ticket")
     private Long idTicket;
 
     @Column(nullable = false)

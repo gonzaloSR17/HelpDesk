@@ -38,12 +38,6 @@ public class TransicionTicket {
     @Column(name = "fecha_cambio", nullable = false)
     private LocalDateTime fechaCambio;
 
-    @Column(name = "fecha_primera_respuesta")
-    private LocalDateTime fechaPrimeraRespuesta;
-
-    @Column(name = "fecha_resolutiva")
-    private LocalDateTime fechaResolutiva;
- 
     @ManyToOne
     @JoinColumn(name = "id_ticket", nullable = false)
     private Ticket ticket;

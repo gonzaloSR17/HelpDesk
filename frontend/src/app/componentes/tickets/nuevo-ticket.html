@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuevo ticket de soporte · HelpDesk Arelance</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+  :root{
+    --hd-border:#dfe3e8;
+    --hd-bg:#f2f4f7;
+    --hd-text-muted:#6b7280;
+  }
+
+  body{
+    background:var(--hd-bg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+
+  .ticket-card{
+    max-width:760px;
+    margin:2.5rem auto;
+    background:#ffffff;
+    border:1px solid var(--hd-border);
+    border-radius:10px;
+    box-shadow:0 1px 2px rgba(16,24,40,.04);
+    padding:2rem 2.25rem 1.75rem;
+  }
+
+  .ticket-card h1{
+    font-size:1.15rem;
+    font-weight:700;
+    color:#101828;
+    margin:0;
+  }
+
+  hr.ticket-divider{
+    margin:1rem 0 1.5rem;
+    border:none;
+    border-top:1px solid var(--hd-border);
+  }
+
+  .form-label{
+    font-weight:600;
+    font-size:.83rem;
+    color:#1f2937;
+    margin-bottom:.35rem;
+  }
+
+  .form-control,.form-select{
+    font-size:.9rem;
+    padding:.5rem .75rem;
+    border-radius:6px;
+    border-color:var(--hd-border);
+  }
+
+  .form-control::placeholder{
+    color:#98a2b3;
+  }
+
+  .form-control:focus,.form-select:focus{
+    border-color:#86b7fe;
+    box-shadow:0 0 0 .2rem rgba(13,110,253,.15);
+  }
+
+  .form-select:disabled,.form-control:disabled{
+    background-color:#f8f9fa;
+    color:#9aa0a6;
+  }
+
+  .field-hint{
+    font-size:.76rem;
+    color:var(--hd-text-muted);
+    margin-top:.3rem;
+  }
+
+  .row-gap{
+    row-gap:1.25rem;
+  }
+
+  /* Adjuntos */
+  .adjuntos-box{
+    border:1px solid var(--hd-border);
+    border-radius:6px;
+    padding:.4rem .5rem;
+  }
+  .adjuntos-lista{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.4rem;
+    min-height:1.6rem;
+  }
+  .adjunto-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+    background:#f2f4f7;
+    border:1px solid var(--hd-border);
+    border-radius:20px;
+    padding:.15rem .55rem .15rem .7rem;
+    font-size:.78rem;
+    color:#344054;
+  }
+  .adjunto-chip button{
+    border:none;
+    background:none;
+    color:#98a2b3;
+    line-height:1;
+    padding:0;
+    font-size:.85rem;
+  }
+  .adjunto-chip button:hover{ color:#d92d20; }
+
+  /* Alerta SLA */
+  .alerta-sla{
+    background:#eaf2ff;
+    border:1px solid #cfe2ff;
+    border-radius:8px;
+    padding:.85rem 1rem;
+    display:flex;
+    gap:.65rem;
+    font-size:.85rem;
+    color:#1f2937;
+  }
+  .alerta-sla i{
+    color:#0d6efd;
+    font-size:1.05rem;
+    line-height:1.4;
+  }
+  .alerta-sla strong{
+    display:block;
+    font-size:.85rem;
+    margin-bottom:.15rem;
+    color:#101828;
+  }
+  .alerta-sla.alerta-critica{
+    background:#fdecec;
+    border-color:#f8cfcf;
+  }
+  .alerta-sla.alerta-critica i{ color:#d92d20; }
+  .alerta-sla.alerta-alta{
+    background:#fff6e9;
+    border-color:#fbe3b6;
+  }
+  .alerta-sla.alerta-alta i{ color:#b25e00; }
+
+  .btn-primary{
+    background-color:#0d6efd;
+    border-color:#0d6efd;
+  }
+
+  @media (max-width:576px){
+    .ticket-card{ padding:1.5rem 1.25rem; margin:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ticket-card">
+  <h1>Nuevo ticket de soporte</h1>
+  <hr class="ticket-divider">
+
+  <form id="formTicket" novalidate>
+    <div class="row row-gap">
+
+      <!-- Cliente -->
+      <div class="col-md-6">
+        <label for="cliente" class="form-label">Cliente <span>*</span></label>
+        <select id="cliente" class="form-select" required>
+          <option value="" selected disabled>Seleccionar cliente...</option>
+        </select>
+        <div class="invalid-feedback">Selecciona el cliente que reporta la incidencia.</div>
+      </div>
+
+      <!-- Contrato / SLA -->
+      <div class="col-md-6">
+        <label for="contrato" class="form-label">Contrato / SLA <span>*</span></label>
+        <select id="contrato" class="form-select" required disabled>
+          <option value="" selected disabled>Selecciona antes un cliente</option>
+        </select>
+        <div class="invalid-feedback">Selecciona el contrato asociado.</div>
+      </div>
+
+      <!-- Categoría -->
+      <div class="col-md-6">
+        <label for="categoria" class="form-label">Categoría <span>*</span></label>
+        <select id="categoria" class="form-select" required>
+          <option value="" selected disabled>Seleccionar categoría...</option>
+        </select>
+        <div class="invalid-feedback">Indica la categoría de la incidencia.</div>
+      </div>
+
+      <!-- Prioridad -->
+      <div class="col-md-6">
+        <label for="prioridad" class="form-label">Prioridad <span>*</span></label>
+        <select id="prioridad" class="form-select" required>
+          <option value="" selected disabled>Seleccionar prioridad...</option>
+        </select>
+        <div class="invalid-feedback">Indica la prioridad del ticket.</div>
+      </div>
+
+      <!-- Asunto -->
+      <div class="col-md-6">
+        <label for="asunto" class="form-label">Asunto <span>*</span></label>
+        <input type="text" id="asunto" class="form-control" maxlength="120"
+               placeholder="Ej: Caída de la conexión en sede central" required>
+        <div class="invalid-feedback">El asunto es obligatorio.</div>
+      </div>
+
+      <!-- Técnico asignado -->
+      <div class="col-md-6">
+        <label for="tecnico" class="form-label">Técnico asignado <span>*</span></label>
+        <select id="tecnico" class="form-select" required>
+          <option value="" selected disabled>Seleccionar técnico...</option>
+        </select>
+        <div class="invalid-feedback">Asigna un técnico responsable.</div>
+      </div>
+
+      <!-- Canal de entrada -->
+      <div class="col-md-6">
+        <label for="canal" class="form-label">Canal de entrada <span>*</span></label>
+        <select id="canal" class="form-select" required>
+          <option value="" selected disabled>Seleccionar canal...</option>
+        </select>
+        <div class="invalid-feedback">Indica cómo llegó la incidencia.</div>
+      </div>
+
+      <!-- Fecha de apertura -->
+      <div class="col-md-6">
+        <label for="fechaApertura" class="form-label">Fecha de apertura <span>*</span></label>
+        <input type="datetime-local" id="fechaApertura" class="form-control" required>
+        <div class="invalid-feedback">La fecha de apertura es obligatoria.</div>
+      </div>
+
+      <!-- Descripción -->
+      <div class="col-md-6">
+        <label for="descripcion" class="form-label">Descripción <span>*</span></label>
+        <textarea id="descripcion" class="form-control" rows="2" maxlength="500"
+                  placeholder="Ej: Sin acceso a red en planta 2 desde las 09:00..." required></textarea>
+        <div class="invalid-feedback">Describe brevemente la incidencia.</div>
+      </div>
+
+      <!-- Adjuntos -->
+      <div class="col-md-6">
+        <label for="adjuntosInput" class="form-label">Adjuntos</label>
+        <div class="adjuntos-box">
+          <div class="adjuntos-lista" id="listaAdjuntos">
+            <span class="field-hint" id="adjuntosVacio" style="margin:0;">Ningún archivo seleccionado</span>
+          </div>
+        </div>
+        <input type="file" id="adjuntosInput" class="d-none" multiple>
+        <button type="button" id="btnAdjuntar" class="btn btn-sm btn-outline-secondary mt-2">
+          <i class="bi bi-paperclip"></i> Adjuntar archivo
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Validación / SLA -->
+    <div class="mt-4">
+      <div id="alertaSla" class="alerta-sla">
+        <i class="bi bi-info-circle-fill"></i>
+        <div>
+          <strong>Validación</strong>
+          <span id="alertaSlaTexto">Selecciona una prioridad para calcular el objetivo de tiempo de respuesta (SLA).</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="d-flex justify-content-end gap-2 mt-4">
+      <button type="button" id="btnCancelar" class="btn btn-outline-secondary px-4">Cancelar</button>
+      <button type="submit" id="btnGuardar" class="btn btn-primary px-4">Guardar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Toast de confirmación -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index:1080">
+  <div id="toastGuardado" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="bi bi-check-circle me-1"></i> Ticket registrado correctamente.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+
+  // ---------------------------------------------------------------
+  // Datos de referencia (equivalen a lo que hoy devolverían los
+  // endpoints /api/clientes, /api/contratos, /api/categorias,
+  // /api/tecnicos del backend). Sustituir por fetch() cuando el
+  // backend exponga esos recursos.
+  // ---------------------------------------------------------------
+  const clientes = [
+    { id: 1, nombre: "Ayuntamiento de Utrera" },
+    { id: 2, nombre: "Grupo Hostelero Andalucía" },
+    { id: 3, nombre: "Cerámicas del Sur S.L." },
+    { id: 4, nombre: "Colegio San Rafael" },
+    { id: 5, nombre: "Clínica Vitalia" },
+    { id: 6, nombre: "Transportes Guadalquivir" },
+  ];
+
+  // Refleja Contrato { codigo, nivel, cliente } del modelo (N:1 con Cliente)
+  const contratos = [
+    { id: 1, idCliente: 1, codigo: "CT-2024-011", nivel: "Premium" },
+    { id: 2, idCliente: 2, codigo: "CT-2023-045", nivel: "Estándar" },
+    { id: 3, idCliente: 3, codigo: "CT-2024-002", nivel: "Básico" },
+    { id: 4, idCliente: 4, codigo: "CT-2023-078", nivel: "Premium" },
+    { id: 5, idCliente: 5, codigo: "CT-2024-019", nivel: "Estándar" },
+    { id: 6, idCliente: 6, codigo: "CT-2022-033", nivel: "Básico" },
+  ];
+
+  const categorias = [
+    "Red / Conectividad",
+    "Hardware",
+    "Software / Aplicaciones",
+    "Cuentas y accesos",
+    "Impresión",
+    "Telefonía / VoIP",
+    "Correo electrónico",
+    "Copias de seguridad",
+  ];
+
+  const tecnicos = [
+    { nombre: "M. Delgado", especialidad: "Redes y conectividad" },
+    { nombre: "L. Navarro", especialidad: "Sistemas y servidores" },
+    { nombre: "A. Ramírez", especialidad: "Puesto de trabajo" },
+    { nombre: "S. Ortega", especialidad: "Aplicaciones y software" },
+    { nombre: "J. Cabrera", especialidad: "Telefonía" },
+  ];
+
+  // Coincide exactamente con el enum Ticket.Canal del backend
+  const canales = ["Teléfono", "Email"];
+
+  // Coincide con el enum Ticket.Prioridad; "horas" alimenta el aviso de SLA
+  const prioridades = [
+    { valor: "BAJA",    etiqueta: "Baja",    horas: 72 },
+    { valor: "MEDIA",   etiqueta: "Media",   horas: 24 },
+    { valor: "ALTA",    etiqueta: "Alta",    horas: 8  },
+    { valor: "CRITICA", etiqueta: "Crítica", horas: 2  },
+  ];
+
+  // ---------------------------------------------------------------
+  // Referencias al DOM
+  // ---------------------------------------------------------------
+  const $cliente    = document.getElementById('cliente');
+  const $contrato    = document.getElementById('contrato');
+  const $categoria   = document.getElementById('categoria');
+  const $prioridad   = document.getElementById('prioridad');
+  const $tecnico     = document.getElementById('tecnico');
+  const $canal       = document.getElementById('canal');
+  const $fecha       = document.getElementById('fechaApertura');
+  const $asunto      = document.getElementById('asunto');
+  const $descripcion = document.getElementById('descripcion');
+
+  const $alertaSla      = document.getElementById('alertaSla');
+  const $alertaSlaTexto = document.getElementById('alertaSlaTexto');
+
+  const $adjuntosInput = document.getElementById('adjuntosInput');
+  const $btnAdjuntar   = document.getElementById('btnAdjuntar');
+  const $listaAdjuntos = document.getElementById('listaAdjuntos');
+  const $adjuntosVacio = document.getElementById('adjuntosVacio');
+
+  const form = document.getElementById('formTicket');
+  let archivosSeleccionados = [];
+
+  // ---------------------------------------------------------------
+  // Poblar selects
+  // ---------------------------------------------------------------
+  function llenarSelect(select, items, textoFn, valorFn){
+    items.forEach(item => {
+      const opt = document.createElement('option');
+      opt.value = valorFn(item);
+      opt.textContent = textoFn(item);
+      select.appendChild(opt);
+    });
+  }
+
+  llenarSelect($cliente, clientes, c => c.nombre, c => c.id);
+  llenarSelect($categoria, categorias, c => c, c => c);
+  llenarSelect($prioridad, prioridades, p => p.etiqueta, p => p.valor);
+  llenarSelect($tecnico, tecnicos, t => `${t.nombre} · ${t.especialidad}`, t => t.nombre);
+  llenarSelect($canal, canales, c => c, c => c);
+
+  // Fecha de apertura por defecto: ahora mismo
+  (function fijarFechaActual(){
+    const ahora = new Date();
+    ahora.setMinutes(ahora.getMinutes() - ahora.getTimezoneOffset());
+    $fecha.value = ahora.toISOString().slice(0,16);
+  })();
+
+  // ---------------------------------------------------------------
+  // Contrato / SLA depende del Cliente seleccionado (1:N real)
+  // ---------------------------------------------------------------
+  $cliente.addEventListener('change', () => {
+    const idCliente = Number($cliente.value);
+    const disponibles = contratos.filter(c => c.idCliente === idCliente);
+
+    $contrato.innerHTML = '';
+    if(disponibles.length === 0){
+      $contrato.disabled = true;
+      const opt = document.createElement('option');
+      opt.textContent = 'Este cliente no tiene contratos activos';
+      opt.value = '';
+      opt.selected = true;
+      opt.disabled = true;
+      $contrato.appendChild(opt);
+      return;
+    }
+
+    $contrato.disabled = false;
+    const placeholder = document.createElement('option');
+    placeholder.value = '';
+    placeholder.selected = true;
+    placeholder.disabled = true;
+    placeholder.textContent = 'Seleccionar contrato...';
+    $contrato.appendChild(placeholder);
+
+    llenarSelect($contrato, disponibles,
+      c => `${c.codigo} · ${c.nivel}`,
+      c => c.id
+    );
+  });
+
+  // ---------------------------------------------------------------
+  // Aviso de SLA según la prioridad elegida
+  // ---------------------------------------------------------------
+  $prioridad.addEventListener('change', () => {
+    const info = prioridades.find(p => p.valor === $prioridad.value);
+    if(!info) return;
+
+    let matiz = '';
+    if(info.valor === 'CRITICA') matiz = ' El técnico recibe aviso inmediato.';
+    else if(info.valor === 'ALTA') matiz = ' El técnico recibe aviso en la próxima hora.';
+
+    $alertaSlaTexto.textContent =
+      `La prioridad ${info.etiqueta} activa el cronómetro de SLA a ${info.horas} horas.${matiz}`;
+
+    $alertaSla.classList.remove('alerta-critica','alerta-alta');
+    if(info.valor === 'CRITICA') $alertaSla.classList.add('alerta-critica');
+    else if(info.valor === 'ALTA') $alertaSla.classList.add('alerta-alta');
+  });
+
+  // ---------------------------------------------------------------
+  // Adjuntos
+  // ---------------------------------------------------------------
+  $btnAdjuntar.addEventListener('click', () => $adjuntosInput.click());
+
+  $adjuntosInput.addEventListener('change', () => {
+    archivosSeleccionados = archivosSeleccionados.concat(Array.from($adjuntosInput.files));
+    renderAdjuntos();
+    $adjuntosInput.value = '';
+  });
+
+  function renderAdjuntos(){
+    $listaAdjuntos.innerHTML = '';
+    if(archivosSeleccionados.length === 0){
+      $listaAdjuntos.appendChild($adjuntosVacio);
+      return;
+    }
+    archivosSeleccionados.forEach((file, idx) => {
+      const chip = document.createElement('span');
+      chip.className = 'adjunto-chip';
+      chip.innerHTML = `<i class="bi bi-file-earmark"></i> ${file.name}
+        <button type="button" aria-label="Quitar adjunto">&times;</button>`;
+      chip.querySelector('button').addEventListener('click', () => {
+        archivosSeleccionados.splice(idx, 1);
+        renderAdjuntos();
+      });
+      $listaAdjuntos.appendChild(chip);
+    });
+  }
+
+  // ---------------------------------------------------------------
+  // Cancelar
+  // ---------------------------------------------------------------
+  document.getElementById('btnCancelar').addEventListener('click', () => {
+    form.reset();
+    form.classList.remove('was-validated');
+    archivosSeleccionados = [];
+    renderAdjuntos();
+    $contrato.innerHTML = '<option value="" selected disabled>Selecciona antes un cliente</option>';
+    $contrato.disabled = true;
+    $alertaSla.classList.remove('alerta-critica','alerta-alta');
+    $alertaSlaTexto.textContent = 'Selecciona una prioridad para calcular el objetivo de tiempo de respuesta (SLA).';
+  });
+
+  // ---------------------------------------------------------------
+  // Guardar
+  // ---------------------------------------------------------------
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if(!form.checkValidity()){
+      form.classList.add('was-validated');
+      const primerInvalido = form.querySelector(':invalid');
+      if(primerInvalido) primerInvalido.focus();
+      return;
+    }
+
+    // Payload equivalente al DTO que consumiría POST /api/tickets
+    const payload = {
+      asunto: $asunto.value.trim(),
+      descripcion: $descripcion.value.trim(),
+      canal: $canal.value,
+      prioridad: $prioridad.value,
+      estado: 'EN_ABIERTO',
+      fechaApertura: $fecha.value,
+      idCliente: Number($cliente.value),
+      idContrato: Number($contrato.value),
+      idCategoria: $categoria.value,
+      tecnicoAsignado: $tecnico.value,
+      adjuntos: archivosSeleccionados.map(f => f.name),
+    };
+
+    console.log('Nuevo ticket ->', payload);
+    // fetch('/api/tickets', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) })
+
+    const toast = new bootstrap.Toast(document.getElementById('toastGuardado'));
+    toast.show();
+
+    form.classList.remove('was-validated');
+  });
+
+})();
+</script>
+</body>
+</html>

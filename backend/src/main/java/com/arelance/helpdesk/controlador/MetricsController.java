@@ -10,13 +10,6 @@ import com.arelance.helpdesk.repositorio.TicketRepo;
 
 import io.swagger.v3.oas.annotations.Operation;
 
-/**
- * NOTA: este controlador solo incluye el endpoint asignado a Rubén
- * (Analysis). Los demás endpoints bajo /api/v1/metrics/... (weekly-trend,
- * in-progress, sla-risk, resolved-month, sla-percentage, open,
- * count/red, count/hardware, count/software, count/accesos) están
- * asignados a Jhon, Oscar y Gonzalo respectivamente y no se tocan aquí.
- */
 @RestController
 @RequestMapping("/api/v1/metrics")
 public class MetricsController {

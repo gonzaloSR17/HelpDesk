@@ -1,136 +1,78 @@
-<div class="container pt-4">
-    
-ç
-            <div class="row">
-                <div class="col">
-                    <div class="bg-gradient-blue p-2 rounded">
-                        <p class="fw-bold mb-0">TICKETS ABIERTOS</p>
-                        <p class="display-6 mb-0">187</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="bg-gradient-blue p-2 rounded">
-                        <p class="fw-bold mb-0">EN CURSO</p>
-                        <p class="display-6 mb-0">94</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="bg-gradient-blue p-2 rounded">
-                        <p class="fw-bold mb-0">SLA EN RIESGO</p>
-                        <p class="display-6 mb-0">0</p>
-                    </div>
-                    <div class="bg-gradient-blue p-2 rounded">
-                        <p class="fw-bold mb-0">RESUELTOS (MES)</p>
-                        <p class="display-6 mb-0">612</p>
-                    </div>
+<div class="row p-4">
+    <div class="col">
+        <h3 class="fw-bold">Panel de gestión de tickets</h3>
+    </div>
+    <div class="col d-flex justify-content-end gap-2">
+        <input type="text" class="form-control w-25" placeholder="Buscar...">
+        <button class="btn btn-primary">+ Nuevo</button>
+    </div>
+</div>
+
+<div class="bg-light p-4">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-lg-3 gy-3">
+            <div class="card border-0 border-start border-primary border-5 shadow-sm rounded">
+                <div class="card-body">
+                    <p class="text-muted mb-0">TICKETS ABIERTOS</p>
+                    <h1 class="mt-0 mb-0">187</h1>
+                    <p class="text-primary small mb-0">+ 12 hoy</p>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-9">
-                    <!-- Variable lobal que usaremos con keyup.enter para que al darle enter ejecute la funcion de busqueda -->
-                    <input class="form-control p-2 w-100" type="text" placeholder="🔍 Busca por nombre o NIF" #textoBusqueda>
-                </div>
-                <div class="col-1">
-                    <select class="form-select bg-secondary text-white p-2 w-100" name="select">
-                        <option value="value1" selected>Estado</option>
-                        <option value="value2">Total</option>
-                        <option value="value3">Activos</option>
-                        <option value="value4">Bajas</option>
-                    </select>
-                </div>
-                <div class="col-2">
-                    <!-- Boton para ejecutar el modal -->
-                    <button class="bg-primary text-white text-start btn btn-primary p-2 w-100" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">+ Nuevo Socio</button>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 gy-3">
+            <div class="card border-0 border-start border-warning border-5 shadow-sm rounded">
+                <div class="card-body">
+                    <p class="text-muted mb-0">EN CURSO</p>
+                    <h1 class="mt-0 mb-0">94</h1>
+                    <p class="text-warning small mb-0">asignados</p>
                 </div>
             </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 gy-3">
+            <div class="card border-0 border-start border-danger border-5 shadow-sm rounded">
+                <div class="card-body">
+                    <p class="text-muted mb-0">SLA EN RIESGO</p>
+                    <h1 class="mt-0 mb-0">17</h1>
+                    <p class="text-danger small mb-0">2 h restantes</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 gy-3">
+            <div class="card border-0 border-start border-success border-5 shadow-sm rounded">
+                <div class="card-body">
+                    <p class="text-muted mb-0">RESUELTOS (MES)</p>
+                    <h1 class="mt-0 mb-0">612</h1>
+                    <p class="text-success small mb-0">+ 12 hoy</p>
 
-            <!-- Tabla para los resultados -->
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <table class="table mt-3 bg-gradient-blue">
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5 class="card-title fw-bold">Listado</h5>
+        </div>
+        <div class="card-body mt-0">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th class="text-white bg-primary">NIF</th>
-                        <th class="text-white bg-primary">Nombre</th>
-                        <th class="text-white bg-primary">Edad</th>
-                        <th class="text-white bg-primary">Email</th>
-                        <th class="text-white bg-primary">Estado</th>
-                        <th class="text-white bg-primary">Acciones</th>
+                        <th class="bg-light">Nº TICKET</th>
+                        <th class="bg-light">CLIENTE</th>
+                        <th class="bg-light">CATEGORIA</th>
+                        <th class="bg-light">TÉCNICO</th>
+                        <th class="bg-light">PRIORIDAD</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- @for (s of socios; track s.nif) { -->
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <!-- @if (s.activo) {
-                            <td><span class="badge bg-success rounded-pill fs-6">Activo</span></td>
-                        } @else {
-                            <td><span class="badge bg-light text-dark rounded-pill fs-6">Baja</span></td>
-                        } -->
-                        <td>
-                            <div class="row">
-                                <div class="col-3 d-flex justify-content-end">
-                                    <!-- Elimina el fondo del boton y los bordes -->
-                                    <button class="btn btn-link text-dark p-0" data-bs-toggle="modal" data-bs-target="#editarModal"><i class="bi bi-highlighter"></i></button>
-                                </div>
-                                <div class="col-9">
-                                    <button class="btn btn-link text-dark p-0"><i class="bi bi-trash3"></i></button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                    <!-- <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>johnexample.com</td>
+                    </tr> -->
                 </tbody>
             </table>
-
-    <!-- Tabla para los endpoints -->
-
-    <table class="table table-striped mt-3">
-        <thead>
-            <tr>
-                <th class="text-white bg-success">Verbo</th>
-                <th class="text-white bg-success">Endpoint</th>
-                <th class="text-white bg-success">Qué hace</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="1"><span class="badge bg-success">GET</span></td>
-                <td class="2">/api/socios/consultar</td>
-                <td class="3">Listar todos los socios (tabla)</td>
-            </tr>
-            <tr>
-                <td class="1"><span class="badge bg-success">GET</span></td>
-                <td class="2">/api/socios/consultar/&#123;nif&#125;</td>
-                <td class="3">Ver un socio por su NIF</td>
-            </tr>
-            <tr>
-                <td class="1"><span class="badge bg-success">GET</span></td>
-                <td class="2">/api/socios/consultar/nombre?nombre=</td>
-                <td class="3">Busca por nombre (contiene)</td>
-            </tr>
-            <tr>
-                <td class="1"><span class="badge bg-primary">POST</span></td>
-                <td class="2">/api/socios/crear</td>
-                <td class="3">Alta de socios</td>
-            </tr>
-            <tr>
-                <td class="1"><span class="badge bg-warning">PUT</span></td>
-                <td class="2">/api/socios/actualizar/&#123;nif&#125;</td>
-                <td class="3">Editar un socio</td>
-            </tr>
-            <tr>
-                <td class="1"><span class="badge bg-danger">DELETE</span></td>
-                <td class="2">/api/socios/borrar/&#123;nif&#125;</td>
-                <td class="3">Baja de socio</td>
-            </tr>
-        </tbody>
-    </table>
+        </div>
+    </div>
 
 </div>
-
-<!-- Container Modal -->
-<!-- <app-agregar-socio-modal></app-agregar-socio-modal>
-<app-editar-socio-model></app-editar-socio-model> -->

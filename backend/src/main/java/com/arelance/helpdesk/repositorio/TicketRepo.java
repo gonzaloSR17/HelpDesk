@@ -5,6 +5,9 @@ import org.springframework.data.domain.Pageable;
 import java.time.LocalDate;
 
 import org.springframework.data.domain.Page;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,6 +15,7 @@ import org.springframework.data.repository.query.Param;
 import com.arelance.helpdesk.modelo.Ticket;
 
 public interface TicketRepo extends JpaRepository<Ticket, Long>{
+    long countByEstadoNotIn(List<Ticket.Estado> estados);
 
 
     // Servicios para filtrar las primeras 8 paginas en el panel principal
@@ -36,4 +40,7 @@ public interface TicketRepo extends JpaRepository<Ticket, Long>{
             """)
     Long recuentoTicketTipo(@Param("categoria") String categoria);
 
+    long countByEstadoInAndFechaCierreBetween(List<Ticket.Estado> estados, LocalDateTime desde, LocalDateTime hasta);
+
+    List<Ticket> findByEstadoInAndFechaCierreBetween(List<Ticket.Estado> estados, LocalDateTime desde, LocalDateTime hasta);
 }

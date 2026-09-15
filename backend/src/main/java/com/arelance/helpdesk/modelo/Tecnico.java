@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 public class Tecnico {
  @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTecnico")
+    @Column(name = "id_tecnico")
     private Long idTecnico;
 
     @Column(nullable = false)

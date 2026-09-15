@@ -28,7 +28,7 @@ public class Comentario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idComentario")
+    @Column(name = "id_comentario")
     private Long idComentario;
 
     @Column(nullable = false)

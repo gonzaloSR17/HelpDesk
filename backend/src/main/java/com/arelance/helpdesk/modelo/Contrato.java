@@ -39,7 +39,7 @@ public class Contrato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idContrato")
+    @Column(name = "id_contrato")
     private Long idContrato;
 
     @Column(nullable = false)

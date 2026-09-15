@@ -1,0 +1,73 @@
+<section class="container pt-4">
+    <fieldset class="row mb-3 g-2">
+        <label class="col-3">
+            <select class="form-select" [(ngModel)]="filtroEstado" (change)="aplicarFiltros()">
+                <option value="">Estado: Todos</option>
+                <option value="EN_ABIERTO">Abierto</option>
+                <option value="EN_CURSO">En curso</option>
+                <option value="ESCALADO">Escalado</option>
+                <option value="RESUELTO">Resuelto</option>
+                <option value="CERRADO">Cerrado</option>
+            </select>
+        </label>
+        <label class="col-3">
+            <select class="form-select" [(ngModel)]="filtroPrioridad" (change)="aplicarFiltros()">
+                <option value="">Prioridad: Todas</option>
+                <option value="CRITICA">Critica</option>
+                <option value="ALTA">Alta</option>
+                <option value="MEDIA">Media</option>
+                <option value="BAJA">Baja</option>
+            </select>
+        </label>
+        <label class="col-3">
+            <select class="form-select">
+                <option>Tecnicos: todos</option>
+            </select>
+        </label>
+        <label class="col-3">
+            <select class="form-select">
+                <option>Clientes: todos</option>
+            </select>
+        </label>
+    </fieldset>
+
+    <h5 class="mb-2">Listado de tickets</h5>
+    <p class="text-muted small">{{ tickets.length }} de {{ totalElementos }} registros</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nº TICKET</th>
+                <th>CLIENTE</th>
+                <th>CATEGORÍA</th>
+                <th>TÉCNICO</th>
+                <th>PRIORIDAD</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (t of tickets; track t.idTicket) {
+                <tr>
+                    <td>TCK-{{ t.idTicket }}</td>
+                    <td>{{ t.cliente.nombre }} {{ t.cliente.apellido }}</td>
+                    <td>{{ t.categoria.nombre }}</td>
+                    <td>{{ t.tecnico?.nombre }} {{ t.tecnico?.apellido }}</td>
+                    <td>{{ t.prioridad }}</td>
+                    <td>{{ t.estado }}</td>
+                    <td>
+                        <a href="#" class="me-2">Ver</a>
+                        <a href="#" class="me-2">Editar</a>
+                        <a href="#">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-outline-secondary btn-sm" (click)="paginaAnterior()">Anterior</button>
+        <span>Página {{ pagina + 1 }} de {{ totalPaginas }}</span>
+        <button class="btn btn-outline-secondary btn-sm" (click)="paginaSiguiente()">Siguiente</button>
+    </p>
+</section>

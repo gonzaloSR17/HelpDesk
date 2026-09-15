@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { PanelTicketComponent } from './panel-ticket/panel-ticket.component';
+import { ListadoTickets } from './listado-tickets/listado-tickets';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PanelTicketComponent],
+  imports: [RouterOutlet, ListadoTickets],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

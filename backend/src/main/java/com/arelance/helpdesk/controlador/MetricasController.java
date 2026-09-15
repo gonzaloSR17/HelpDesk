@@ -3,6 +3,7 @@ package com.arelance.helpdesk.controlador;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.arelance.helpdesk.dto.TotalCategoriasDto;
 import com.arelance.helpdesk.modelo.SLA;
 import com.arelance.helpdesk.modelo.Ticket;
 import com.arelance.helpdesk.repositorio.SlaRepo;
@@ -16,19 +17,23 @@ import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
+// import nuevo - jhon
+import com.arelance.helpdesk.dto.TicketsEnCursoDto;
+
 /**
- * Endpoints de MÉTRICAS (encargo de Oscar - Architect):
+ * Endpoints de MÉTRICAS del equipo:
  * http://localhost:8080/api/v1/metrics
- * - GET R01 → /api/v1/metrics/open → Tickets abiertos ahora mismo
- * - GET R02 → /api/v1/metrics/resolved-month → Tickets resueltos este mes
- * - GET R03 → /api/v1/metrics/sla-percentage → % de cumplimiento de SLA
+ * - Si añades un endpoint aquí, indica tu nombre y qué hace en un comentario.
+ * - GET /open, /resolved-month, /sla-percentage → Oscar (Architect)
+ * - GET /count/categories-total → Rubén (Analysis)
+ * - GET /in-progress → Jhon (Backend)
  */
 @RestController
 @RequestMapping("/api/v1/metrics")
 public class MetricasController {
-
 
     private final TicketRepo ticketRepo;
     private final SlaRepo slaRepo;
@@ -38,8 +43,10 @@ public class MetricasController {
         this.slaRepo = slaRepo;
     }
 
-    // GET R02 → /api/v1/metrics/resolved-month
-    @GetMapping("/api/v1/metrics/resolved-month")
+    // Rutas corregidas 
+    // GET R02 → /resolved-month
+    
+    @GetMapping("/resolved-month")
     @Operation(summary = "Total de tickets resueltos en el mes actual (KPI directo).")
     public TicketsResueltosMes resueltosMes() {
         List<Ticket.Estado> cerrados = List.of(Ticket.Estado.RESUELTO, Ticket.Estado.CERRADO);
@@ -54,7 +61,7 @@ public class MetricasController {
     }
 
     // GET R03 → /api/v1/metrics/sla-percentage
-    @GetMapping(" /api/v1/metrics/sla-percentage")
+    @GetMapping("/sla-percentage")
     @Operation(summary = " Porcentaje global de cumplimiento del SLA mensual (KPI directo).")
     public PorcentajeSla porcentajeSla() {
         List<Ticket.Estado> cerrados = List.of(Ticket.Estado.RESUELTO, Ticket.Estado.CERRADO);
@@ -102,7 +109,8 @@ public class MetricasController {
             }
         }
 
-        // Si ningún ticket se pudo evaluar (todos sin fecha o sin SLA), evitamos dividir por 0
+        // Si ningún ticket se pudo evaluar (todos sin fecha o sin SLA), evitamos
+        // dividir por 0
         if (totalTickets == 0) {
             return new PorcentajeSla(100.0);
         }
@@ -113,7 +121,7 @@ public class MetricasController {
     }
 
     // GET R01 → /api/v1/metrics/open
-    @GetMapping("/api/v1/metrics/open")
+    @GetMapping("/open")
     @Operation(summary = " Métrica de tickets abiertos actualmente en el sistema (KPI directo).")
     public TicketsAbiertos abierto() {
         List<Ticket.Estado> cerrados = List.of(Ticket.Estado.RESUELTO, Ticket.Estado.CERRADO);
@@ -122,6 +130,13 @@ public class MetricasController {
         return new TicketsAbiertos(abiertos);
     }
 
+    // GET /api/v1/metrics/in-progress → Jhon (Backend)
+    @GetMapping("/in-progress")
+    @Operation(summary = "Tickets en curso asignados a técnicos (KPI directo).")
+    public ResponseEntity<TicketsEnCursoDto> enCurso() {
+        long total = ticketRepo.countByEstado(Ticket.Estado.EN_CURSO);
+        return ResponseEntity.ok(new TicketsEnCursoDto(total));
+    }
 
     public record TicketsAbiertos(@JsonProperty("open_tickets") long abiertos) {
     }
@@ -130,6 +145,19 @@ public class MetricasController {
     }
 
     public record PorcentajeSla(@JsonProperty("sla_compliance_pct") double porcentaje) {
+    }
+
+    /**
+     * Suma total acumulada de tickets repartidos por categoría.
+     * Migrado desde MetricsController (Rubén, Analysis).
+     *
+     * @return el total de tickets que tienen categoría asignada
+     */
+    @Operation(summary = "Suma total acumulada de tickets repartidos por categoría")
+    @GetMapping("/count/categories-total")
+    public ResponseEntity<TotalCategoriasDto> totalPorCategorias() {
+        long total = ticketRepo.countByCategoriaIsNotNull();
+        return ResponseEntity.ok(new TotalCategoriasDto(total));
     }
 
 }

@@ -25,6 +25,39 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
          */
         List<Ticket> findByEstadoNotIn(List<Ticket.Estado> estados);
 
+        /**
+         * Cuenta cuántos tickets se abrieron cada día desde una fecha dada.
+         * Usado para la tendencia semanal (weekly-trend) - Jhon (Backend)
+         *
+         * @param desde fecha a partir de la cual contar (inclusive)
+         * @return filas [fecha, total] agrupadas por día
+         */
+        @Query(value = """
+        SELECT DATE(fecha_apertura) AS dia, COUNT(*) AS total
+        FROM ticket
+        WHERE fecha_apertura >= :desde
+        GROUP BY DATE(fecha_apertura)
+        """, nativeQuery = true)
+        List<Object[]> contarAbiertosPorDia(@Param("desde") LocalDateTime desde);
+
+        /**
+         * Cuenta cuántos tickets se cerraron/resolvieron cada día desde una fecha dada.
+         * Usado para la tendencia semanal (weekly-trend) - Jhon (Backend)
+         *
+         * @param desde fecha a partir de la cual contar (inclusive)
+         * @return filas [fecha, total] agrupadas por día
+         */
+        @Query(value = """
+        SELECT DATE(fecha_cierre) AS dia, COUNT(*) AS total
+        FROM ticket
+        WHERE fecha_cierre >= :desde
+        GROUP BY DATE(fecha_cierre)
+        """, nativeQuery = true)
+        List<Object[]> contarResueltosPorDia(@Param("desde") LocalDateTime desde);
+
+
+        
+
         // Servicio para contar los tickets en curso (asignados y en proceso) - Jhon
         long countByEstado(Ticket.Estado estado);
 

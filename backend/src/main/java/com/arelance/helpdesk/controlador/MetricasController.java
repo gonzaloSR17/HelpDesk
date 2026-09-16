@@ -24,14 +24,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.arelance.helpdesk.dto.TicketsEnCursoDto;
 import com.arelance.helpdesk.dto.SlaRiskDto;
 
+import com.arelance.helpdesk.dto.WeeklyTrendDto;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Endpoints de MÉTRICAS del equipo:
  * http://localhost:8080/api/v1/metrics
  * - Si añades un endpoint aquí, indica tu nombre y qué hace en un comentario.
  * - GET /open, /resolved-month, /sla-percentage → Oscar (Architect)
  * - GET /count/categories-total → Rubén (Analysis)
- * - GET /in-progress → Jhon (Backend)
+ * - GET /in-progress, /sla-risk, /weekly-trend → Jhon (Backend)
  */
+
 @RestController
 @RequestMapping("/api/v1/metrics")
 public class MetricasController {
@@ -145,8 +152,6 @@ public class MetricasController {
         return ResponseEntity.ok(new TicketsEnCursoDto(total));
     }
 
-
-
     /**
      * Cuenta los tickets abiertos que están a punto de incumplir su SLA
      * (menos de 2 horas restantes, pero todavía sin incumplir).
@@ -183,6 +188,61 @@ public class MetricasController {
 
         return ResponseEntity.ok(new SlaRiskDto(enRiesgo));
     }
+
+    /**
+     * Convierte el resultado en bruto de una consulta SQL agrupada por día
+     * (fecha + total) en un mapa fácil de consultar (fecha -> total).
+     * Usado por weekly-trend - Jhon (Backend)
+     */
+    private Map<LocalDate, Long> aMapaPorDia(List<Object[]> filas) {
+        Map<LocalDate, Long> mapa = new HashMap<>();
+        for (Object[] fila : filas) {
+            LocalDate dia = (LocalDate) fila[0];
+            long total = ((Number) fila[1]).longValue();
+            mapa.put(dia, total);
+        }
+        return mapa;
+    }
+
+
+
+
+
+
+    private static final String[] NOMBRES_DIA = { "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom" };
+
+    /**
+     * Tendencia semanal: tickets abiertos vs resueltos por día,
+     * en los últimos 7 días (hoy incluido).
+     *
+     * @return los 7 días con su conteo de abiertos y resueltos
+     */
+    // GET /api/v1/metrics/weekly-trend → Jhon (Backend)
+    @GetMapping("/weekly-trend")
+    @Operation(summary = "Tendencia semanal: tickets abiertos vs resueltos por día (últimos 7 días).")
+    public ResponseEntity<WeeklyTrendDto> weeklyTrend() {
+        LocalDate hoy = LocalDate.now();
+        LocalDate desde = hoy.minusDays(6);
+
+        Map<LocalDate, Long> abiertosPorDia = aMapaPorDia(
+                ticketRepo.contarAbiertosPorDia(desde.atStartOfDay()));
+        Map<LocalDate, Long> resueltosPorDia = aMapaPorDia(
+                ticketRepo.contarResueltosPorDia(desde.atStartOfDay()));
+
+        List<String> dias = new ArrayList<>();
+        List<Long> abiertos = new ArrayList<>();
+        List<Long> resueltos = new ArrayList<>();
+
+        for (LocalDate dia = desde; !dia.isAfter(hoy); dia = dia.plusDays(1)) {
+            int indiceDiaSemana = dia.getDayOfWeek().getValue() - 1; // Lunes=1 -> índice 0
+            dias.add(NOMBRES_DIA[indiceDiaSemana]);
+            abiertos.add(abiertosPorDia.getOrDefault(dia, 0L));
+            resueltos.add(resueltosPorDia.getOrDefault(dia, 0L));
+        }
+
+        return ResponseEntity.ok(new WeeklyTrendDto(dias, abiertos, resueltos));
+    }
+
 
 
 

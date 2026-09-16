@@ -6,51 +6,37 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-// ==========================================================
-
-// TODO Cliente:
-//   - Atributos: nombre, cif, sector, contacto
-//   - Relacion: @OneToMany Contrato (1:N)
-
-@Entity 
-@Data 
-@AllArgsConstructor 
-@NoArgsConstructor 
-@Table(name = "cliente")
-
-public class Cliente {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_Cliente")
-    private Long idCliente;
-
-    @Column(nullable = false)
-    private String nombre;
-
-     @Column(nullable = false)
-    private String apellido;
-
-    @Column(nullable = false)
-    private String cif;
+/**
+ * Cliente del helpdesk. Hereda id/username/passwordHash/email/nombre/activo
+ * de Usuario (tabla compartida "usuario", SINGLE_TABLE) - Jhon (Backend)
+ *
+ * Relaciones:
+ * - 1:N con Contrato (un cliente puede tener varios contratos)
+ * - 1:N con Ticket (un cliente puede tener varios tickets)
+ */
+@Entity
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@DiscriminatorValue("CLIENTE")
+public class Cliente extends Usuario {
 
     @Column
-    private String sector;
+    private String apellido;
+
+    @Column
+    private String cif;
+
 
     @Column(length = 9)
     private String contacto;
-
-    @Column
-    private String email;
 
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore
@@ -59,5 +45,5 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore
     private List<Ticket> tickets = new ArrayList<>();
-
 }
+

@@ -67,4 +67,14 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     // GET /api/v1/metrics/count/categories-total
     // Suma total acumulada de tickets repartidos por categoría.
     long countByCategoriaIsNotNull();
+
+    // Busca tickets filtrando por estado y prioridad, pero si alguno de los
+    // dos llega vacío (null), simplemente no filtra por ese campo.
+    // Pageable trae la página y el tamaño desde el controlador.
+    @Query("SELECT t FROM Ticket t WHERE " +
+           "(:estado IS NULL OR t.estado = :estado) AND " +
+           "(:prioridad IS NULL OR t.prioridad = :prioridad)")
+    Page<Ticket> filtrar(@Param("estado") Ticket.Estado estado,
+                          @Param("prioridad") Ticket.Prioridad prioridad,
+                          Pageable pageable);
 }

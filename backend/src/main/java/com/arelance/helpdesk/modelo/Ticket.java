@@ -47,7 +47,9 @@ public enum Prioridad {
     EN_CURSO,
     ESCALADO,
     RESUELTO,
-    CERRADO
+    CERRADO,
+    CANCELADO,
+    CADUCADO
     }
 
     public enum Canal {

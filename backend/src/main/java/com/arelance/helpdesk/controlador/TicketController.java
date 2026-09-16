@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -168,5 +169,15 @@ public class TicketController {
                 .toList();
 
         return ResponseEntity.ok(new ResultadosBusquedaDto(resultados));
+
+    }
+
+    @GetMapping("/listado")
+    public Page<Ticket> consultarPagina(
+            @RequestParam(required = false) Ticket.Estado estado,
+            @RequestParam(required = false) Ticket.Prioridad prioridad,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "8") int size) {
+        return ticketRepo.filtrar(estado, prioridad, PageRequest.of(page, size));
     }
 }

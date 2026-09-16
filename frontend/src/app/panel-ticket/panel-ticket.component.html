@@ -1,4 +1,5 @@
-<div class="row p-4">
+<div class="container-fluid p-0 overflow-hidden">
+<div class="row p-4 bg-white shadow">
     <div class="col">
         <h3 class="fw-bold">Panel de gestión de tickets</h3>
     </div>
@@ -49,30 +50,53 @@
         </div>
     </div>
 
-    <div class="card mt-4">
-        <div class="card-header">
-            <h5 class="card-title fw-bold">Listado</h5>
-        </div>
-        <div class="card-body mt-0">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th class="bg-light">Nº TICKET</th>
-                        <th class="bg-light">CLIENTE</th>
-                        <th class="bg-light">CATEGORIA</th>
-                        <th class="bg-light">TÉCNICO</th>
-                        <th class="bg-light">PRIORIDAD</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>johnexample.com</td>
-                    </tr> -->
-                </tbody>
-            </table>
-        </div>
-    </div>
+  <div class="card mb-3 mt-3 shadow-sm">
+  <div class="card-header bg-white py-2">
+    <h6 class="mb-0 fw-bold">Listado</h6>
+  </div>
+  <div class="card-body p-2">
+    <table class="table table-sm table-hover align-middle mb-0 fs-7">
+      <thead>
+        <tr>
+          <th class="bg-light py-1 text-muted">Nº TICKET</th>
+          <th class="bg-light py-1 text-muted">CLIENTE</th>
+          <th class="bg-light py-1 text-muted">CATEGORÍA</th>
+          <th class="bg-light py-1 text-muted">TÉCNICO</th>
+          <th class="bg-light py-1 text-muted">PRIORIDAD</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (t of tickets; track t.idTicket) {
+        <tr>
+          <td class="py-1">TCK-{{ t.idTicket }}</td>
+          <td class="py-1">{{ t.cliente?.nombre }}</td>
+          <td class="py-1">{{ t.categoria?.nombre }}</td>
+          <td class="py-1">{{ t.tecnico?.nombre?.charAt(0) }}. {{ t.tecnico?.apellido }}</td>
+          <td class="py-1">
+            @switch (t.prioridad) {
+              @case ('CRITICA') {
+                <span class="badge bg-danger rounded-pill px-2 py-1 text-uppercase fw-bold badge-sm">CRÍTICA</span>
+              }
+              @case ('ALTA') {
+                <span class="badge bg-warning text-white rounded-pill px-2 py-1 text-uppercase fw-bold badge-sm">ALTA</span>
+              }
+              @case ('MEDIA') {
+                <span class="badge bg-primary rounded-pill px-2 py-1 text-uppercase fw-bold badge-sm">MEDIA</span>
+              }
+              @case ('BAJA') {
+                <span class="badge bg-success rounded-pill px-2 py-1 text-uppercase fw-bold badge-sm">BAJA</span>
+              }
+              @default {
+                <span class="badge bg-secondary rounded-pill px-2 py-1 text-uppercase fw-bold badge-sm">{{ t.prioridad }}</span>
+              }
+            }
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
 
+</div>
 </div>

@@ -20,8 +20,9 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
-// import nuevo - jhon
+// imports nuevos - jhon
 import com.arelance.helpdesk.dto.TicketsEnCursoDto;
+import com.arelance.helpdesk.dto.SlaRiskDto;
 
 /**
  * Endpoints de MÉTRICAS del equipo:
@@ -43,9 +44,9 @@ public class MetricasController {
         this.slaRepo = slaRepo;
     }
 
-    // Rutas corregidas 
+    // Rutas corregidas
     // GET R02 → /resolved-month
-    
+
     @GetMapping("/resolved-month")
     @Operation(summary = "Total de tickets resueltos en el mes actual (KPI directo).")
     public TicketsResueltosMes resueltosMes() {
@@ -130,6 +131,12 @@ public class MetricasController {
         return new TicketsAbiertos(abiertos);
     }
 
+    /**
+     * Cuenta los tickets que están actualmente en curso (EN_CURSO),
+     * es decir, ya asignados a un técnico y siendo trabajados.
+     *
+     * @return el total de tickets en estado EN_CURSO
+     */
     // GET /api/v1/metrics/in-progress → Jhon (Backend)
     @GetMapping("/in-progress")
     @Operation(summary = "Tickets en curso asignados a técnicos (KPI directo).")
@@ -137,6 +144,48 @@ public class MetricasController {
         long total = ticketRepo.countByEstado(Ticket.Estado.EN_CURSO);
         return ResponseEntity.ok(new TicketsEnCursoDto(total));
     }
+
+
+
+    /**
+     * Cuenta los tickets abiertos que están a punto de incumplir su SLA
+     * (menos de 2 horas restantes, pero todavía sin incumplir).
+     *
+     * @return el total de tickets en riesgo de SLA
+     */
+    // GET /api/v1/metrics/sla-risk → Jhon (Backend)
+    @GetMapping("/sla-risk")
+    @Operation(summary = "Tickets con menos de 2 horas restantes para incumplir su SLA (KPI directo).")
+    public ResponseEntity<SlaRiskDto> slaRisk() {
+        List<Ticket.Estado> cerrados = List.of(Ticket.Estado.RESUELTO, Ticket.Estado.CERRADO);
+        List<Ticket> tickets = ticketRepo.findByEstadoNotIn(cerrados);
+
+        LocalDateTime ahora = LocalDateTime.now();
+        long enRiesgo = 0;
+
+        for (Ticket t : tickets) {
+            if (t.getFechaApertura() == null) {
+                continue;
+            }
+
+            SLA sla = slaRepo.findByPrioridad(t.getPrioridad()).orElse(null);
+            if (sla == null) {
+                continue;
+            }
+
+            long minutosTranscurridos = ChronoUnit.MINUTES.between(t.getFechaApertura(), ahora);
+            long minutosRestantes = sla.getTiempoResolucionObjetivoMin() - minutosTranscurridos;
+
+            if (minutosRestantes > 0 && minutosRestantes < 120) {
+                enRiesgo++;
+            }
+        }
+
+        return ResponseEntity.ok(new SlaRiskDto(enRiesgo));
+    }
+
+
+
 
     public record TicketsAbiertos(@JsonProperty("open_tickets") long abiertos) {
     }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Ticket } from '../../interfaces/tickets';
-import { TicketServicesService } from '../../services/ticket-services.service';
+import { Ticket } from '../../../../../interfaces/tickets';
+import { TicketServicesService } from '../../../../../services/ticket-services.service';
 
 @Component({
   selector: 'app-listado-ticket',

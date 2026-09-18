@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TicketServicesService } from '../../services/ticket-services.service';
-import { Ticket } from '../../interfaces/tickets';
+import { TicketServicesService } from '../../../../../services/ticket-services.service';
+import { Ticket } from '../../../../../interfaces/tickets';
 
 @Component({
   selector: 'app-panel-ticket',

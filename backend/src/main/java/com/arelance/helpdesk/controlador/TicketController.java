@@ -68,6 +68,14 @@ public class TicketController {
         return ResponseEntity.ok(ticketServices.obtenerTickets(pagina));
     }
 
+    @GetMapping("/cliente/{idCliente}")
+    @Operation(summary = "Busca todos los tickets de un cliente", description = "Devuelve una lista limitada de tickets registrados en la base de datos")
+    public ResponseEntity<Page<Ticket>> consultarTicketsDeCliente(
+        @PathVariable("idCliente") Long id,
+        @RequestParam(name = "pagina", defaultValue = "0") int pagina) {
+        return ResponseEntity.ok(ticketServices.obtenerTicketsCliente(pagina, id));
+    }
+
     @GetMapping("/contar/hoy")
     public ResponseEntity<Long> contarTicketDeHoy(@RequestParam("estado") Ticket.Estado estado) {
         return ResponseEntity.ok(ticketRepo.recuentoTicketHoy(estado));

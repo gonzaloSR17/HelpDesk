@@ -1,7 +1,7 @@
 <div class="d-flex vh-100 overflow-hidden">
   <!-- Contenedor fijo del Sidebar (ancho fijo) -->
   <aside class="flex-shrink-0" style="width: 280px;">
-    <app-sidebar-helpdesk class="h-100 d-block"></app-sidebar-helpdesk>
+    <app-sidebar-helpdesk class="h-100 d-block" [menuItems]="adminMenu" [user]="adminUser"></app-sidebar-helpdesk>
   </aside>
 
   <!-- Contenido principal con scroll vertical propio si el contenido supera la pantalla -->

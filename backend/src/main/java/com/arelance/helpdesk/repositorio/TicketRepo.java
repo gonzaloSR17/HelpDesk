@@ -66,6 +66,11 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
             Ticket.Estado estado,
             Pageable pageable);
 
+    // Servicio para imprimir los ticket de un cliente determinado
+    Page<Ticket> findByClienteIdOrderByFechaAperturaDesc(
+        Long clienteId, 
+        Pageable pageable);
+
     // Servicio para contar los tickets creados en el día de hoy
     @Query("""
             SELECT COUNT(t)

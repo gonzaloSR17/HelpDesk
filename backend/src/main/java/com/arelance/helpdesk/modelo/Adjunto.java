@@ -42,10 +42,14 @@ public class Adjunto {
 
     private String tipoMime; // ej: "image/png", "application/pdf"
 
-    @Lob
-    @Column(name = "contenido", columnDefinition = "LONGBLOB") // O VARBINARY(MAX) / BYTEA según la BD
-    private byte[] contenido;
+    // @Lob (Version antigua)
+    // @Column(name = "contenido", columnDefinition = "LONGBLOB") // O VARBINARY(MAX) / BYTEA según la BD
+    // private byte[] contenido;
     
+    // Poner:
+    @Column(name = "ruta_almacenamiento", nullable = false)
+    private String rutaAlmacenamiento;   // ej: "/uploads/tickets/42/factura.pdf"
+
     private LocalDateTime fechaSubida;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -4,9 +4,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,35 +30,63 @@ import com.arelance.helpdesk.repositorio.ClienteRepo;
 import com.arelance.helpdesk.repositorio.ContratoRepo;
 import com.arelance.helpdesk.repositorio.TecnicoRepo;
 import com.arelance.helpdesk.repositorio.TicketRepo;
+import com.arelance.helpdesk.servicios.TicketServices;
 
 import io.swagger.v3.oas.annotations.Operation;
 
-/**
- * Endpoints asignados a Rubén (Analysis):
- *   - POST /api/v1/tickets                -> crearTicket
- *   - GET  /api/v1/tickets/search?q=...   -> buscarTickets
- *
- * (El tercer endpoint, GET /api/v1/metrics/count/categories-total,
- *  vive en MetricsController).
- */
 @RestController
 @RequestMapping("/api/v1/tickets")
 public class TicketController {
 
     private final TicketRepo ticketRepo;
+    private final TicketServices ticketServices;
     private final ClienteRepo clienteRepo;
     private final TecnicoRepo tecnicoRepo;
     private final CategoriaRepo categoriaRepo;
     private final ContratoRepo contratoRepo;
 
-    public TicketController(TicketRepo ticketRepo, ClienteRepo clienteRepo, TecnicoRepo tecnicoRepo,
-            CategoriaRepo categoriaRepo, ContratoRepo contratoRepo) {
+    public TicketController(TicketRepo ticketRepo, TicketServices ticketServices, ClienteRepo clienteRepo,
+                            TecnicoRepo tecnicoRepo, CategoriaRepo categoriaRepo, ContratoRepo contratoRepo) {
         this.ticketRepo = ticketRepo;
+        this.ticketServices = ticketServices;
         this.clienteRepo = clienteRepo;
         this.tecnicoRepo = tecnicoRepo;
         this.categoriaRepo = categoriaRepo;
         this.contratoRepo = contratoRepo;
     }
+
+    // --- Endpoints Gonzalo / Main ---
+
+    @PostMapping("/crear")
+    public ResponseEntity<List<Ticket>> crearActividad(@RequestBody List<Ticket> a) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(ticketRepo.saveAll(a));
+    }
+
+    @GetMapping("/consultar")
+    @Operation(summary = "Consulta una cantidad de ticket", description = "Devuelve una lista limitada de tickets registrados en la base de datos")
+    public ResponseEntity<Page<Ticket>> consultarTicket(@RequestParam(defaultValue = "0") int pagina) {
+        return ResponseEntity.ok(ticketServices.obtenerTickets(pagina));
+    }
+
+    @GetMapping("/cliente/{idCliente}")
+    @Operation(summary = "Busca todos los tickets de un cliente", description = "Devuelve una lista limitada de tickets registrados en la base de datos")
+    public ResponseEntity<Page<Ticket>> consultarTicketsDeCliente(
+        @PathVariable("idCliente") Long id,
+        @RequestParam(name = "pagina", defaultValue = "0") int pagina) {
+        return ResponseEntity.ok(ticketServices.obtenerTicketsCliente(pagina, id));
+    }
+
+    @GetMapping("/contar/hoy")
+    public ResponseEntity<Long> contarTicketDeHoy(@RequestParam("estado") Ticket.Estado estado) {
+        return ResponseEntity.ok(ticketRepo.recuentoTicketHoy(estado));
+    }
+
+    @GetMapping("/contar/{categoria}")
+    public ResponseEntity<Long> contarTicketCategoria(@PathVariable String categoria) {
+        return ResponseEntity.ok(ticketRepo.recuentoTicketTipo(categoria));
+    }
+
+    // --- Endpoints Rubén (Analysis) ---
 
     @Operation(summary = "Crea un nuevo ticket (botón '+ Nuevo')")
     @PostMapping
@@ -110,7 +141,6 @@ public class TicketController {
         ticket.setDescripcion(datos.descripcion());
         ticket.setCanal(datos.canal());
         ticket.setPrioridad(datos.prioridad());
-        // Todo ticket nuevo nace en EN_ABIERTO; el estado no lo decide el cliente.
         ticket.setEstado(Ticket.Estado.EN_ABIERTO);
         ticket.setFechaApertura(datos.fechaApertura() != null ? datos.fechaApertura() : LocalDateTime.now());
         ticket.setCliente(cliente.get());
@@ -147,6 +177,15 @@ public class TicketController {
                 .toList();
 
         return ResponseEntity.ok(new ResultadosBusquedaDto(resultados));
+
     }
 
+    @GetMapping("/listado")
+    public Page<Ticket> consultarPagina(
+            @RequestParam(required = false) Ticket.Estado estado,
+            @RequestParam(required = false) Ticket.Prioridad prioridad,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "8") int size) {
+        return ticketRepo.filtrar(estado, prioridad, PageRequest.of(page, size));
+    }
 }

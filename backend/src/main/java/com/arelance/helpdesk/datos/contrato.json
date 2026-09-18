@@ -1,0 +1,182 @@
+[
+  {
+    "codigo": "CON-2026-001",
+    "nivel": "BASICO",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 1
+    }
+  },
+  {
+    "codigo": "CON-2026-002",
+    "nivel": "ESTANDAR",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 2
+    }
+  },
+  {
+    "codigo": "CON-2026-003",
+    "nivel": "PREMIUM",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 3
+    }
+  },
+  {
+    "codigo": "CON-2026-004",
+    "nivel": "ESTANDAR",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 4
+    }
+  },
+  {
+    "codigo": "CON-2026-005",
+    "nivel": "PREMIUM",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 5
+    }
+  },
+  {
+    "codigo": "CON-2026-006",
+    "nivel": "BASICO",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 6
+    }
+  },
+  {
+    "codigo": "CON-2026-007",
+    "nivel": "ESTANDAR",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 7
+    }
+  },
+  {
+    "codigo": "CON-2026-008",
+    "nivel": "PREMIUM",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 8
+    }
+  },
+  {
+    "codigo": "CON-2026-009",
+    "nivel": "BASICO",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 9
+    }
+  },
+  {
+    "codigo": "CON-2026-010",
+    "nivel": "ESTANDAR",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 10
+    }
+  },
+  {
+    "codigo": "CON-2026-011",
+    "nivel": "PREMIUM",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 11
+    }
+  },
+  {
+    "codigo": "CON-2026-012",
+    "nivel": "BASICO",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 12
+    }
+  },
+  {
+    "codigo": "CON-2026-013",
+    "nivel": "ESTANDAR",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 13
+    }
+  },
+  {
+    "codigo": "CON-2026-014",
+    "nivel": "PREMIUM",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 14
+    }
+  },
+  {
+    "codigo": "CON-2026-015",
+    "nivel": "BASICO",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 15
+    }
+  },
+  {
+    "codigo": "CON-2026-016",
+    "nivel": "ESTANDAR",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 16
+    }
+  },
+  {
+    "codigo": "CON-2026-017",
+    "nivel": "PREMIUM",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 17
+    }
+  },
+  {
+    "codigo": "CON-2026-018",
+    "nivel": "BASICO",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 18
+    }
+  },
+  {
+    "codigo": "CON-2026-019",
+    "nivel": "ESTANDAR",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 19
+    }
+  },
+  {
+    "codigo": "CON-2026-020",
+    "nivel": "PREMIUM",
+    "fechaInicio": "2026-09-14",
+    "fechaFin": "2026-10-05",
+    "cliente": {
+      "idCliente": 20
+    }
+  }
+]

@@ -1,0 +1,142 @@
+:root{
+  --hd-border:#dfe3e8;
+  --hd-bg:#f2f4f7;
+  --hd-text-muted:#6b7280;
+}
+
+.ticket-card{
+  max-width:100%;
+  margin:0;
+  background:#ffffff;
+  border:1px solid var(--hd-border);
+  border-radius:10px;
+  box-shadow:0 1px 2px rgba(16,24,40,.04);
+  padding:1.25rem 1.5rem 1.5rem;
+}
+
+.ticket-breadcrumb{
+  font-size:.78rem;
+  color:var(--hd-text-muted);
+  margin-bottom:.35rem;
+}
+
+.ticket-card h1{
+  font-size:1.05rem;
+  font-weight:700;
+  color:#101828;
+  margin:0;
+}
+
+hr.ticket-divider{
+  margin:.75rem 0 1.1rem;
+  border:none;
+  border-top:1px solid var(--hd-border);
+}
+
+.form-label{
+  font-weight:600;
+  font-size:.8rem;
+  color:#1f2937;
+  margin-bottom:.25rem;
+}
+
+.form-control,.form-select{
+  font-size:.85rem;
+  padding:.4rem .65rem;
+  border-radius:6px;
+  border-color:var(--hd-border);
+}
+
+.form-control::placeholder{
+  color:#98a2b3;
+}
+
+.form-control:focus,.form-select:focus{
+  border-color:#86b7fe;
+  box-shadow:0 0 0 .2rem rgba(13,110,253,.15);
+}
+
+.form-select:disabled,.form-control:disabled{
+  background-color:#f8f9fa;
+  color:#9aa0a6;
+}
+
+.field-hint{
+  font-size:.76rem;
+  color:var(--hd-text-muted);
+  margin-top:.3rem;
+}
+
+.row-gap{
+  row-gap:.9rem;
+}
+
+/* Adjuntos */
+.adjuntos-box{
+  border:1px solid var(--hd-border);
+  border-radius:6px;
+  padding:.4rem .5rem;
+}
+.adjuntos-lista{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem;
+  min-height:1.6rem;
+}
+.adjunto-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  background:#f2f4f7;
+  border:1px solid var(--hd-border);
+  border-radius:20px;
+  padding:.15rem .55rem .15rem .7rem;
+  font-size:.78rem;
+  color:#344054;
+}
+.adjunto-chip button{
+  border:none;
+  background:none;
+  color:#98a2b3;
+  line-height:1;
+  padding:0;
+  font-size:.85rem;
+}
+.adjunto-chip button:hover{ color:#d92d20; }
+
+/* Alerta SLA */
+.alerta-sla{
+  background:#eaf2ff;
+  border:1px solid #cfe2ff;
+  border-radius:8px;
+  padding:.6rem .85rem;
+  display:flex;
+  gap:.55rem;
+  font-size:.8rem;
+  color:#1f2937;
+}
+.alerta-sla i{
+  color:#0d6efd;
+  font-size:.95rem;
+  line-height:1.4;
+}
+.alerta-sla strong{
+  display:block;
+  font-size:.8rem;
+  margin-bottom:.1rem;
+  color:#101828;
+}
+.alerta-sla.alerta-critica{
+  background:#fdecec;
+  border-color:#f8cfcf;
+}
+.alerta-sla.alerta-critica i{ color:#d92d20; }
+.alerta-sla.alerta-alta{
+  background:#fff6e9;
+  border-color:#fbe3b6;
+}
+.alerta-sla.alerta-alta i{ color:#b25e00; }
+
+@media (max-width:576px){
+  .ticket-card{ padding:1rem 1rem; }
+}

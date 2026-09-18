@@ -47,7 +47,9 @@ public enum Prioridad {
     EN_CURSO,
     ESCALADO,
     RESUELTO,
-    CERRADO
+    CERRADO,
+    CANCELADO,
+    CADUCADO
     }
 
     public enum Canal {
@@ -55,11 +57,10 @@ public enum Prioridad {
     Email
     }
 
-
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTicket")
-    private Integer idTicket;
+    @Column(name = "id_ticket")
+    private Long idTicket;
 
     @Column(nullable = false)
     private String asunto;

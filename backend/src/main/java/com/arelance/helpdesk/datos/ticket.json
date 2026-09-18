@@ -1,0 +1,414 @@
+[
+  {
+    "asunto": "No puedo acceder a mi cuenta",
+    "descripcion": "El usuario reporta que no puede iniciar sesión en su cuenta corporativa a pesar de introducir credenciales correctas.",
+    "fechaApertura": "2026-09-21T03:00:00",
+    "fechaCierre": null,
+    "canal": "Email",
+    "prioridad": "MEDIA",
+    "estado": "EN_CURSO",
+    "cliente": {
+      "idCliente": 1
+    },
+    "tecnico": {
+      "idTecnico": 4
+    },
+    "categoria": {
+      "idCategoria": 1
+    },
+    "contrato": {
+      "idContrato": 1
+    }
+  },
+  {
+    "asunto": "Olvidé mi contraseña",
+    "descripcion": "El cliente solicita el restablecimiento de su contraseña de acceso al sistema.",
+    "fechaApertura": "2026-09-14T14:30:00",
+    "fechaCierre": null,
+    "canal": "Teléfono",
+    "prioridad": "ALTA",
+    "estado": "ESCALADO",
+    "cliente": {
+      "idCliente": 2
+    },
+    "tecnico": {
+      "idTecnico": 4
+    },
+    "categoria": {
+      "idCategoria": 2
+    },
+    "contrato": {
+      "idContrato": 2
+    }
+  },
+  {
+    "asunto": "Falta de permisos para acceder a carpeta compartida",
+    "descripcion": "El usuario no tiene permisos suficientes para acceder a un recurso compartido que necesita para su trabajo.",
+    "fechaApertura": "2026-09-16T22:15:00",
+    "fechaCierre": "2026-09-17T07:15:00",
+    "canal": "Email",
+    "prioridad": "CRITICA",
+    "estado": "RESUELTO",
+    "cliente": {
+      "idCliente": 3
+    },
+    "tecnico": {
+      "idTecnico": 4
+    },
+    "categoria": {
+      "idCategoria": 3
+    },
+    "contrato": {
+      "idContrato": 3
+    }
+  },
+  {
+    "asunto": "Solicitud de alta de nuevo empleado",
+    "descripcion": "Se solicita la creación de una cuenta de usuario para un nuevo empleado que se incorpora.",
+    "fechaApertura": "2026-09-22T04:00:00",
+    "fechaCierre": "2026-09-24T00:00:00",
+    "canal": "Teléfono",
+    "prioridad": "BAJA",
+    "estado": "CERRADO",
+    "cliente": {
+      "idCliente": 4
+    },
+    "tecnico": {
+      "idTecnico": 4
+    },
+    "categoria": {
+      "idCategoria": 4
+    },
+    "contrato": {
+      "idContrato": 4
+    }
+  },
+  {
+    "asunto": "Baja de usuario que ha dejado la empresa",
+    "descripcion": "Se solicita la desactivación de la cuenta de un empleado que ha causado baja.",
+    "fechaApertura": "2026-09-22T05:00:00",
+    "fechaCierre": null,
+    "canal": "Email",
+    "prioridad": "MEDIA",
+    "estado": "EN_ABIERTO",
+    "cliente": {
+      "idCliente": 5
+    },
+    "tecnico": null,
+    "categoria": {
+      "idCategoria": 5
+    },
+    "contrato": {
+      "idContrato": 5
+    }
+  },
+  {
+    "asunto": "El ordenador no enciende",
+    "descripcion": "El equipo del usuario no responde al pulsar el botón de encendido.",
+    "fechaApertura": "2026-09-20T15:45:00",
+    "fechaCierre": null,
+    "canal": "Teléfono",
+    "prioridad": "ALTA",
+    "estado": "EN_CURSO",
+    "cliente": {
+      "idCliente": 6
+    },
+    "tecnico": {
+      "idTecnico": 2
+    },
+    "categoria": {
+      "idCategoria": 6
+    },
+    "contrato": {
+      "idContrato": 6
+    }
+  },
+  {
+    "asunto": "Monitor con parpadeos",
+    "descripcion": "El monitor del puesto de trabajo presenta parpadeos intermitentes en la pantalla.",
+    "fechaApertura": "2026-09-14T16:00:00",
+    "fechaCierre": null,
+    "canal": "Email",
+    "prioridad": "CRITICA",
+    "estado": "ESCALADO",
+    "cliente": {
+      "idCliente": 7
+    },
+    "tecnico": {
+      "idTecnico": 2
+    },
+    "categoria": {
+      "idCategoria": 7
+    },
+    "contrato": {
+      "idContrato": 7
+    }
+  },
+  {
+    "asunto": "Teclado no responde",
+    "descripcion": "Varias teclas del teclado han dejado de funcionar correctamente.",
+    "fechaApertura": "2026-09-15T07:15:00",
+    "fechaCierre": "2026-09-15T22:15:00",
+    "canal": "Teléfono",
+    "prioridad": "BAJA",
+    "estado": "RESUELTO",
+    "cliente": {
+      "idCliente": 8
+    },
+    "tecnico": {
+      "idTecnico": 2
+    },
+    "categoria": {
+      "idCategoria": 8
+    },
+    "contrato": {
+      "idContrato": 8
+    }
+  },
+  {
+    "asunto": "Ratón no detectado",
+    "descripcion": "El ratón inalámbrico no es reconocido por el sistema operativo.",
+    "fechaApertura": "2026-09-19T17:00:00",
+    "fechaCierre": "2026-09-21T05:00:00",
+    "canal": "Email",
+    "prioridad": "MEDIA",
+    "estado": "CERRADO",
+    "cliente": {
+      "idCliente": 9
+    },
+    "tecnico": {
+      "idTecnico": 2
+    },
+    "categoria": {
+      "idCategoria": 9
+    },
+    "contrato": {
+      "idContrato": 9
+    }
+  },
+  {
+    "asunto": "Impresora no imprime",
+    "descripcion": "La impresora del departamento no procesa los trabajos de impresión enviados.",
+    "fechaApertura": "2026-09-16T10:45:00",
+    "fechaCierre": null,
+    "canal": "Teléfono",
+    "prioridad": "ALTA",
+    "estado": "EN_ABIERTO",
+    "cliente": {
+      "idCliente": 10
+    },
+    "tecnico": null,
+    "categoria": {
+      "idCategoria": 10
+    },
+    "contrato": {
+      "idContrato": 10
+    }
+  },
+  {
+    "asunto": "Actualización del sistema operativo falla",
+    "descripcion": "El sistema operativo no completa correctamente la última actualización disponible.",
+    "fechaApertura": "2026-09-16T16:45:00",
+    "fechaCierre": null,
+    "canal": "Email",
+    "prioridad": "CRITICA",
+    "estado": "EN_CURSO",
+    "cliente": {
+      "idCliente": 11
+    },
+    "tecnico": {
+      "idTecnico": 3
+    },
+    "categoria": {
+      "idCategoria": 11
+    },
+    "contrato": {
+      "idContrato": 11
+    }
+  },
+  {
+    "asunto": "Aplicación se cierra inesperadamente",
+    "descripcion": "Una aplicación de uso diario se cierra sola de forma repentina durante su uso.",
+    "fechaApertura": "2026-09-20T14:30:00",
+    "fechaCierre": null,
+    "canal": "Teléfono",
+    "prioridad": "BAJA",
+    "estado": "ESCALADO",
+    "cliente": {
+      "idCliente": 12
+    },
+    "tecnico": {
+      "idTecnico": 3
+    },
+    "categoria": {
+      "idCategoria": 12
+    },
+    "contrato": {
+      "idContrato": 12
+    }
+  },
+  {
+    "asunto": "No llegan correos electrónicos",
+    "descripcion": "El usuario indica que no recibe correos electrónicos desde hace varias horas.",
+    "fechaApertura": "2026-09-14T09:15:00",
+    "fechaCierre": "2026-09-16T06:15:00",
+    "canal": "Email",
+    "prioridad": "MEDIA",
+    "estado": "RESUELTO",
+    "cliente": {
+      "idCliente": 13
+    },
+    "tecnico": {
+      "idTecnico": 3
+    },
+    "categoria": {
+      "idCategoria": 13
+    },
+    "contrato": {
+      "idContrato": 13
+    }
+  },
+  {
+    "asunto": "Solicitud de instalación de software",
+    "descripcion": "Se solicita la instalación de una nueva herramienta de software para el equipo.",
+    "fechaApertura": "2026-09-18T20:30:00",
+    "fechaCierre": "2026-09-19T14:30:00",
+    "canal": "Teléfono",
+    "prioridad": "ALTA",
+    "estado": "CERRADO",
+    "cliente": {
+      "idCliente": 14
+    },
+    "tecnico": {
+      "idTecnico": 3
+    },
+    "categoria": {
+      "idCategoria": 14
+    },
+    "contrato": {
+      "idContrato": 14
+    }
+  },
+  {
+    "asunto": "Sin conexión a Internet",
+    "descripcion": "El puesto de trabajo no tiene acceso a Internet desde primera hora de la mañana.",
+    "fechaApertura": "2026-09-15T23:15:00",
+    "fechaCierre": null,
+    "canal": "Email",
+    "prioridad": "CRITICA",
+    "estado": "EN_ABIERTO",
+    "cliente": {
+      "idCliente": 15
+    },
+    "tecnico": null,
+    "categoria": {
+      "idCategoria": 15
+    },
+    "contrato": {
+      "idContrato": 15
+    }
+  },
+  {
+    "asunto": "Problemas de conexión WiFi",
+    "descripcion": "La conexión WiFi se desconecta de forma intermitente en la oficina.",
+    "fechaApertura": "2026-09-22T11:30:00",
+    "fechaCierre": null,
+    "canal": "Teléfono",
+    "prioridad": "BAJA",
+    "estado": "EN_CURSO",
+    "cliente": {
+      "idCliente": 16
+    },
+    "tecnico": {
+      "idTecnico": 5
+    },
+    "categoria": {
+      "idCategoria": 16
+    },
+    "contrato": {
+      "idContrato": 16
+    }
+  },
+  {
+    "asunto": "No se accede a la red local",
+    "descripcion": "El usuario no puede acceder a los recursos compartidos de la red interna.",
+    "fechaApertura": "2026-09-15T10:00:00",
+    "fechaCierre": null,
+    "canal": "Email",
+    "prioridad": "MEDIA",
+    "estado": "ESCALADO",
+    "cliente": {
+      "idCliente": 17
+    },
+    "tecnico": {
+      "idTecnico": 1
+    },
+    "categoria": {
+      "idCategoria": 17
+    },
+    "contrato": {
+      "idContrato": 17
+    }
+  },
+  {
+    "asunto": "Fallo al conectar la VPN",
+    "descripcion": "El cliente no puede establecer conexión con la VPN corporativa desde su domicilio.",
+    "fechaApertura": "2026-09-18T09:00:00",
+    "fechaCierre": "2026-09-19T08:00:00",
+    "canal": "Teléfono",
+    "prioridad": "ALTA",
+    "estado": "RESUELTO",
+    "cliente": {
+      "idCliente": 18
+    },
+    "tecnico": {
+      "idTecnico": 5
+    },
+    "categoria": {
+      "idCategoria": 18
+    },
+    "contrato": {
+      "idContrato": 18
+    }
+  },
+  {
+    "asunto": "Servidor interno caído",
+    "descripcion": "Un servidor interno no responde, afectando a varios servicios de la empresa.",
+    "fechaApertura": "2026-09-18T00:30:00",
+    "fechaCierre": "2026-09-18T03:30:00",
+    "canal": "Email",
+    "prioridad": "CRITICA",
+    "estado": "CERRADO",
+    "cliente": {
+      "idCliente": 19
+    },
+    "tecnico": {
+      "idTecnico": 1
+    },
+    "categoria": {
+      "idCategoria": 19
+    },
+    "contrato": {
+      "idContrato": 19
+    }
+  },
+  {
+    "asunto": "Alerta de seguridad detectada",
+    "descripcion": "Se ha detectado actividad sospechosa en uno de los equipos de la organización.",
+    "fechaApertura": "2026-09-22T02:45:00",
+    "fechaCierre": null,
+    "canal": "Teléfono",
+    "prioridad": "BAJA",
+    "estado": "EN_ABIERTO",
+    "cliente": {
+      "idCliente": 20
+    },
+    "tecnico": null,
+    "categoria": {
+      "idCategoria": 20
+    },
+    "contrato": {
+      "idContrato": 20
+    }
+  }
+]

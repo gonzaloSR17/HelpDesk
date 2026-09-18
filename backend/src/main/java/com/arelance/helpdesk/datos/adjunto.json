@@ -1,0 +1,173 @@
+[
+  {
+    "nombreArchivo": "informe_diagnostico.pdf",
+    "tipoMime": "application/pdf",
+    "rutaAlmacenamiento": "/uploads/tickets/1/informe_diagnostico.pdf",
+    "fechaSubida": "2026-09-21T06:00:00",
+    "ticket": {
+      "idTicket": 1
+    }
+  },
+  {
+    "nombreArchivo": "log_sistema.txt",
+    "tipoMime": "text/plain",
+    "rutaAlmacenamiento": "/uploads/tickets/2/log_sistema.txt",
+    "fechaSubida": "2026-09-14T17:30:00",
+    "ticket": {
+      "idTicket": 2
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "rutaAlmacenamiento": "/uploads/tickets/3/captura_pantalla.png",
+    "fechaSubida": "2026-09-17T01:15:00",
+    "ticket": {
+      "idTicket": 3
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "rutaAlmacenamiento": "/uploads/tickets/3/configuracion.txt",
+    "fechaSubida": "2026-09-17T04:15:00",
+    "ticket": {
+      "idTicket": 3
+    }
+  },
+  {
+    "nombreArchivo": "informe_diagnostico.pdf",
+    "tipoMime": "application/pdf",
+    "rutaAlmacenamiento": "/uploads/tickets/4/informe_diagnostico.pdf",
+    "fechaSubida": "2026-09-23T02:00:00",
+    "ticket": {
+      "idTicket": 4
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "rutaAlmacenamiento": "/uploads/tickets/6/configuracion.txt",
+    "fechaSubida": "2026-09-20T18:45:00",
+    "ticket": {
+      "idTicket": 6
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "rutaAlmacenamiento": "/uploads/tickets/7/captura_pantalla.png",
+    "fechaSubida": "2026-09-14T19:00:00",
+    "ticket": {
+      "idTicket": 7
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "rutaAlmacenamiento": "/uploads/tickets/8/captura_pantalla.png",
+    "fechaSubida": "2026-09-15T14:45:00",
+    "ticket": {
+      "idTicket": 8
+    }
+  },
+  {
+    "nombreArchivo": "foto_equipo.jpg",
+    "tipoMime": "image/jpeg",
+    "rutaAlmacenamiento": "/uploads/tickets/9/foto_equipo.jpg",
+    "fechaSubida": "2026-09-20T11:00:00",
+    "ticket": {
+      "idTicket": 9
+    }
+  },
+  {
+    "nombreArchivo": "foto_equipo.jpg",
+    "tipoMime": "image/jpeg",
+    "rutaAlmacenamiento": "/uploads/tickets/11/foto_equipo.jpg",
+    "fechaSubida": "2026-09-16T19:45:00",
+    "ticket": {
+      "idTicket": 11
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "rutaAlmacenamiento": "/uploads/tickets/12/captura_pantalla.png",
+    "fechaSubida": "2026-09-20T17:30:00",
+    "ticket": {
+      "idTicket": 12
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "rutaAlmacenamiento": "/uploads/tickets/13/captura_pantalla.png",
+    "fechaSubida": "2026-09-15T07:45:00",
+    "ticket": {
+      "idTicket": 13
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "rutaAlmacenamiento": "/uploads/tickets/14/captura_pantalla.png",
+    "fechaSubida": "2026-09-19T02:30:00",
+    "ticket": {
+      "idTicket": 14
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "rutaAlmacenamiento": "/uploads/tickets/14/configuracion.txt",
+    "fechaSubida": "2026-09-19T08:30:00",
+    "ticket": {
+      "idTicket": 14
+    }
+  },
+  {
+    "nombreArchivo": "log_sistema.txt",
+    "tipoMime": "text/plain",
+    "rutaAlmacenamiento": "/uploads/tickets/16/log_sistema.txt",
+    "fechaSubida": "2026-09-22T14:30:00",
+    "ticket": {
+      "idTicket": 16
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "rutaAlmacenamiento": "/uploads/tickets/17/configuracion.txt",
+    "fechaSubida": "2026-09-15T13:00:00",
+    "ticket": {
+      "idTicket": 17
+    }
+  },
+  {
+    "nombreArchivo": "configuracion.txt",
+    "tipoMime": "text/plain",
+    "rutaAlmacenamiento": "/uploads/tickets/18/configuracion.txt",
+    "fechaSubida": "2026-09-18T20:30:00",
+    "ticket": {
+      "idTicket": 18
+    }
+  },
+  {
+    "nombreArchivo": "captura_pantalla.png",
+    "tipoMime": "image/png",
+    "rutaAlmacenamiento": "/uploads/tickets/19/captura_pantalla.png",
+    "fechaSubida": "2026-09-18T01:30:00",
+    "ticket": {
+      "idTicket": 19
+    }
+  },
+  {
+    "nombreArchivo": "log_sistema.txt",
+    "tipoMime": "text/plain",
+    "rutaAlmacenamiento": "/uploads/tickets/19/log_sistema.txt",
+    "fechaSubida": "2026-09-18T02:30:00",
+    "ticket": {
+      "idTicket": 19
+    }
+  }
+]

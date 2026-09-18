@@ -1,15 +1,18 @@
 package com.arelance.helpdesk.controlador;
 
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arelance.helpdesk.dto.TotalCategoriasDto;
 import com.arelance.helpdesk.repositorio.TicketRepo;
 
-import io.swagger.v3.oas.annotations.Operation;
-
+// Controlador compartido de métricas del panel (/api/v1/metrics/...).
+// Cada endpoint de este grupo lo implementa un miembro distinto del equipo
+// (ver carpeta pdf-tareas/): aquí solo está el de Rubén (Analysis).
+// Jhon, Oscar y Gonzalo pueden añadir sus @GetMapping en esta misma clase.
 @RestController
 @RequestMapping("/api/v1/metrics")
 public class MetricsController {
@@ -20,11 +23,14 @@ public class MetricsController {
         this.ticketRepo = ticketRepo;
     }
 
-    @Operation(summary = "Suma total acumulada de tickets repartidos por categoría")
+    // ================================================================
+    // GET /api/v1/metrics/count/categories-total
+    // Suma total acumulada de tickets repartidos por categoría
+    // Retorno esperado: { total_categories: 450 }
+    // ================================================================
     @GetMapping("/count/categories-total")
-    public ResponseEntity<TotalCategoriasDto> totalPorCategorias() {
+    public ResponseEntity<Map<String, Object>> totalPorCategorias() {
         long total = ticketRepo.countByCategoriaIsNotNull();
-        return ResponseEntity.ok(new TotalCategoriasDto(total));
+        return ResponseEntity.ok(Map.of("total_categories", total));
     }
-
 }

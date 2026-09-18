@@ -1,0 +1,171 @@
+<div class="container-fluid p-0 overflow-hidden">
+  <div class="row p-4 bg-white shadow">
+    <div class="col">
+      <h3 class="fw-bold">Crear tickets</h3>
+    </div>
+    <div class="col d-flex justify-content-end gap-2">
+      <input type="text" class="form-control w-25" placeholder="Buscar...">
+      <button class="btn btn-primary">+ Nuevo</button>
+    </div>
+  </div>
+
+  <div class="bg-light p-3">
+    <div class="ticket-card">
+      <nav class="ticket-breadcrumb">
+       <span>Nuevo ticket de soporte</span>
+      </nav>
+      <h1>Nuevo ticket de soporte</h1>
+      <hr class="ticket-divider">
+
+      <form id="formTicket" novalidate>
+        <div class="row row-gap">
+
+          <!-- Cliente -->
+          <div class="col-md-6">
+            <label for="cliente" class="form-label">Cliente <span>*</span></label>
+            <select id="cliente" class="form-select" required disabled>
+              <option value="" selected disabled>Eduvino Perez</option>
+              <!-- @for (c of clientes; track c.id) {
+                <option [value]="c.id">{{ c.nombre }}</option>
+              } -->
+            </select>
+            <div class="invalid-feedback">Selecciona el cliente que reporta la incidencia.</div>
+          </div>
+
+          <!-- Contrato / SLA -->
+          <div class="col-md-6">
+            <label for="contrato" class="form-label">Contrato / SLA <span>*</span></label>
+            <select id="contrato" class="form-select" required disabled>
+              <option value="" selected disabled>Selecciona antes un cliente</option>
+              <!-- @for (c of contratosDisponibles; track c.id) {
+                <option [value]="c.id">{{ c.codigo }} · {{ c.nivel }}</option>
+              } -->
+            </select>
+            <div class="invalid-feedback">Selecciona el contrato asociado.</div>
+          </div>
+
+          <!-- Categoría -->
+          <div class="col-md-6">
+            <label for="categoria" class="form-label">Categoría <span>*</span></label>
+            <select id="categoria" class="form-select" required>
+              <option value="" selected disabled>Seleccionar categoría...</option>
+              <!-- @for (c of categorias; track c) {
+                <option [value]="c">{{ c }}</option>
+              } -->
+            </select>
+            <div class="invalid-feedback">Indica la categoría de la incidencia.</div>
+          </div>
+
+          <!-- Prioridad -->
+          <div class="col-md-6">
+            <label for="prioridad" class="form-label">Prioridad <span>*</span></label>
+            <select id="prioridad" class="form-select" required>
+              <option value="" selected disabled>Seleccionar prioridad...</option>
+              <!-- @for (p of prioridades; track p.valor) {
+                <option [value]="p.valor">{{ p.etiqueta }}</option>
+              } -->
+            </select>
+            <div class="invalid-feedback">Indica la prioridad del ticket.</div>
+          </div>
+
+          <!-- Asunto -->
+          <div class="col-md-6">
+            <label for="asunto" class="form-label">Asunto <span>*</span></label>
+            <input type="text" id="asunto" class="form-control" maxlength="120"
+                   placeholder="Ej: Caída de la conexión en sede central" required>
+            <div class="invalid-feedback">El asunto es obligatorio.</div>
+          </div>
+
+          <!-- Técnico asignado -->
+          <div class="col-md-6">
+            <label for="tecnico" class="form-label">Técnico asignado <span>*</span></label>
+            <select id="tecnico" class="form-select" required>
+              <option value="" selected disabled>Seleccionar técnico...</option>
+              <!-- @for (t of tecnicos; track t.nombre) {
+                <option [value]="t.nombre">{{ t.nombre }} · {{ t.especialidad }}</option>
+              } -->
+            </select>
+            <div class="invalid-feedback">Asigna un técnico responsable.</div>
+          </div>
+
+          <!-- Canal de entrada -->
+          <div class="col-md-6">
+            <label for="canal" class="form-label">Canal de entrada <span>*</span></label>
+            <select id="canal" class="form-select" required>
+              <option value="" selected disabled>Seleccionar canal...</option>
+              <!-- @for (c of canales; track c) {
+                <option [value]="c">{{ c }}</option>
+              } -->
+            </select>
+            <div class="invalid-feedback">Indica cómo llegó la incidencia.</div>
+          </div>
+
+          <!-- Fecha de apertura -->
+          <div class="col-md-6">
+            <label for="fechaApertura" class="form-label">Fecha de apertura <span>*</span></label>
+            <input type="datetime-local" id="fechaApertura" class="form-control" required>
+            <div class="invalid-feedback">La fecha de apertura es obligatoria.</div>
+          </div>
+
+          <!-- Descripción -->
+          <div class="col-md-6">
+            <label for="descripcion" class="form-label">Descripción <span>*</span></label>
+            <textarea id="descripcion" class="form-control" rows="2" maxlength="500"
+                      placeholder="Ej: Sin acceso a red en planta 2 desde las 09:00..." required></textarea>
+            <div class="invalid-feedback">Describe brevemente la incidencia.</div>
+          </div>
+
+          <!-- Adjuntos -->
+          <div class="col-md-6">
+            <label for="adjuntosInput" class="form-label">Adjuntos</label>
+            <div class="adjuntos-box">
+              <div class="adjuntos-lista" id="listaAdjuntos">
+                <span class="field-hint" id="adjuntosVacio" style="margin:0;">Ningún archivo seleccionado</span>
+                <!-- @for (f of archivosSeleccionados; track f.name) {
+                  <span class="adjunto-chip">
+                    <i class="bi bi-file-earmark"></i> {{ f.name }}
+                    <button type="button" aria-label="Quitar adjunto">&times;</button>
+                  </span>
+                } -->
+              </div>
+            </div>
+            <input type="file" id="adjuntosInput" class="d-none" multiple>
+            <button type="button" id="btnAdjuntar" class="btn btn-sm btn-outline-secondary mt-2">
+              <i class="bi bi-paperclip"></i> Adjuntar archivo
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Validación / SLA -->
+        <div class="mt-4">
+          <div id="alertaSla" class="alerta-sla">
+            <i class="bi bi-info-circle-fill"></i>
+            <div>
+              <strong>Validación</strong>
+              <span id="alertaSlaTexto">Selecciona una prioridad para calcular el objetivo de tiempo de respuesta (SLA).</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex justify-content-end gap-2 mt-3">
+          <button type="button" id="btnCancelar" class="btn btn-outline-secondary btn-sm px-3">Cancelar</button>
+          <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm px-3">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Toast de confirmación -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index:1080">
+  <div id="toastGuardado" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="bi bi-check-circle me-1"></i> Ticket registrado correctamente.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>

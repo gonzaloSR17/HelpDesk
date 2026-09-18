@@ -1,0 +1,22 @@
+[
+  {
+    "prioridad": "CRITICA",
+    "tiempoRespuestaObjetivoMin": 15,
+    "tiempoResolucionObjetivoMin": 120
+  },
+  {
+    "prioridad": "ALTA",
+    "tiempoRespuestaObjetivoMin": 30,
+    "tiempoResolucionObjetivoMin": 240
+  },
+  {
+    "prioridad": "MEDIA",
+    "tiempoRespuestaObjetivoMin": 60,
+    "tiempoResolucionObjetivoMin": 480
+  },
+  {
+    "prioridad": "BAJA",
+    "tiempoRespuestaObjetivoMin": 120,
+    "tiempoResolucionObjetivoMin": 1440
+  }
+]

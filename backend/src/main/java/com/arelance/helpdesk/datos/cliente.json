@@ -1,0 +1,162 @@
+[
+  {
+    "nombre": "Carlos",
+    "apellido": "García",
+    "cif": "B12345678",
+    "sector": "Tecnología",
+    "contacto": "612345678",
+    "email": "carlos.garcia@techsolutions.es"
+  },
+  {
+    "nombre": "Laura",
+    "apellido": "Martínez",
+    "cif": "A23456789",
+    "sector": "Educación",
+    "contacto": "623456789",
+    "email": "laura.martinez@educa.es"
+  },
+  {
+    "nombre": "Javier",
+    "apellido": "Sánchez",
+    "cif": "B34567890",
+    "sector": "Construcción",
+    "contacto": "634567890",
+    "email": "javier.sanchez@construccionesjs.es"
+  },
+  {
+    "nombre": "Ana",
+    "apellido": "López",
+    "cif": "A45678901",
+    "sector": "Sanidad",
+    "contacto": "645678901",
+    "email": "ana.lopez@saludplus.es"
+  },
+  {
+    "nombre": "Miguel",
+    "apellido": "Fernández",
+    "cif": "B56789012",
+    "sector": "Hostelería",
+    "contacto": "656789012",
+    "email": "miguel.fernandez@hotelesmf.es"
+  },
+  {
+    "nombre": "Marta",
+    "apellido": "Gómez",
+    "cif": "A67890123",
+    "sector": "Automoción",
+    "contacto": "667890123",
+    "email": "marta.gomez@autogomez.es"
+  },
+  {
+    "nombre": "David",
+    "apellido": "Ruiz",
+    "cif": "B78901234",
+    "sector": "Finanzas",
+    "contacto": "678901234",
+    "email": "david.ruiz@finanzasdr.es"
+  },
+  {
+    "nombre": "Elena",
+    "apellido": "Díaz",
+    "cif": "A89012345",
+    "sector": "Consultoría",
+    "contacto": "689012345",
+    "email": "elena.diaz@consultinged.es"
+  },
+  {
+    "nombre": "Pablo",
+    "apellido": "Moreno",
+    "cif": "B90123456",
+    "sector": "Logística",
+    "contacto": "690123456",
+    "email": "pablo.moreno@logisticapm.es"
+  },
+  {
+    "nombre": "Sara",
+    "apellido": "Muñoz",
+    "cif": "A01234567",
+    "sector": "Comercio",
+    "contacto": "601234567",
+    "email": "sara.munoz@comerciosm.es"
+  },
+  {
+    "nombre": "Daniel",
+    "apellido": "Álvarez",
+    "cif": "B11223344",
+    "sector": "Industria",
+    "contacto": "612233445",
+    "email": "daniel.alvarez@industria-da.es"
+  },
+  {
+    "nombre": "Lucía",
+    "apellido": "Romero",
+    "cif": "A22334455",
+    "sector": "Marketing",
+    "contacto": "623344556",
+    "email": "lucia.romero@marketinglr.es"
+  },
+  {
+    "nombre": "Fernando",
+    "apellido": "Navarro",
+    "cif": "B33445566",
+    "sector": "Transporte",
+    "contacto": "634455667",
+    "email": "fernando.navarro@transportesfn.es"
+  },
+  {
+    "nombre": "Carmen",
+    "apellido": "Torres",
+    "cif": "A44556677",
+    "sector": "Inmobiliaria",
+    "contacto": "645566778",
+    "email": "carmen.torres@inmobiliariact.es"
+  },
+  {
+    "nombre": "Álvaro",
+    "apellido": "Vázquez",
+    "cif": "B55667788",
+    "sector": "Energía",
+    "contacto": "656677889",
+    "email": "alvaro.vazquez@energiaav.es"
+  },
+  {
+    "nombre": "Isabel",
+    "apellido": "Ramos",
+    "cif": "A66778899",
+    "sector": "Seguros",
+    "contacto": "667788990",
+    "email": "isabel.ramos@segurosir.es"
+  },
+  {
+    "nombre": "Sergio",
+    "apellido": "Gil",
+    "cif": "B77889900",
+    "sector": "Telecomunicaciones",
+    "contacto": "678899001",
+    "email": "sergio.gil@telecomsg.es"
+  },
+  {
+    "nombre": "Patricia",
+    "apellido": "Molina",
+    "cif": "A88990011",
+    "sector": "Administración",
+    "contacto": "689900112",
+    "email": "patricia.molina@adminpm.es"
+  },
+  {
+    "nombre": "Raúl",
+    "apellido": "Suárez",
+    "cif": "B99001122",
+    "sector": "Alimentación",
+    "contacto": "690011223",
+    "email": "raul.suarez@alimentacionrs.es"
+  },
+  {
+    "nombre": "Nuria",
+    "apellido": "Ortega",
+    "cif": "A10012233",
+    "sector": "Servicios",
+    "contacto": "601122334",
+    "email": "nuria.ortega@serviciosno.es"
+  }
+]

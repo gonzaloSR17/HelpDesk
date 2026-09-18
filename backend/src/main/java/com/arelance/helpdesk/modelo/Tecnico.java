@@ -6,43 +6,35 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-// ==========================================================
-// TODO Tecnico:
-//   - Atributos: nombre, especialidad, email
-//   - Relacion: @OneToMany Ticket (1:N)
+/**
+ * Tecnico del helpdesk. Hereda id/username/passwordHash/email/nombre/activo
+ * de Usuario (tabla compartida "usuario", SINGLE_TABLE) - Jhon (Backend)
+ *
+ * Relaciones:
+ * - 1:N con Ticket (un tecnico puede tener varios tickets asignados)
+ */
+@Entity
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@DiscriminatorValue("TECNICO")
+public class Tecnico extends Usuario {
 
-@Entity 
-@Data 
-@NoArgsConstructor 
-@AllArgsConstructor 
-@Table (name = "tecnico")
-public class Tecnico {
- @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTecnico")
-    private Integer idTecnico;
-
-    @Column(nullable = false)
-    private String nombre;
-
-    @Column(nullable = false)
+    @Column()
     private String apellido;
 
     @Column
     private String especialidad;
 
-    @Column
-    private String email;
+    @Column()
+    private boolean disponible;
 
     @OneToMany(mappedBy = "tecnico")
     @JsonIgnore

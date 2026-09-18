@@ -39,8 +39,8 @@ public class Contrato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idContrato")
-    private Integer idContrato;
+    @Column(name = "id_contrato")
+    private Long idContrato;
 
     @Column(nullable = false)
     private String codigo;
@@ -59,8 +59,8 @@ public class Contrato {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @OneToOne(mappedBy = "contrato", cascade = CascadeType.ALL)
-    private SLA sla;
+    // @OneToOne(mappedBy = "contrato", cascade = CascadeType.ALL)
+    // private SLA sla;
 
     @OneToMany(mappedBy = "contrato")
     @JsonIgnore

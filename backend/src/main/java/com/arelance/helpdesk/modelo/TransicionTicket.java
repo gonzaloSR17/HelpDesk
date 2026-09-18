@@ -29,7 +29,7 @@ public class TransicionTicket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_transicion")
-    private Integer idTransicion;
+    private Long idTransicion;
  
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -37,7 +37,7 @@ public class TransicionTicket {
  
     @Column(name = "fecha_cambio", nullable = false)
     private LocalDateTime fechaCambio;
- 
+
     @ManyToOne
     @JoinColumn(name = "id_ticket", nullable = false)
     private Ticket ticket;

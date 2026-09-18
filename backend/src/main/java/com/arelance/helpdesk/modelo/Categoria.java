@@ -30,10 +30,12 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCategoria")
-    private Integer idCategoria; 
+    @Column(name = "id_Categoria")
+    private Long idCategoria; 
 
-
+    @Column(nullable = false)
+    private String grupo;
+    
     @Column(length = 100, columnDefinition = "VARCHAR(100)", nullable = false)
     private String nombre;
 

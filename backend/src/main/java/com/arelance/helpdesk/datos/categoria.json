@@ -1,0 +1,102 @@
+[
+  {
+    "nombre": "Acceso a cuenta",
+    "descripcion": "Problemas para acceder a una cuenta de usuario",
+    "grupo": "Accesos"
+  },
+  {
+    "nombre": "Contraseña olvidada",
+    "descripcion": "Solicitud de restablecimiento o recuperación de contraseña",
+    "grupo": "Accesos"
+  },
+  {
+    "nombre": "Permisos de usuario",
+    "descripcion": "Problemas relacionados con permisos para acceder a recursos",
+    "grupo": "Accesos"
+  },
+  {
+    "nombre": "Alta de usuario",
+    "descripcion": "Solicitud de creación de una nueva cuenta de usuario",
+    "grupo": "Accesos"
+  },
+  {
+    "nombre": "Baja de usuario",
+    "descripcion": "Solicitud de desactivación o eliminación de una cuenta",
+    "grupo": "Accesos"
+  },
+  {
+    "nombre": "Ordenador",
+    "descripcion": "Problemas generales relacionados con el ordenador",
+    "grupo": "Hardware"
+  },
+  {
+    "nombre": "Monitor",
+    "descripcion": "Problemas con pantallas, monitores o visualización",
+    "grupo": "Hardware"
+  },
+  {
+    "nombre": "Teclado",
+    "descripcion": "Problemas o averías relacionadas con el teclado",
+    "grupo": "Hardware"
+  },
+  {
+    "nombre": "Ratón",
+    "descripcion": "Problemas o averías relacionadas con el ratón",
+    "grupo": "Hardware"
+  },
+  {
+    "nombre": "Impresora",
+    "descripcion": "Problemas relacionados con impresoras o impresión",
+    "grupo": "Hardware"
+  },
+  {
+    "nombre": "Sistema operativo",
+    "descripcion": "Errores o problemas relacionados con el sistema operativo",
+    "grupo": "Software"
+  },
+  {
+    "nombre": "Aplicaciones",
+    "descripcion": "Errores o problemas con aplicaciones instaladas",
+    "grupo": "Software"
+  },
+  {
+    "nombre": "Correo electrónico",
+    "descripcion": "Problemas con el correo electrónico o su configuración",
+    "grupo": "Software"
+  },
+  {
+    "nombre": "Instalación de software",
+    "descripcion": "Solicitud de instalación o actualización de programas",
+    "grupo": "Software"
+  },
+  {
+    "nombre": "Conexión a Internet",
+    "descripcion": "Problemas de conexión a Internet",
+    "grupo": "Redes"
+  },
+  {
+    "nombre": "WiFi",
+    "descripcion": "Problemas de conexión o acceso a redes WiFi",
+    "grupo": "Redes"
+  },
+  {
+    "nombre": "Red local",
+    "descripcion": "Problemas de conexión con la red interna de la empresa",
+    "grupo": "Redes"
+  },
+  {
+    "nombre": "VPN",
+    "descripcion": "Problemas para conectarse o utilizar la VPN corporativa",
+    "grupo": "Redes"
+  },
+  {
+    "nombre": "Servidor",
+    "descripcion": "Incidencias relacionadas con servidores o servicios internos",
+    "grupo": "Redes"
+  },
+  {
+    "nombre": "Seguridad",
+    "descripcion": "Incidencias relacionadas con seguridad informática",
+    "grupo": "Software"
+  }
+]

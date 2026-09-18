@@ -1,6 +1,5 @@
 package com.arelance.helpdesk.repositorio;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,7 +21,13 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
             Pageable pageable
     );
 
-    // Servicio para contar los tickets creado en el dia de hoy
+    // Servicio para imprimir los ticket de un cliente determinado
+    Page<Ticket> findByClienteIdOrderByFechaAperturaDesc(
+            Long clienteId,
+            Pageable pageable
+    );
+
+    // Servicio para contar los tickets creados en el día de hoy
     @Query("""
         SELECT COUNT(t)
         FROM Ticket t
@@ -38,9 +43,17 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
         """)
     Long recuentoTicketTipo(@Param("categoria") String categoria);
 
-    long countByEstadoInAndFechaCierreBetween(List<Ticket.Estado> estados, LocalDateTime desde, LocalDateTime hasta);
+    long countByEstadoInAndFechaCierreBetween(
+            List<Ticket.Estado> estados,
+            LocalDateTime desde,
+            LocalDateTime hasta
+    );
 
-    List<Ticket> findByEstadoInAndFechaCierreBetween(List<Ticket.Estado> estados, LocalDateTime desde, LocalDateTime hasta);
+    List<Ticket> findByEstadoInAndFechaCierreBetween(
+            List<Ticket.Estado> estados,
+            LocalDateTime desde,
+            LocalDateTime hasta
+    );
 
     // --- Rubén (Analysis) ------------------------------------
     // GET /api/v1/tickets/search?q={query}
@@ -68,13 +81,16 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     // Suma total acumulada de tickets repartidos por categoría.
     long countByCategoriaIsNotNull();
 
-    // Busca tickets filtrando por estado y prioridad, pero si alguno de los
-    // dos llega vacío (null), simplemente no filtra por ese campo.
-    // Pageable trae la página y el tamaño desde el controlador.
-    @Query("SELECT t FROM Ticket t WHERE " +
-           "(:estado IS NULL OR t.estado = :estado) AND " +
-           "(:prioridad IS NULL OR t.prioridad = :prioridad)")
-    Page<Ticket> filtrar(@Param("estado") Ticket.Estado estado,
-                          @Param("prioridad") Ticket.Prioridad prioridad,
-                          Pageable pageable);
+    // Busca tickets filtrando por estado y prioridad.
+    // Si alguno llega vacío (null), simplemente no filtra por ese campo.
+    @Query("""
+        SELECT t FROM Ticket t WHERE
+        (:estado IS NULL OR t.estado = :estado) AND
+        (:prioridad IS NULL OR t.prioridad = :prioridad)
+        """)
+    Page<Ticket> filtrar(
+            @Param("estado") Ticket.Estado estado,
+            @Param("prioridad") Ticket.Prioridad prioridad,
+            Pageable pageable
+    );
 }

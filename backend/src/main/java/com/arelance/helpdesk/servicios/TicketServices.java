@@ -26,4 +26,14 @@ public class TicketServices {
             pageable
         );
     }
+
+    // Buscar ticket por clientes
+    public Page<Ticket> obtenerTicketsCliente(int pagina, Long id) {
+        Pageable pageable = PageRequest.of(pagina, 8);
+
+        return tr.findByClienteIdOrderByFechaAperturaDesc(
+            id,
+            pageable
+        );
+    }
 }

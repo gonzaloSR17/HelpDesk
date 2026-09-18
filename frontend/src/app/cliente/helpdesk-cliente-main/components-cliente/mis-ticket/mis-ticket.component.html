@@ -1,0 +1,134 @@
+<div class="container-fluid p-0 overflow-hidden">
+  <div class="row p-4 bg-white shadow">
+    <div class="col">
+      <h3 class="fw-bold">Mis tickets</h3>
+    </div>
+    <div class="col d-flex justify-content-end gap-2">
+      <input type="text" class="form-control w-25" placeholder="Buscar...">
+      <button class="btn btn-primary">+ Nuevo</button>
+    </div>
+  </div>
+
+  <div class="bg-light p-4">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-lg-3 gy-3">
+        <div class="card border-0 border-start border-primary border-5 shadow-sm rounded">
+          <div class="card-body">
+            <p class="text-muted mb-0">TICKETS ABIERTOS</p>
+            <h1 class="mt-0 mb-0">187</h1>
+            <p class="text-primary small mb-0">+ 12 hoy</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3 gy-3">
+        <div class="card border-0 border-start border-warning border-5 shadow-sm rounded">
+          <div class="card-body">
+            <p class="text-muted mb-0">EN CURSO</p>
+            <h1 class="mt-0 mb-0">94</h1>
+            <p class="text-warning small mb-0">asignados</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3 gy-3">
+        <div class="card border-0 border-start border-success border-5 shadow-sm rounded">
+          <div class="card-body">
+            <p class="text-muted mb-0">RESUELTO MES</p>
+            <h1 class="mt-0 mb-0">17</h1>
+            <p class="text-success small mb-0">2 h restantes</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3 gy-3">
+        <div class="card border-0 border-start border-success border-5 shadow-sm rounded">
+          <div class="card-body">
+            <p class="text-muted mb-0">TIEMPO MEDIO DE RESPUESTA</p>
+            <h1 class="mt-0 mb-0">612</h1>
+            <p class="text-success small mb-0">sobre tus últimos 10 tickets</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3 mt-3 shadow-sm">
+      <div class="card-header bg-white py-2">
+        <h6 class="mb-0 fw-bold">Mis tickets recientes</h6>
+      </div>
+      <div class="card-body p-2">
+        <table class="table table-sm table-hover align-middle mb-0 fs-7">
+          <thead>
+            <tr>
+              <th class="bg-light py-1 text-muted">Nº TICKET</th>
+              <th class="bg-light py-1 text-muted">CATEGORIA</th>
+              <th class="bg-light py-1 text-muted">ESTADO</th>
+              <th class="bg-light py-1 text-muted">ABIERTO EL</th>
+              <th class="bg-light py-1 text-muted">ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (t of tickets; track t.idTicket) {
+            <tr>
+              <td class="py-1">TCK-{{ t.idTicket }}</td>
+              <td class="py-1">{{ t.categoria?.nombre +' / ' + t.categoria?.grupo }}</td>
+              <td class="py-1"> @switch (t.prioridad) {
+                @case ('CRITICA') {
+                <span class="badge bg-danger rounded-pill px-2 py-2 text-uppercase fw-bold badge-sm">CRÍTICA</span>
+                }
+                @case ('ALTA') {
+                <span
+                  class="badge bg-warning text-white rounded-pill px-2 py-2 text-uppercase fw-bold badge-sm">ALTA</span>
+                }
+                @case ('MEDIA') {
+                <span class="badge bg-primary rounded-pill px-2 py-2 text-uppercase fw-bold badge-sm">MEDIA</span>
+                }
+                @case ('BAJA') {
+                <span class="badge bg-success rounded-pill px-2 py-2 text-uppercase fw-bold badge-sm">BAJA</span>
+                }
+                @default {
+                <span class="badge bg-secondary rounded-pill px-2 py-2 text-uppercase fw-bold badge-sm">{{ t.prioridad
+                  }}</span>
+                }
+                }
+              </td>
+              <td class="py-1">@switch (t.estado) {
+                @case ('EN_ABIERTO') {
+                <span class="badge bg-primary rounded-pill px-2 py-2 text-uppercase fw-bold small">ABIERTO</span>
+                }
+                @case ('EN_CURSO') {
+                <span class="badge bg-info text-white rounded-pill px-2 py-2 text-uppercase fw-bold small">EN
+                  CURSO</span>
+                }
+                @case ('ESCALADO') {
+                <span class="badge bg-purple rounded-pill px-2 py-2 text-uppercase fw-bold small"
+                  style="background-color: #6f42c1; color: white;">ESCALADO</span>
+                }
+                @case ('RESUELTO') {
+                <span class="badge bg-success rounded-pill px-2 py-2 text-uppercase fw-bold small">RESUELTO</span>
+                }
+                @case ('CERRADO') {
+                <span class="badge bg-secondary rounded-pill px-2 py-2 text-uppercase fw-bold small">CERRADO</span>
+                }
+                @case ('CANCELADO') {
+                <span class="badge bg-dark rounded-pill px-2 py-2 text-uppercase fw-bold small">CANCELADO</span>
+                }
+                @case ('CADUCADO') {
+                <span class="badge bg-danger rounded-pill px-2 py-2 text-uppercase fw-bold small">CADUCADO</span>
+                }
+                @default {
+                <span class="badge bg-light text-dark rounded-pill px-2 py-2 text-uppercase fw-bold small">{{ t.estado
+                  }}</span>
+                }
+                }
+              </td>
+              <td class="py-1">
+                {{ t.fechaApertura }}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -39,6 +39,10 @@ export class TicketServicesService {
   return this.http.get<any>(`/api/v1/tickets/listado`, { params });
 }
 
+  // Metodo para imprimir 8 Tickets
+imprimirTicketDeUsuarios(page: number, id: number): Observable<Page<Ticket>> {
+    const params = new HttpParams().set('pagina', page.toString());
 
-
+    return this.http.get<Page<Ticket>>(`/api/v1/tickets/cliente/${id}`, { params });
+  }
 }

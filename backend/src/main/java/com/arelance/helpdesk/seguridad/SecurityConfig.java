@@ -67,6 +67,8 @@ public class SecurityConfig {
                     // Públicas
                     .requestMatchers("/api/auth/**").permitAll()
                     .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
+                    .requestMatchers("/error").permitAll()
+
 
                     // Métricas y contadores globales: solo administrador
                     .requestMatchers("/api/v1/metrics/**").hasRole("ADMINISTRADOR")

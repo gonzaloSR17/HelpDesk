@@ -16,16 +16,21 @@
         }
     </ul>
 
-    <!-- Usuario abajo -->
+        <!-- Usuario abajo -->
     <div class="mt-auto border-top pt-3">
         <div class="d-flex align-items-center gap-2">
-            <div class="avatar">A</div>
+            <div class="avatar">{{ inicial }}</div>
 
             <div>
-                <div class="text-white fw-bold small">Admin</div>
-                <div class="text-secondary small">Administrador</div>
+                <div class="text-white fw-bold small">{{ nombre }}</div>
+                <div class="text-secondary small">{{ rol }}</div>
             </div>
         </div>
+
+        <button type="button" class="btn btn-outline-light btn-sm w-100 mt-3" (click)="cerrarSesion()">
+            Cerrar sesión
+        </button>
     </div>
+
 
 </div>

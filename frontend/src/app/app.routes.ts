@@ -8,6 +8,12 @@ import { HelpdeskClienteMainComponent } from './cliente/helpdesk-cliente-main/he
 import { MisTicketComponent } from './cliente/helpdesk-cliente-main/components-cliente/mis-ticket/mis-ticket.component';
 import { CrearTicketComponent } from './cliente/helpdesk-cliente-main/components-cliente/crear-ticket/crear-ticket.component';
 import { PerfilUsuarioComponent } from './cliente/helpdesk-cliente-main/components-cliente/perfil-usuario/perfil-usuario.component';
+ 
+// import Jhon
+import { HelpdeskTecnicoMainComponent } from './tecnico/helpdesk-tecnico-main/helpdesk-tecnico-main.component';
+import { MisAsignadosComponent } from './tecnico/helpdesk-tecnico-main/components-tecnico/mis-asignados/mis-asignados.component';
+
+
 
 export const routes: Routes = [
    {
@@ -29,6 +35,15 @@ export const routes: Routes = [
       { path: 'perfil', component: PerfilUsuarioComponent }
     ]
   },
+    {
+    path: 'tecnico',
+    component: HelpdeskTecnicoMainComponent,
+    children: [
+      { path: '', redirectTo: 'mis-asignados', pathMatch: 'full' },
+      { path: 'mis-asignados', component: MisAsignadosComponent }
+    ]
+  },
+
   {
     path: '',
     component: LoginHelpdeskComponent

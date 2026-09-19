@@ -13,12 +13,17 @@ import { PerfilUsuarioComponent } from './cliente/helpdesk-cliente-main/componen
 import { HelpdeskTecnicoMainComponent } from './tecnico/helpdesk-tecnico-main/helpdesk-tecnico-main.component';
 import { MisAsignadosComponent } from './tecnico/helpdesk-tecnico-main/components-tecnico/mis-asignados/mis-asignados.component';
 
+// para proteger la ruta según el rol
+import { rolGuard } from '../guards/rol.guard';
+
 
 
 export const routes: Routes = [
    {
     path: 'admin',
     component: HelpdeskMainComponent,
+    canActivate: [rolGuard],
+    data: { rol: 'ADMINISTRADOR' },
     children: [
       { path: '', redirectTo: 'panel', pathMatch: 'full' },
       { path: 'panel', component: PanelTicketComponent },
@@ -28,6 +33,8 @@ export const routes: Routes = [
   {
     path: 'cliente',
     component: HelpdeskClienteMainComponent,
+    canActivate: [rolGuard],
+    data: { rol: 'CLIENTE' },
     children: [
       { path: '', redirectTo: 'mis-ticket', pathMatch: 'full' },
       { path: 'mis-ticket', component: MisTicketComponent },
@@ -38,6 +45,8 @@ export const routes: Routes = [
     {
     path: 'tecnico',
     component: HelpdeskTecnicoMainComponent,
+    canActivate: [rolGuard],
+    data: { rol: 'TECNICO' },
     children: [
       { path: '', redirectTo: 'mis-asignados', pathMatch: 'full' },
       { path: 'mis-asignados', component: MisAsignadosComponent }

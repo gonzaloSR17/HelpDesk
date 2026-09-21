@@ -1,11 +1,21 @@
-<div class="d-flex vh-100 overflow-hidden">
-  <!-- Contenedor fijo del Sidebar (ancho fijo) -->
-  <aside class="flex-shrink-0" style="width: 280px;">
+<div class="d-flex vh-100 overflow-hidden position-relative">
+
+  @if (layout.sidebarOpen()) {
+    <div class="offcanvas-backdrop fade show d-lg-none" (click)="layout.closeSidebar()"></div>
+  }
+
+  <aside
+    class="flex-shrink-0 sidebar-mobile"
+    [class.sidebar-open]="layout.sidebarOpen()"
+    style="width: 280px; z-index: 1045;">
     <app-sidebar-helpdesk class="h-100 d-block" [menuItems]="adminMenu" [user]="adminUser"></app-sidebar-helpdesk>
   </aside>
 
-  <!-- Contenido principal con scroll vertical propio si el contenido supera la pantalla -->
-  <main class="flex-grow-1 overflow-auto bg-light">
+  <div class="flex-grow-1 d-flex flex-column overflow-hidden">
+    <app-mobile-topbar />
+    <main class="flex-grow-1 overflow-auto bg-light">
       <router-outlet></router-outlet>
-  </main>
+    </main>
+  </div>
+
 </div>

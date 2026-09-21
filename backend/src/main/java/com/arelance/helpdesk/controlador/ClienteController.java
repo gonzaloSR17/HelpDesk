@@ -2,6 +2,7 @@ package com.arelance.helpdesk.controlador;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.aspectj.internal.lang.annotation.ajcITD;
 import org.springframework.data.domain.Page;
@@ -41,6 +42,10 @@ public class ClienteController {
         //TODO: process POST request
         
         return ResponseEntity.status(HttpStatus.CREATED).body(clienterepo.saveAll(a));
-    };
+    }
 
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<Optional<Cliente>> obtenerCliente(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(clienterepo.findById(id));
+    }
 }

@@ -24,7 +24,7 @@
           <div class="col-md-6">
             <label for="cliente" class="form-label">Cliente <span>*</span></label>
             <select id="cliente" class="form-select" required disabled>
-              <option value="" selected disabled>Eduvino Perez</option>
+              <option value="" selected disabled>{{ cliente.nombre }}</option>
               <!-- @for (c of clientes; track c.id) {
                 <option [value]="c.id">{{ c.nombre }}</option>
               } -->
@@ -76,18 +76,6 @@
             <div class="invalid-feedback">El asunto es obligatorio.</div>
           </div>
 
-          <!-- Técnico asignado -->
-          <div class="col-md-6">
-            <label for="tecnico" class="form-label">Técnico asignado <span>*</span></label>
-            <select id="tecnico" class="form-select" required>
-              <option value="" selected disabled>Seleccionar técnico...</option>
-              <!-- @for (t of tecnicos; track t.nombre) {
-                <option [value]="t.nombre">{{ t.nombre }} · {{ t.especialidad }}</option>
-              } -->
-            </select>
-            <div class="invalid-feedback">Asigna un técnico responsable.</div>
-          </div>
-
           <!-- Canal de entrada -->
           <div class="col-md-6">
             <label for="canal" class="form-label">Canal de entrada <span>*</span></label>
@@ -98,13 +86,6 @@
               } -->
             </select>
             <div class="invalid-feedback">Indica cómo llegó la incidencia.</div>
-          </div>
-
-          <!-- Fecha de apertura -->
-          <div class="col-md-6">
-            <label for="fechaApertura" class="form-label">Fecha de apertura <span>*</span></label>
-            <input type="datetime-local" id="fechaApertura" class="form-control" required>
-            <div class="invalid-feedback">La fecha de apertura es obligatoria.</div>
           </div>
 
           <!-- Descripción -->

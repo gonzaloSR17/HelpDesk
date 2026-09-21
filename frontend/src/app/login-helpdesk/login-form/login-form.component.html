@@ -26,7 +26,14 @@
             <a href="#" class="small">¿Olvidaste tu contraseña?</a>
         </p>
 
-        <button type="submit" class="btn btn-primary w-100 mb-4">Iniciar sesión</button>
+       @if (error) {
+        <div class="alert alert-danger py-2 small" role="alert">{{ error }}</div>
+        }
+
+        <button type="submit" class="btn btn-primary w-100 mb-4" [disabled]="cargando || formLogin.invalid">
+            {{ cargando ? 'Entrando...' : 'Iniciar sesión' }}
+        </button>
+
         <p class="text-center text-muted small mb-2">Un único acceso: tu rol decide lo que ves después</p>
 
         <p class="d-flex justify-content-center gap-2">

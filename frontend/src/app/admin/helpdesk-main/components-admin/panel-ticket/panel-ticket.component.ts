@@ -9,37 +9,54 @@ import { Ticket } from '../../../../../interfaces/tickets';
   styleUrl: './panel-ticket.component.css'
 })
 export class PanelTicketComponent implements OnInit {
-  
-  constructor (private ticketServices: TicketServicesService ) {}
+
+  constructor(private ticketServices: TicketServicesService) { }
 
   // Lista de tickets para almacenar
   tickets: Ticket[] = [];
 
+  // Contadores del panel (tarjetas KPI)
+  ticketsAbiertos = 0;
+  ticketsAbiertosHoy = 0;
+  ticketsEnCurso = 0;
+  ticketsResueltosMes = 0;
 
   ngOnInit(): void {
     this.imprimirTickets();
-    // // Primera funcion cuenta los contadores
-    // this.cargarContadores();
 
-    // // Segundo cargamos los socios
-    // this.imprimirSocios();
+    // Cargamos los contadores al entrar en el panel
+    this.cargarContadores();
 
-
-    // // Notifica si hay una actualizacion para actualizar los contadores
-    // this.apiService.actualizarContadores$.subscribe(() => {
-    //   this.cargarContadores();
-    //   this.imprimirSocios();
-    // });
+    // Si en el futuro algo emite en este Subject (p.ej. crear un ticket nuevo), los contadores se recargan solos
+    this.ticketServices.actualizarContadores$.subscribe(() => {
+      this.cargarContadores();
+    });
   }
 
+  cargarContadores() {
+    this.ticketServices.obtenerTicketsAbiertos().subscribe(res => {
+      this.ticketsAbiertos = res.open_tickets;
+    });
 
-   imprimirTickets() {
-    // Devolver una listado de socio
+    this.ticketServices.obtenerTicketsEnCurso().subscribe(res => {
+      this.ticketsEnCurso = res.in_progress;
+    });
+
+    this.ticketServices.obtenerTicketsResueltosMes().subscribe(res => {
+      this.ticketsResueltosMes = res.resolved_month;
+    });
+
+    this.ticketServices.obtenerTicketsAbiertosHoy().subscribe(total => {
+      this.ticketsAbiertosHoy = total;
+    });
+  }
+
+  imprimirTickets() {
+    // Devolver un listado de tickets
     this.ticketServices.imprimirTicket(0).subscribe(list => {
-      // Dentro de list en la parte de content contiene los 4 primeros socios es un observable pero al buscar dentro podemos asignar el array poo
-      this.tickets = list.content
-      console.log(this.tickets)
-    })
+      this.tickets = list.content;
+      console.log(this.tickets);
+    });
   }
 
 }

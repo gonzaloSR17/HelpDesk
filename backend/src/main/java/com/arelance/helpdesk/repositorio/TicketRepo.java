@@ -33,28 +33,6 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     """, nativeQuery = true)
     List<Object[]> contarAbiertosPorDia(@Param("desde") LocalDateTime desde);
 
-    // Servicio para imprimir los ticket de un cliente determinado
-    Page<Ticket> findByClienteIdOrderByFechaAperturaDesc(
-            Long clienteId,
-            Pageable pageable
-    );
-
-    // Servicio para contar los tickets creados en el día de hoy
-    @Query("""
-        SELECT COUNT(t)
-        FROM Ticket t
-        WHERE FUNCTION('DATE', t.fechaApertura) = CURRENT_DATE
-        AND t.estado = :estado
-        """)
-    Long recuentoTicketHoy(@Param("estado") Ticket.Estado estado);
-
-    @Query("""
-            SELECT COUNT(t)
-            FROM Ticket t
-            WHERE t.categoria.grupo = :categoria
-            """)
-    Long recuentoTicketTipo(@Param("categoria") String categoria);
-
     /**
      * Cuenta cuántos tickets se cerraron/resolvieron cada día desde una fecha dada.
      * Usado para la tendencia semanal (weekly-trend) - Jhon (Backend)
@@ -70,17 +48,56 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     // Servicio para contar los tickets en curso (asignados y en proceso) - Jhon
     long countByEstado(Ticket.Estado estado);
 
+    // GET /api/v1/metrics/count/categories-total
+    // Suma total acumulada de tickets repartidos por categoría.
+    long countByCategoriaIsNotNull();
+
+    // Servicios para filtrar las primeras 8 páginas en el panel principal
+    Page<Ticket> findByEstadoNotOrderByFechaAperturaDesc(
+            Ticket.Estado estado,
+            Pageable pageable);
+
+    // Servicio para imprimir los ticket de un cliente determinado
+    Page<Ticket> findByClienteIdOrderByFechaAperturaDesc(
+            Long clienteId,
+            Pageable pageable);
+
+    // Servicio para contar los tickets creados en el día de hoy
+    @Query("""
+            SELECT COUNT(t)
+            FROM Ticket t
+            WHERE FUNCTION('DATE', t.fechaApertura) = CURRENT_DATE
+            AND t.estado = :estado
+            """)
+    Long recuentoTicketHoy(@Param("estado") Ticket.Estado estado);
+
+    @Query("""
+            SELECT COUNT(t)
+            FROM Ticket t
+            WHERE t.categoria.grupo = :categoria
+            """)
+    Long recuentoTicketTipo(@Param("categoria") String categoria);
+
     long countByEstadoInAndFechaCierreBetween(
             List<Ticket.Estado> estados,
             LocalDateTime desde,
-            LocalDateTime hasta
-    );
+            LocalDateTime hasta);
 
     List<Ticket> findByEstadoInAndFechaCierreBetween(
             List<Ticket.Estado> estados,
             LocalDateTime desde,
-            LocalDateTime hasta
-    );
+            LocalDateTime hasta);
+
+    // Busca tickets filtrando por estado y prioridad
+    @Query("""
+        SELECT t FROM Ticket t WHERE
+        (:estado IS NULL OR t.estado = :estado) AND
+        (:prioridad IS NULL OR t.prioridad = :prioridad)
+        """)
+    Page<Ticket> filtrar(
+            @Param("estado") Ticket.Estado estado,
+            @Param("prioridad") Ticket.Prioridad prioridad,
+            Pageable pageable);
 
     // --- Rubén (Analysis) ------------------------------------
     // GET /api/v1/tickets/search?q={query}
@@ -103,26 +120,4 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
         ORDER BY t.fechaApertura DESC
         """)
     List<Ticket> buscarPorPalabraClave(@Param("q") String q);
-
-    // GET /api/v1/metrics/count/categories-total
-    // Suma total acumulada de tickets repartidos por categoría.
-    long countByCategoriaIsNotNull();
-
-    // Servicios para filtrar las primeras 8 páginas en el panel principal
-    Page<Ticket> findByEstadoNotOrderByFechaAperturaDesc(
-            Ticket.Estado estado,
-            Pageable pageable);
-
-    // Busca tickets filtrando por estado y prioridad.
-    // Si alguno llega vacío (null), simplemente no filtra por ese campo.
-    @Query("""
-        SELECT t FROM Ticket t WHERE
-        (:estado IS NULL OR t.estado = :estado) AND
-        (:prioridad IS NULL OR t.prioridad = :prioridad)
-        """)
-    Page<Ticket> filtrar(
-            @Param("estado") Ticket.Estado estado,
-            @Param("prioridad") Ticket.Prioridad prioridad,
-            Pageable pageable
-    );
 }

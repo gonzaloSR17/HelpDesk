@@ -42,12 +42,10 @@ public class ClienteController {
         //TODO: process POST request
         
         return ResponseEntity.status(HttpStatus.CREATED).body(clienterepo.saveAll(a));
-    };
+    }
 
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Optional<Cliente>> obtenerCliente(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(clienterepo.findById(id));
-    };
+        return ResponseEntity.status(HttpStatus.OK).body(clienterepo.findById(id));
     }
-    
-
+}

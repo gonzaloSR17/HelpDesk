@@ -26,6 +26,24 @@ export class TicketServicesService {
     return this.http.get<Page<Ticket>>(`/api/v1/tickets/consultar?pagina=${page}`);
   }
 
+// --- Contadores del panel de administración (dashboard) ---
+// GET /api/v1/metrics/open -> { open_tickets: number }
+obtenerTicketsAbiertos(): Observable<{ open_tickets: number }> {
+ return this.http.get<{ open_tickets: number }>(`/api/v1/metrics/open`);
+}
+// GET /api/v1/metrics/in-progress -> { in_progress: number }
+obtenerTicketsEnCurso(): Observable<{ in_progress: number }> {
+ return this.http.get<{ in_progress: number }>(`/api/v1/metrics/in-progress`);
+}
+// GET /api/v1/metrics/resolved-month -> { resolved_month: number }
+obtenerTicketsResueltosMes(): Observable<{ resolved_month: number }> {
+ return this.http.get<{ resolved_month: number }>(`/api/v1/metrics/resolved-month`);
+}
+// GET /api/v1/tickets/contar/hoy?estado=EN_ABIERTO -> number
+obtenerTicketsAbiertosHoy(): Observable<number> {
+ const params = new HttpParams().set('estado', 'EN_ABIERTO');
+ return this.http.get<number>(`/api/v1/tickets/contar/hoy`, { params });
+}
   
   // Pide una página de tickets al backend, con los filtros que le pasemos
   listar(estado: string, prioridad: string, pagina: number, tamanoPagina: number) {

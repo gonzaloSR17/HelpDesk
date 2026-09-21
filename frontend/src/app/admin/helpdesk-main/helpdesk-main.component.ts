@@ -17,16 +17,16 @@ import { MobileTopbarComponent } from '../../shared/mobile-topbar/mobile-topbar.
 export class HelpdeskMainComponent {
 
   layout = inject(LayoutService);
-  
-  adminMenu: MenuItem[] = [
-  { label: 'Panel', route: '/admin/panel' },
-  { label: 'Listado', route: '/admin/listado' },
-  { label: 'Usuarios', route: '/admin/usuarios' },
-  { label: 'Técnicos', route: '/admin/tecnicos' },
-  { label: 'SLA', route: '/admin/sla' },
-  { label: 'Informes', route: '/admin/informes' },
-];
 
-adminUser: SidebarUser = { name: 'Admin', role: 'Administrador', initial: 'A' };
+  adminMenu: MenuItem[] = [
+    { label: 'Panel', route: '/admin/panel' },
+    { label: 'Listado', route: '/admin/listado' },
+    { label: 'Usuarios', route: '/admin/usuarios' },
+    { label: 'Técnicos', route: '/admin/tecnicos' },
+    { label: 'SLA', route: '/admin/sla' },
+    { label: 'Informes', route: '/admin/informes' },
+  ];
+
+  adminUser: SidebarUser = { name: 'Admin', role: 'Administrador', initial: 'A' };
 
 }

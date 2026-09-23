@@ -2,6 +2,8 @@ package com.arelance.helpdesk.modelo;
 
 import java.time.LocalDateTime;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -14,6 +16,9 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+// Import para el password hash
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Clase base de la jerarquia de usuarios (Cliente, Tecnico, Administrador).
@@ -37,6 +42,13 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String username;
 
+    /**
+     * Hash BCrypt de la contraseña. Nunca debe salir en una respuesta JSON
+     * (por eso @JsonIgnore) — sin esto, cualquier endpoint que devuelva un
+     * Cliente/Tecnico/Administrador completo (por ejemplo, un Ticket con su
+     * cliente dentro) filtraría este hash - Jhon
+     */
+    @JsonIgnore
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 

@@ -1,0 +1,144 @@
+<div class="container-fluid p-0 bg-light">
+
+  <div class="row p-4 bg-white m-0">
+    <div class="col">
+      <h3 class="fw-bold mb-0">Panel de gestión de clientes</h3>
+    </div>
+
+    <div class="col d-flex justify-content-end gap-2">
+      <input type="text" class="form-control w-25" placeholder="Buscar...">
+      <button class="btn btn-primary">+ Nuevo</button>
+    </div>
+  </div>
+
+  <div class="container-fluid p-3">
+
+    <div class="card shadow-sm border-0">
+
+      <!-- HEADER TABLA -->
+      <div class="card-header bg-white p-2 px-3 d-flex justify-content-between align-items-center border-bottom">
+        <h6 class="mb-0 fw-bold">Listado de clientes</h6>
+
+        <span class="text-muted small">
+          {{ clienteServices.clientes().length }}
+          de
+          {{ clienteServices.totalElementos() }}
+          registros
+        </span>
+      </div>
+
+      <!-- TABLA -->
+      <div class="card-body p-0">
+
+        <!-- @if (clienteServices.cargando()) {
+          <p class="text-muted small m-2">Cargando...</p>
+        } -->
+
+        @if (clienteServices.error(); as msg) {
+          <p class="text-danger small m-2">{{ msg }}</p>
+        }
+
+        <table class="table table-sm table-hover align-middle mb-0 small">
+
+          <thead class="table-light text-secondary">
+            <tr>
+              <th class="py-2 px-3">Nº CLIENTE</th>
+              <th class="py-2">NOMBRE</th>
+              <th class="py-2">CIF</th>
+              <th class="py-2">SECTOR</th>
+              <th class="py-2">CONTACTO</th>
+              <th class="py-2">EMAIL</th>
+              <th class="py-2">ACCIONES</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for (c of clienteServices.clientes(); track c.cif) {
+              <tr>
+                <td class="fw-bold px-3">
+                  CLI-{{ c.cif }}
+                </td>
+
+                <td class="py-2">
+                  {{ c.nombre }} {{ c.apellido }}
+                </td>
+
+                <td>
+                  {{ c.cif }}
+                </td>
+
+                <td>
+                  {{ c.sector ?? '—' }}
+                </td>
+
+                <td>
+                  {{ c.contacto ?? '—' }}
+                </td>
+
+                <td>
+                  {{ c.email ?? '—' }}
+                </td>
+
+                <td>
+                  <a href="#" class="me-2 text-decoration-none">
+                    Ver
+                  </a>
+
+                  <a href="#" class="me-2 text-decoration-none text-success">
+                    Editar
+                  </a>
+
+                  <a href="#" class="text-decoration-none text-danger">
+                    Borrar
+                  </a>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="7" class="text-center text-muted py-3">
+                  No hay clientes
+                </td>
+              </tr>
+            }
+          </tbody>
+
+        </table>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="card-footer bg-white p-3 d-flex justify-content-between align-items-center border-top">
+
+        <span class="text-muted small">
+          Mostrando
+          {{ clienteServices.clientes().length }}
+          de
+          {{ clienteServices.totalElementos() }}
+          clientes
+        </span>
+
+        <div class="d-flex gap-1 align-items-center">
+
+          <button
+            class="btn btn-outline-secondary btn-sm py-1 px-2"
+            (click)="irAPagina(clienteServices.paginaActual() - 1)"
+            [disabled]="clienteServices.paginaActual() === 0">
+            &lt;
+          </button>
+
+          <button class="btn btn-primary btn-sm py-1 px-2">
+            {{ clienteServices.paginaActual() + 1 }}
+          </button>
+
+          <button
+            class="btn btn-outline-secondary btn-sm py-1 px-2"
+            (click)="irAPagina(clienteServices.paginaActual() + 1)"
+            [disabled]="clienteServices.paginaActual() + 1 >= clienteServices.totalPaginas()">
+            &gt;
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

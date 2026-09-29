@@ -12,6 +12,8 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 // sesión si el backend responde 401 - Jhon
 import { authInterceptor } from '../interceptors/auth.interceptor';
 
+// PAra hacer graficos
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts'; 
 
 /**
  * Configuración global de la aplicación, compartida por el navegador y el
@@ -29,7 +31,8 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch(), withInterceptors([authInterceptor]))
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
+    provideCharts(withDefaultRegisterables())
   ]
 };
 

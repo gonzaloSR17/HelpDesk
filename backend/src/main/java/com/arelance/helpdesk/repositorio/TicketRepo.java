@@ -92,6 +92,21 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     List<Ticket> findByEstadoInAndFechaCierreBetween(List<Ticket.Estado> estados, LocalDateTime desde,
             LocalDateTime hasta);
 
+<<<<<<< Updated upstream
+=======
+    // Busca tickets filtrando por estado y prioridad
+    @Query("""
+        SELECT t FROM Ticket t WHERE
+        (:estado IS NULL OR t.estado = :estado) AND
+        (:prioridad IS NULL OR t.prioridad = :prioridad)
+        ORDER BY t.fechaApertura DESC
+        """)
+    Page<Ticket> filtrar(
+            @Param("estado") Ticket.Estado estado,
+            @Param("prioridad") Ticket.Prioridad prioridad,
+            Pageable pageable);
+
+>>>>>>> Stashed changes
     // --- Rubén (Analysis) ------------------------------------
     // GET /api/v1/tickets/search?q={query}
     @Query("""

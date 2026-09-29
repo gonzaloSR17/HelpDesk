@@ -44,6 +44,7 @@ public enum Prioridad {
 
     public enum Estado {
     EN_ABIERTO,
+    ASIGNADO,
     EN_CURSO,
     ESCALADO,
     RESUELTO,

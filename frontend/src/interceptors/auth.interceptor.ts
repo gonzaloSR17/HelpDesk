@@ -15,7 +15,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  const esApiPropia = req.url.startsWith('/api/');
+  const esApiPropia = req.url.startsWith('/api/') || req.url.startsWith('/graficas/');
   const esAutenticacion = req.url.startsWith('/api/auth/');
   const token = authService.token();
 

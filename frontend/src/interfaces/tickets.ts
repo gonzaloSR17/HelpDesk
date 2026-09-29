@@ -5,9 +5,16 @@ import { Contrato } from "./contrato";
 
 export type Prioridad = 'BAJA' | 'MEDIA' | 'ALTA' | 'CRITICA';
 
-export type Estado = 'EN_ABIERTO' | 'EN_CURSO' | 'ESCALADO' | 'RESUELTO' | 'CERRADO' | 'CADUCADO' | 'CANCELADO';
+export type Estado = 'EN_ABIERTO' | 'EN_CURSO' | 'ASIGNADO' | 'ESCALADO' | 'RESUELTO' | 'CERRADO' | 'CADUCADO' | 'CANCELADO';
 
 export type Canal = 'Teléfono' | 'Email';
+
+export const PRIORIDADES: Record<string, string> = {
+  CRITICA: '#dc3545',
+  ALTA:    '#ffc107',
+  MEDIA:   '#0d6efd',
+  BAJA:    '#198754',
+};
 
 export interface Ticket {
   idTicket?: number;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SidebarHelpdeskComponent } from '../sidebar-helpdesk/sidebar-helpdesk.component';
+import { SidebarHelpdeskComponent } from '../shared/sidebar-helpdesk/sidebar-helpdesk.component';
 import { PanelTicketComponent } from '../panel-ticket/panel-ticket.component';
 import { ListadoTicketComponent } from '../listado-ticket/listado-ticket.component';
 import { RouterOutlet } from '@angular/router';

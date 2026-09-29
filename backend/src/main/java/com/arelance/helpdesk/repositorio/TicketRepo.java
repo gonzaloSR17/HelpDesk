@@ -52,13 +52,6 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     // Suma total acumulada de tickets repartidos por categoría.
     long countByCategoriaIsNotNull();
 
-    // Busca tickets filtrando por estado y prioridad
-    @Query("SELECT t FROM Ticket t WHERE " +
-           "(:estado IS NULL OR t.estado = :estado) AND " +
-           "(:prioridad IS NULL OR t.prioridad = :prioridad)")
-    Page<Ticket> filtrar(@Param("estado") Ticket.Estado estado,
-                          @Param("prioridad") Ticket.Prioridad prioridad,
-                          Pageable pageable);
 
     // Servicios para filtrar las primeras 8 páginas en el panel principal
     Page<Ticket> findByEstadoNotOrderByFechaAperturaDesc(
@@ -92,8 +85,7 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     List<Ticket> findByEstadoInAndFechaCierreBetween(List<Ticket.Estado> estados, LocalDateTime desde,
             LocalDateTime hasta);
 
-<<<<<<< Updated upstream
-=======
+
     // Busca tickets filtrando por estado y prioridad
     @Query("""
         SELECT t FROM Ticket t WHERE
@@ -106,7 +98,7 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
             @Param("prioridad") Ticket.Prioridad prioridad,
             Pageable pageable);
 
->>>>>>> Stashed changes
+
     // --- Rubén (Analysis) ------------------------------------
     // GET /api/v1/tickets/search?q={query}
     @Query("""

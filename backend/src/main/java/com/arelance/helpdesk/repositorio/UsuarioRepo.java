@@ -13,4 +13,9 @@ import com.arelance.helpdesk.modelo.Usuario;
 public interface UsuarioRepo extends JpaRepository<Usuario, Long> {
 
     Optional<Usuario> findByUsername(String username);
+
+    // Para no crear usuarios duplicados (alta de técnicos) - Rubén
+    boolean existsByUsername(String username);
+
+    boolean existsByEmailIgnoreCase(String email);
 }

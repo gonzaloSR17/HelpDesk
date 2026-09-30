@@ -1,1 +1,405 @@
-<p>listado-tecnicos works!</p>
+<div class="container-fluid p-0 bg-light">
+
+  <div class="row p-4 bg-white m-0 g-2 align-items-center">
+    <div class="col-12 col-md">
+      <h3 class="fw-bold mb-0">Panel de gestión de técnicos</h3>
+    </div>
+
+    <div class="col-12 col-md d-flex justify-content-md-end gap-2">
+      <div class="input-group buscador">
+        <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Buscar por nombre..."
+          aria-label="Buscar técnico por nombre"
+          [ngModel]="tecnicoServices.filtroNombre()"
+          (ngModelChange)="buscar($event)">
+      </div>
+      <button class="btn btn-primary text-nowrap" (click)="abrirCrear()">+ Nuevo</button>
+    </div>
+  </div>
+
+  <div class="container-fluid p-3">
+
+    @if (aviso(); as msg) {
+      <div class="alert alert-success py-2 small">{{ msg }}</div>
+    }
+
+    <div class="card shadow-sm border-0">
+
+      <!-- HEADER TABLA -->
+      <div class="card-header bg-white p-2 px-3 d-flex justify-content-between align-items-center border-bottom">
+        <h6 class="mb-0 fw-bold">Listado de técnicos</h6>
+
+        <span class="text-muted small">
+          {{ tecnicoServices.tecnicos().length }}
+          de
+          {{ tecnicoServices.totalElementos() }}
+          registros
+        </span>
+      </div>
+
+      <!-- TABLA -->
+      <div class="card-body p-0">
+
+        @if (tecnicoServices.error(); as msg) {
+          <p class="text-danger small m-2">{{ msg }}</p>
+        }
+
+        <div class="table-responsive">
+          <table class="table table-sm table-hover align-middle mb-0 small">
+
+            <thead class="table-light text-secondary">
+              <tr>
+                <th class="py-2 px-3">Nº TÉCNICO</th>
+                <th class="py-2">NOMBRE</th>
+                <th class="py-2">USUARIO</th>
+                <th class="py-2">ESPECIALIDAD</th>
+                <th class="py-2">EMAIL</th>
+                <th class="py-2">DISPONIBLE</th>
+                <th class="py-2">ESTADO</th>
+                <th class="py-2 text-center">TICKETS</th>
+                <th class="py-2">ACCIONES</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (t of tecnicoServices.tecnicos(); track t.id) {
+                <tr>
+                  <td class="fw-bold px-3">TEC-{{ t.id }}</td>
+
+                  <td class="py-2">{{ t.nombre }} {{ t.apellido }}</td>
+
+                  <td>{{ t.username }}</td>
+
+                  <td>{{ t.especialidad || '—' }}</td>
+
+                  <td>{{ t.email || '—' }}</td>
+
+                  <td>
+                    @if (t.disponible) {
+                      <span class="badge text-bg-success">Sí</span>
+                    } @else {
+                      <span class="badge text-bg-secondary">No</span>
+                    }
+                  </td>
+
+                  <td>
+                    @if (t.activo) {
+                      <span class="badge text-bg-primary">Activo</span>
+                    } @else {
+                      <span class="badge text-bg-warning">Inactivo</span>
+                    }
+                  </td>
+
+                  <td class="text-center">{{ t.ticketsAsignados }}</td>
+
+                  <td class="text-nowrap">
+                    <button type="button" class="btn btn-link btn-sm p-0 me-2 text-decoration-none" (click)="abrirVer(t)">
+                      Ver
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-sm p-0 me-2 text-decoration-none text-success" (click)="abrirEditar(t)">
+                      Editar
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none text-danger" (click)="eliminar(t)">
+                      Borrar
+                    </button>
+                  </td>
+                </tr>
+              } @empty {
+                <tr>
+                  <td colspan="9" class="text-center text-muted py-3">
+                    @if (tecnicoServices.filtroNombre()) {
+                      No hay técnicos que coincidan con "{{ tecnicoServices.filtroNombre() }}"
+                    } @else {
+                      No hay técnicos
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="card-footer bg-white p-3 d-flex justify-content-between align-items-center border-top">
+
+        <span class="text-muted small">
+          Mostrando
+          {{ tecnicoServices.tecnicos().length }}
+          de
+          {{ tecnicoServices.totalElementos() }}
+          técnicos
+        </span>
+
+        <div class="d-flex gap-1 align-items-center">
+
+          <button
+            class="btn btn-outline-secondary btn-sm py-1 px-2"
+            (click)="irAPagina(tecnicoServices.paginaActual() - 1)"
+            [disabled]="tecnicoServices.paginaActual() === 0">
+            &lt;
+          </button>
+
+          <button class="btn btn-primary btn-sm py-1 px-2">
+            {{ tecnicoServices.paginaActual() + 1 }}
+          </button>
+
+          <button
+            class="btn btn-outline-secondary btn-sm py-1 px-2"
+            (click)="irAPagina(tecnicoServices.paginaActual() + 1)"
+            [disabled]="tecnicoServices.paginaActual() + 1 >= tecnicoServices.totalPaginas()">
+            &gt;
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MODALES (se muestran con el signal "modal", sin el JS de Bootstrap)
+     ═══════════════════════════════════════════════════════ -->
+@if (modal()) {
+  <div class="modal-backdrop fade show"></div>
+
+  <div class="modal fade show d-block" tabindex="-1" role="dialog" aria-modal="true"
+       (click)="cerrarModal()" (keydown.escape)="cerrarModal()">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" [class.modal-lg]="modal() !== 'ver'">
+      <div class="modal-content border-0 shadow" (click)="$event.stopPropagation()">
+
+        <!-- ─────────── VER ─────────── -->
+        @if (modal() === 'ver') {
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">Detalles del técnico</h5>
+            <button type="button" class="btn-close" aria-label="Cerrar" (click)="cerrarModal()"></button>
+          </div>
+
+          <div class="modal-body">
+            @if (errorModal(); as msg) {
+              <div class="alert alert-danger py-2 small">{{ msg }}</div>
+            }
+
+            @if (seleccionado(); as t) {
+              <dl class="row mb-0 small">
+                <dt class="col-5 text-secondary">Nº técnico</dt>
+                <dd class="col-7 fw-bold">TEC-{{ t.id }}</dd>
+
+                <dt class="col-5 text-secondary">Nombre</dt>
+                <dd class="col-7">{{ t.nombre }} {{ t.apellido }}</dd>
+
+                <dt class="col-5 text-secondary">Usuario</dt>
+                <dd class="col-7">{{ t.username }}</dd>
+
+                <dt class="col-5 text-secondary">Email</dt>
+                <dd class="col-7 text-break">{{ t.email }}</dd>
+
+                <dt class="col-5 text-secondary">Especialidad</dt>
+                <dd class="col-7">{{ t.especialidad || '—' }}</dd>
+
+                <dt class="col-5 text-secondary">Disponible</dt>
+                <dd class="col-7">{{ t.disponible ? 'Sí' : 'No' }}</dd>
+
+                <dt class="col-5 text-secondary">Estado</dt>
+                <dd class="col-7">{{ t.activo ? 'Activo' : 'Inactivo' }}</dd>
+
+                <dt class="col-5 text-secondary">Tickets asignados</dt>
+                <dd class="col-7">{{ t.ticketsAsignados }}</dd>
+
+                <dt class="col-5 text-secondary">Fecha de alta</dt>
+                <dd class="col-7 mb-0">{{ t.fechaAlta ? (t.fechaAlta | date:'dd/MM/yyyy HH:mm') : '—' }}</dd>
+              </dl>
+            }
+          </div>
+
+          <div class="modal-footer">
+            @if (seleccionado(); as t) {
+              <button type="button" class="btn btn-outline-success btn-sm" (click)="abrirEditar(t)">Editar</button>
+            }
+            <button type="button" class="btn btn-secondary btn-sm" (click)="cerrarModal()">Cerrar</button>
+          </div>
+        }
+
+        <!-- ─────────── CREAR ─────────── -->
+        @if (modal() === 'crear') {
+          <form #formCrear="ngForm" (ngSubmit)="guardarNuevo(formCrear)" novalidate>
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold">Nuevo técnico</h5>
+              <button type="button" class="btn-close" aria-label="Cerrar" (click)="cerrarModal()"></button>
+            </div>
+
+            <div class="modal-body">
+              @if (errorModal(); as msg) {
+                <div class="alert alert-danger py-2 small">{{ msg }}</div>
+              }
+
+              <div class="row g-3 small">
+                <div class="col-md-6">
+                  <label for="nuevoNombre" class="form-label fw-bold">Nombre *</label>
+                  <input id="nuevoNombre" name="nombre" class="form-control form-control-sm" required
+                         [(ngModel)]="nuevo.nombre" #nombre="ngModel"
+                         [class.is-invalid]="nombre.invalid && nombre.touched">
+                  <div class="invalid-feedback">El nombre es obligatorio</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="nuevoApellido" class="form-label fw-bold">Apellido *</label>
+                  <input id="nuevoApellido" name="apellido" class="form-control form-control-sm" required
+                         [(ngModel)]="nuevo.apellido" #apellido="ngModel"
+                         [class.is-invalid]="apellido.invalid && apellido.touched">
+                  <div class="invalid-feedback">El apellido es obligatorio</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="nuevoEmail" class="form-label fw-bold">Email *</label>
+                  <input id="nuevoEmail" name="email" type="email" class="form-control form-control-sm" required email
+                         [(ngModel)]="nuevo.email" #email="ngModel"
+                         [class.is-invalid]="email.invalid && email.touched">
+                  <div class="invalid-feedback">Introduce un email válido</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="nuevoEspecialidad" class="form-label fw-bold">Especialidad *</label>
+                  <select id="nuevoEspecialidad" name="especialidad" class="form-select form-select-sm" required
+                          [(ngModel)]="nuevo.especialidad" #especialidad="ngModel"
+                          [class.is-invalid]="especialidad.invalid && especialidad.touched">
+                    <option value="" disabled>Selecciona...</option>
+                    @for (e of especialidades; track e) {
+                      <option [value]="e">{{ e }}</option>
+                    }
+                  </select>
+                  <div class="invalid-feedback">Elige una especialidad</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="nuevoUsername" class="form-label fw-bold">Usuario (login) *</label>
+                  <input id="nuevoUsername" name="username" class="form-control form-control-sm" required
+                         autocomplete="off" [(ngModel)]="nuevo.username" #username="ngModel"
+                         [class.is-invalid]="username.invalid && username.touched">
+                  <div class="invalid-feedback">El usuario es obligatorio</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="nuevoPassword" class="form-label fw-bold">Contraseña *</label>
+                  <input id="nuevoPassword" name="password" type="password" class="form-control form-control-sm"
+                         required minlength="6" autocomplete="new-password"
+                         [(ngModel)]="nuevo.password" #password="ngModel"
+                         [class.is-invalid]="password.invalid && password.touched">
+                  <div class="invalid-feedback">Mínimo 6 caracteres</div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-check form-switch">
+                    <input id="nuevoDisponible" name="disponible" type="checkbox" class="form-check-input"
+                           [(ngModel)]="nuevo.disponible">
+                    <label for="nuevoDisponible" class="form-check-label">Disponible para recibir tickets</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm" (click)="cerrarModal()">Cancelar</button>
+              <button type="submit" class="btn btn-primary btn-sm" [disabled]="guardando()">
+                {{ guardando() ? 'Guardando...' : 'Crear técnico' }}
+              </button>
+            </div>
+          </form>
+        }
+
+        <!-- ─────────── EDITAR ─────────── -->
+        @if (modal() === 'editar') {
+          @if (seleccionado(); as t) {
+            <form #formEditar="ngForm" (ngSubmit)="guardarEdicion(formEditar)" novalidate>
+              <div class="modal-header">
+                <h5 class="modal-title fw-bold">Editar técnico</h5>
+                <button type="button" class="btn-close" aria-label="Cerrar" (click)="cerrarModal()"></button>
+              </div>
+
+              <div class="modal-body">
+                @if (errorModal(); as msg) {
+                  <div class="alert alert-danger py-2 small">{{ msg }}</div>
+                }
+
+                <!-- ID y datos personales: solo lectura -->
+                <div class="row g-3 small">
+                  <div class="col-md-4">
+                    <label for="editId" class="form-label fw-bold">Nº técnico</label>
+                    <input id="editId" class="form-control form-control-sm" [value]="'TEC-' + t.id" disabled>
+                  </div>
+
+                  <div class="col-md-8">
+                    <label for="editUsername" class="form-label fw-bold">Usuario</label>
+                    <input id="editUsername" class="form-control form-control-sm" [value]="t.username" disabled>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="editNombre" class="form-label fw-bold">Nombre</label>
+                    <input id="editNombre" class="form-control form-control-sm" [value]="t.nombre" disabled>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="editApellido" class="form-label fw-bold">Apellido</label>
+                    <input id="editApellido" class="form-control form-control-sm" [value]="t.apellido" disabled>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="editEmail" class="form-label fw-bold">Email</label>
+                    <input id="editEmail" class="form-control form-control-sm" [value]="t.email" disabled>
+                  </div>
+                </div>
+
+                <hr>
+
+                <!-- Campos editables -->
+                <div class="row g-3 small">
+                  <div class="col-md-6">
+                    <label for="editEspecialidad" class="form-label fw-bold">Especialidad *</label>
+                    <select id="editEspecialidad" name="especialidad" class="form-select form-select-sm" required
+                            [(ngModel)]="edicion.especialidad" #editEsp="ngModel"
+                            [class.is-invalid]="editEsp.invalid && editEsp.touched">
+                      <option value="" disabled>Selecciona...</option>
+                      @for (e of opcionesEspecialidad(t.especialidad); track e) {
+                        <option [value]="e">{{ e }}</option>
+                      }
+                    </select>
+                    <div class="invalid-feedback">Elige una especialidad</div>
+                  </div>
+
+                  <div class="col-md-6 d-flex flex-column justify-content-end gap-1">
+                    <div class="form-check form-switch">
+                      <input id="editDisponible" name="disponible" type="checkbox" class="form-check-input"
+                             [(ngModel)]="edicion.disponible">
+                      <label for="editDisponible" class="form-check-label">Disponible</label>
+                    </div>
+                    <div class="form-check form-switch">
+                      <input id="editActivo" name="activo" type="checkbox" class="form-check-input"
+                             [(ngModel)]="edicion.activo">
+                      <label for="editActivo" class="form-check-label">Cuenta activa (puede iniciar sesión)</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="cerrarModal()">Cancelar</button>
+                <button type="submit" class="btn btn-success btn-sm" [disabled]="guardando()">
+                  {{ guardando() ? 'Guardando...' : 'Guardar cambios' }}
+                </button>
+              </div>
+            </form>
+          }
+        }
+
+      </div>
+    </div>
+  </div>
+}

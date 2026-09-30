@@ -1,366 +1,554 @@
 [
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-21T03:00:00",
     "ticket": {
-      "idTicket": 1
+      "idTicket": 2
     }
   },
   {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-21T09:00:00",
+    "asunto": "Asignado a P. Molina",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-21T03:06:00",
     "ticket": {
-      "idTicket": 1
+      "idTicket": 2
     }
   },
   {
+    "asunto": "Diagnóstico: credenciales válidas, cuenta bloqueada en el directorio",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-21T03:28:00",
+    "ticket": {
+      "idTicket": 2
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-14T14:30:00",
     "ticket": {
-      "idTicket": 2
+      "idTicket": 3
     }
   },
   {
+    "asunto": "Asignado a P. Molina",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-14T14:36:00",
+    "ticket": {
+      "idTicket": 3
+    }
+  },
+  {
+    "asunto": "Diagnóstico: el autoservicio de restablecimiento no está disponible",
     "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-14T17:30:00",
+    "fechaCambio": "2026-09-14T14:58:00",
     "ticket": {
-      "idTicket": 2
+      "idTicket": 3
     }
   },
   {
+    "asunto": "Escalado a administración de sistemas (nivel 2)",
     "estado": "ESCALADO",
-    "fechaCambio": "2026-09-14T20:30:00",
+    "fechaCambio": "2026-09-14T15:46:00",
     "ticket": {
-      "idTicket": 2
+      "idTicket": 3
     }
   },
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-16T22:15:00",
     "ticket": {
-      "idTicket": 3
+      "idTicket": 4
     }
   },
   {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-17T02:45:00",
+    "asunto": "Asignado a P. Molina",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-16T22:21:00",
     "ticket": {
-      "idTicket": 3
+      "idTicket": 4
     }
   },
   {
+    "asunto": "Diagnóstico: el usuario no pertenece al grupo con acceso a la carpeta",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-16T22:43:00",
+    "ticket": {
+      "idTicket": 4
+    }
+  },
+  {
+    "asunto": "Resuelto: usuario añadido al grupo de acceso",
     "estado": "RESUELTO",
     "fechaCambio": "2026-09-17T07:15:00",
     "ticket": {
-      "idTicket": 3
+      "idTicket": 4
     }
   },
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-22T04:00:00",
-    "ticket": {
-      "idTicket": 4
-    }
-  },
-  {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-22T18:40:00",
-    "ticket": {
-      "idTicket": 4
-    }
-  },
-  {
-    "estado": "RESUELTO",
-    "fechaCambio": "2026-09-23T09:20:00",
-    "ticket": {
-      "idTicket": 4
-    }
-  },
-  {
-    "estado": "CERRADO",
-    "fechaCambio": "2026-09-24T00:00:00",
-    "ticket": {
-      "idTicket": 4
-    }
-  },
-  {
-    "estado": "EN_ABIERTO",
-    "fechaCambio": "2026-09-22T05:00:00",
     "ticket": {
       "idTicket": 5
     }
   },
   {
+    "asunto": "Asignado a P. Molina",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-22T04:06:00",
+    "ticket": {
+      "idTicket": 5
+    }
+  },
+  {
+    "asunto": "Diagnóstico: alta pendiente de aprobación de RR. HH.",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-22T04:28:00",
+    "ticket": {
+      "idTicket": 5
+    }
+  },
+  {
+    "asunto": "Resuelto: cuenta creada y credenciales entregadas",
+    "estado": "RESUELTO",
+    "fechaCambio": "2026-09-23T23:00:00",
+    "ticket": {
+      "idTicket": 5
+    }
+  },
+  {
+    "asunto": "Cerrado tras confirmación del solicitante",
+    "estado": "CERRADO",
+    "fechaCambio": "2026-09-24T00:00:00",
+    "ticket": {
+      "idTicket": 5
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
+    "estado": "EN_ABIERTO",
+    "fechaCambio": "2026-09-22T05:00:00",
+    "ticket": {
+      "idTicket": 6
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-20T15:45:00",
     "ticket": {
-      "idTicket": 6
+      "idTicket": 7
     }
   },
   {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-20T21:45:00",
+    "asunto": "Asignado a M. Delgado",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-20T15:51:00",
     "ticket": {
-      "idTicket": 6
+      "idTicket": 7
     }
   },
   {
+    "asunto": "Diagnóstico: el equipo no recibe alimentación, se revisa la fuente",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-20T16:13:00",
+    "ticket": {
+      "idTicket": 7
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-14T16:00:00",
     "ticket": {
-      "idTicket": 7
+      "idTicket": 8
     }
   },
   {
+    "asunto": "Asignado a M. Delgado",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-14T16:06:00",
+    "ticket": {
+      "idTicket": 8
+    }
+  },
+  {
+    "asunto": "Diagnóstico: el parpadeo persiste con otro cable y otro equipo",
     "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-14T19:00:00",
+    "fechaCambio": "2026-09-14T16:28:00",
     "ticket": {
-      "idTicket": 7
+      "idTicket": 8
     }
   },
   {
+    "asunto": "Escalado a proveedor de hardware (nivel 2)",
     "estado": "ESCALADO",
-    "fechaCambio": "2026-09-14T22:00:00",
+    "fechaCambio": "2026-09-14T17:16:00",
     "ticket": {
-      "idTicket": 7
+      "idTicket": 8
     }
   },
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-15T07:15:00",
     "ticket": {
-      "idTicket": 8
+      "idTicket": 9
     }
   },
   {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-15T14:45:00",
+    "asunto": "Asignado a M. Delgado",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-15T07:21:00",
     "ticket": {
-      "idTicket": 8
+      "idTicket": 9
     }
   },
   {
+    "asunto": "Diagnóstico: teclado con fallo de hardware",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-15T07:43:00",
+    "ticket": {
+      "idTicket": 9
+    }
+  },
+  {
+    "asunto": "Resuelto: teclado sustituido",
     "estado": "RESUELTO",
     "fechaCambio": "2026-09-15T22:15:00",
     "ticket": {
-      "idTicket": 8
+      "idTicket": 9
     }
   },
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-19T17:00:00",
-    "ticket": {
-      "idTicket": 9
-    }
-  },
-  {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-20T05:00:00",
-    "ticket": {
-      "idTicket": 9
-    }
-  },
-  {
-    "estado": "RESUELTO",
-    "fechaCambio": "2026-09-20T17:00:00",
-    "ticket": {
-      "idTicket": 9
-    }
-  },
-  {
-    "estado": "CERRADO",
-    "fechaCambio": "2026-09-21T05:00:00",
-    "ticket": {
-      "idTicket": 9
-    }
-  },
-  {
-    "estado": "EN_ABIERTO",
-    "fechaCambio": "2026-09-16T10:45:00",
     "ticket": {
       "idTicket": 10
     }
   },
   {
+    "asunto": "Asignado a M. Delgado",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-19T17:06:00",
+    "ticket": {
+      "idTicket": 10
+    }
+  },
+  {
+    "asunto": "Diagnóstico: receptor USB del ratón sin reconocer",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-19T17:28:00",
+    "ticket": {
+      "idTicket": 10
+    }
+  },
+  {
+    "asunto": "Resuelto: receptor reemparejado y driver reinstalado",
+    "estado": "RESUELTO",
+    "fechaCambio": "2026-09-21T04:00:00",
+    "ticket": {
+      "idTicket": 10
+    }
+  },
+  {
+    "asunto": "Cerrado tras confirmación del solicitante",
+    "estado": "CERRADO",
+    "fechaCambio": "2026-09-21T05:00:00",
+    "ticket": {
+      "idTicket": 10
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
+    "estado": "EN_ABIERTO",
+    "fechaCambio": "2026-09-16T10:45:00",
+    "ticket": {
+      "idTicket": 11
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-16T16:45:00",
     "ticket": {
-      "idTicket": 11
+      "idTicket": 12
     }
   },
   {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-16T22:45:00",
+    "asunto": "Asignado a C. Navarro",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-16T16:51:00",
     "ticket": {
-      "idTicket": 11
+      "idTicket": 12
     }
   },
   {
+    "asunto": "Diagnóstico: la actualización falla por falta de espacio en disco",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-16T17:13:00",
+    "ticket": {
+      "idTicket": 12
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-20T14:30:00",
     "ticket": {
-      "idTicket": 12
+      "idTicket": 13
     }
   },
   {
+    "asunto": "Asignado a C. Navarro",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-20T14:36:00",
+    "ticket": {
+      "idTicket": 13
+    }
+  },
+  {
+    "asunto": "Diagnóstico: cierre reproducible tras la última versión",
     "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-20T17:30:00",
+    "fechaCambio": "2026-09-20T14:58:00",
     "ticket": {
-      "idTicket": 12
+      "idTicket": 13
     }
   },
   {
+    "asunto": "Escalado al proveedor del software (nivel 2)",
     "estado": "ESCALADO",
-    "fechaCambio": "2026-09-20T20:30:00",
+    "fechaCambio": "2026-09-20T15:46:00",
     "ticket": {
-      "idTicket": 12
+      "idTicket": 13
     }
   },
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-14T09:15:00",
     "ticket": {
-      "idTicket": 13
+      "idTicket": 14
     }
   },
   {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-15T07:45:00",
+    "asunto": "Asignado a C. Navarro",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-14T09:21:00",
     "ticket": {
-      "idTicket": 13
+      "idTicket": 14
     }
   },
   {
+    "asunto": "Diagnóstico: buzón con la cuota llena",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-14T09:43:00",
+    "ticket": {
+      "idTicket": 14
+    }
+  },
+  {
+    "asunto": "Resuelto: cuota ampliada y correo restablecido",
     "estado": "RESUELTO",
     "fechaCambio": "2026-09-16T06:15:00",
     "ticket": {
-      "idTicket": 13
+      "idTicket": 14
     }
   },
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-18T20:30:00",
-    "ticket": {
-      "idTicket": 14
-    }
-  },
-  {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-19T02:30:00",
-    "ticket": {
-      "idTicket": 14
-    }
-  },
-  {
-    "estado": "RESUELTO",
-    "fechaCambio": "2026-09-19T08:30:00",
-    "ticket": {
-      "idTicket": 14
-    }
-  },
-  {
-    "estado": "CERRADO",
-    "fechaCambio": "2026-09-19T14:30:00",
-    "ticket": {
-      "idTicket": 14
-    }
-  },
-  {
-    "estado": "EN_ABIERTO",
-    "fechaCambio": "2026-09-15T23:15:00",
     "ticket": {
       "idTicket": 15
     }
   },
   {
+    "asunto": "Asignado a C. Navarro",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-18T20:36:00",
+    "ticket": {
+      "idTicket": 15
+    }
+  },
+  {
+    "asunto": "Diagnóstico: se verifica compatibilidad y licencia",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-18T20:58:00",
+    "ticket": {
+      "idTicket": 15
+    }
+  },
+  {
+    "asunto": "Resuelto: software instalado en el equipo",
+    "estado": "RESUELTO",
+    "fechaCambio": "2026-09-19T13:30:00",
+    "ticket": {
+      "idTicket": 15
+    }
+  },
+  {
+    "asunto": "Cerrado tras confirmación del solicitante",
+    "estado": "CERRADO",
+    "fechaCambio": "2026-09-19T14:30:00",
+    "ticket": {
+      "idTicket": 15
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
+    "estado": "EN_ABIERTO",
+    "fechaCambio": "2026-09-15T23:15:00",
+    "ticket": {
+      "idTicket": 16
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-22T11:30:00",
     "ticket": {
-      "idTicket": 16
+      "idTicket": 17
     }
   },
   {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-22T17:30:00",
+    "asunto": "Asignado a S. Vega",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-22T11:36:00",
     "ticket": {
-      "idTicket": 16
+      "idTicket": 17
     }
   },
   {
+    "asunto": "Diagnóstico: cortes de WiFi en el punto de acceso de la planta",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-22T11:58:00",
+    "ticket": {
+      "idTicket": 17
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-15T10:00:00",
     "ticket": {
-      "idTicket": 17
+      "idTicket": 18
     }
   },
   {
+    "asunto": "Asignado a A. Ruiz",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-15T10:06:00",
+    "ticket": {
+      "idTicket": 18
+    }
+  },
+  {
+    "asunto": "Diagnóstico: sin acceso a recursos compartidos desde la VLAN del usuario",
     "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-15T13:00:00",
+    "fechaCambio": "2026-09-15T10:28:00",
     "ticket": {
-      "idTicket": 17
+      "idTicket": 18
     }
   },
   {
+    "asunto": "Escalado al equipo de redes (nivel 2)",
     "estado": "ESCALADO",
-    "fechaCambio": "2026-09-15T16:00:00",
+    "fechaCambio": "2026-09-15T11:16:00",
     "ticket": {
-      "idTicket": 17
+      "idTicket": 18
     }
   },
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-18T09:00:00",
     "ticket": {
-      "idTicket": 18
+      "idTicket": 19
     }
   },
   {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-18T20:30:00",
+    "asunto": "Asignado a S. Vega",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-18T09:06:00",
     "ticket": {
-      "idTicket": 18
+      "idTicket": 19
     }
   },
   {
+    "asunto": "Diagnóstico: certificado de cliente VPN caducado",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-18T09:28:00",
+    "ticket": {
+      "idTicket": 19
+    }
+  },
+  {
+    "asunto": "Resuelto: certificado renovado y VPN operativa",
     "estado": "RESUELTO",
     "fechaCambio": "2026-09-19T08:00:00",
     "ticket": {
-      "idTicket": 18
+      "idTicket": 19
     }
   },
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-18T00:30:00",
     "ticket": {
-      "idTicket": 19
+      "idTicket": 20
     }
   },
   {
-    "estado": "EN_CURSO",
-    "fechaCambio": "2026-09-18T01:30:00",
+    "asunto": "Asignado a A. Ruiz",
+    "estado": "ASIGNADO",
+    "fechaCambio": "2026-09-18T00:36:00",
     "ticket": {
-      "idTicket": 19
+      "idTicket": 20
     }
   },
   {
+    "asunto": "Diagnóstico: servidor sin respuesta, servicio detenido",
+    "estado": "EN_CURSO",
+    "fechaCambio": "2026-09-18T00:58:00",
+    "ticket": {
+      "idTicket": 20
+    }
+  },
+  {
+    "asunto": "Resuelto: servidor reiniciado y servicios restaurados",
     "estado": "RESUELTO",
     "fechaCambio": "2026-09-18T02:30:00",
     "ticket": {
-      "idTicket": 19
+      "idTicket": 20
     }
   },
   {
+    "asunto": "Cerrado tras confirmación del solicitante",
     "estado": "CERRADO",
     "fechaCambio": "2026-09-18T03:30:00",
     "ticket": {
-      "idTicket": 19
+      "idTicket": 20
     }
   },
   {
+    "asunto": "Registrado por L. Ortiz",
     "estado": "EN_ABIERTO",
     "fechaCambio": "2026-09-22T02:45:00",
     "ticket": {
-      "idTicket": 20
+      "idTicket": 21
+    }
+  },
+  {
+    "asunto": "Registrado por L. Ortiz",
+    "estado": "EN_ABIERTO",
+    "fechaCambio": "2026-09-18T11:25:00",
+    "ticket": {
+      "idTicket": 22
     }
   }
 ]

@@ -52,6 +52,7 @@ export class AuthService {
         );
     }
 
+    
     // Borra la sesion de los dos almacenes
     logout(): void {
         if (!this.enNavegador()) return;

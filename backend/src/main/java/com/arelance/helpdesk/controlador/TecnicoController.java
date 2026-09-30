@@ -40,4 +40,10 @@ public class TecnicoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(tecnicoRepo.saveAll(a));
     };
 
+    // Endpoint para devolver a todlos los tecnicos de una especialidad 
+    @GetMapping("/devolver/{especialidad}")
+    public ResponseEntity<List<Tecnico>> getTecnicoEspecialidad(@PathVariable String especialidad) {
+        return ResponseEntity.ok(tecnicoRepo.findByEspecialidadContainingIgnoreCase(especialidad));
+    }
+
 }

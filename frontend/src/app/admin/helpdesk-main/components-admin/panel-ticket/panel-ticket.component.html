@@ -62,15 +62,24 @@
               <th class="bg-light py-1 text-muted">CATEGORÍA</th>
               <th class="bg-light py-1 text-muted">TÉCNICO</th>
               <th class="bg-light py-1 text-muted">PRIORIDAD</th>
+              <th class="bg-light py-1 text-muted">ESTADO</th>
             </tr>
           </thead>
           <tbody>
-            @for (t of tickets; track t.idTicket) {
+            @for (t of tickets(); track t.idTicket) {
             <tr>
               <td class="py-1">TCK-{{ t.idTicket }}</td>
-              <td class="py-1">{{ t.cliente?.nombre }}</td>
+              <td class="py-1">{{ t.cliente?.empresa }}</td>
               <td class="py-1">{{ t.categoria?.nombre }}</td>
+
+              @if (t.tecnico != null) {
               <td class="py-1">{{ t.tecnico?.nombre?.charAt(0) }}. {{ t.tecnico?.apellido }}</td>
+              } @else {
+              <td><button type="button" (click)="t.idTicket && abrirModal(t.idTicket)" [disabled]="!t.idTicket"
+                class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#miModal">
+                Tecnicos
+              </button></td>
+              }
               <td class="py-1">
                 @switch (t.prioridad) {
                 @case ('CRITICA') {
@@ -92,6 +101,37 @@
                 }
                 }
               </td>
+              <td>
+                @switch (t.estado) {
+                @case ('EN_ABIERTO') {
+                <span class="badge bg-primary rounded-pill px-2 py-2 text-uppercase fw-bold small">ABIERTO</span>
+                }
+                @case ('EN_CURSO') {
+                <span class="badge bg-info text-white rounded-pill px-2 py-2 text-uppercase fw-bold small">EN
+                  CURSO</span>
+                }
+                @case ('ESCALADO') {
+                <span class="badge bg-purple rounded-pill px-2 py-2 text-uppercase fw-bold small"
+                  style="background-color: #6f42c1; color: white;">ESCALADO</span>
+                }
+                @case ('RESUELTO') {
+                <span class="badge bg-success rounded-pill px-2 py-2 text-uppercase fw-bold small">RESUELTO</span>
+                }
+                @case ('CERRADO') {
+                <span class="badge bg-secondary rounded-pill px-2 py-2 text-uppercase fw-bold small">CERRADO</span>
+                }
+                @case ('CANCELADO') {
+                <span class="badge bg-dark rounded-pill px-2 py-2 text-uppercase fw-bold small">CANCELADO</span>
+                }
+                @case ('CADUCADO') {
+                <span class="badge bg-danger rounded-pill px-2 py-2 text-uppercase fw-bold small">CADUCADO</span>
+                }
+                @default {
+                <span class="badge bg-light text-dark rounded-pill px-2 py-2 text-uppercase fw-bold small">{{ t.estado
+                  }}</span>
+                }
+                }
+              </td>
             </tr>
             }
           </tbody>
@@ -99,5 +139,33 @@
       </div>
     </div>
 
+    @if (esNavegador) {
+    <div class="row mt-3">
+      <div class="col-12 col-lg-6 gy-3">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-white py-2">
+            <h6 class="mb-0 fw-bold">Tickets abiertos vs. resueltos</h6>
+          </div>
+          <div class="card-body">
+            <div #lineChartDiv style="width: 100%; height: 350px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 gy-3">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-white py-2">
+            <h6 class="mb-0 fw-bold">Reparto por categoría</h6>
+          </div>
+          <div class="card-body">
+            <div #donutChartDiv style="width: 100%; height: 350px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+
   </div>
 </div>
+
+<app-modal-editar-transaction-ticket-admin></app-modal-editar-transaction-ticket-admin>

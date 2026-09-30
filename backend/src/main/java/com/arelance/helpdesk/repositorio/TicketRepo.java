@@ -52,6 +52,10 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     // Suma total acumulada de tickets repartidos por categoría.
     long countByCategoriaIsNotNull();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> gonzalo-fronted
     // Servicios para filtrar las primeras 8 páginas en el panel principal
     Page<Ticket> findByEstadoNotOrderByFechaAperturaDesc(
             Ticket.Estado estado,
@@ -88,17 +92,68 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
             LocalDateTime desde,
             LocalDateTime hasta);
 
+<<<<<<< HEAD
     // Busca tickets filtrando por estado y prioridad
+=======
+
+    // Busca tickets ordenados solo por fecha filtrando por estado y prioridad
+>>>>>>> gonzalo-fronted
     @Query("""
         SELECT t FROM Ticket t WHERE
         (:estado IS NULL OR t.estado = :estado) AND
         (:prioridad IS NULL OR t.prioridad = :prioridad)
+<<<<<<< HEAD
+=======
+        ORDER BY t.fechaApertura DESC
+>>>>>>> gonzalo-fronted
         """)
     Page<Ticket> filtrar(
             @Param("estado") Ticket.Estado estado,
             @Param("prioridad") Ticket.Prioridad prioridad,
             Pageable pageable);
 
+<<<<<<< HEAD
+=======
+        @Query("""
+        SELECT t FROM Ticket t
+        WHERE (:estado IS NULL OR t.estado = :estado)
+        AND (:prioridad IS NULL OR t.prioridad = :prioridad)
+        ORDER BY
+        CASE WHEN :ordenarPorPrioridad = true THEN
+                CASE t.prioridad
+                WHEN 'CRITICA' THEN 1
+                WHEN 'ALTA'    THEN 2
+                WHEN 'MEDIA'   THEN 3
+                WHEN 'BAJA'    THEN 4
+                ELSE 5
+                END
+        ELSE 0 END ASC,
+        CASE WHEN :ordenarPorEstado = true THEN
+            CASE t.estado
+              WHEN 'EN_ABIERTO' THEN 1
+              WHEN 'ASIGNADO'   THEN 2
+              WHEN 'EN_CURSO'   THEN 3
+              WHEN 'ESCALADO'   THEN 4
+              WHEN 'RESUELTO'   THEN 5
+              WHEN 'CERRADO'    THEN 6
+              WHEN 'CADUCADO'   THEN 7
+              WHEN 'CANCELADO'  THEN 8
+              ELSE 9
+            END
+          ELSE 0 END ASC,
+        t.fechaApertura DESC
+        """)
+        Page<Ticket> filtrar(
+                @Param("estado") Ticket.Estado estado,
+                @Param("prioridad") Ticket.Prioridad prioridad,
+                @Param("ordenarPorPrioridad") boolean ordenarPorPrioridad,
+                @Param("ordenarPorEstado") boolean ordenarPorEstado,
+                Pageable pageable);
+
+               
+
+
+>>>>>>> gonzalo-fronted
     // --- Rubén (Analysis) ------------------------------------
     // GET /api/v1/tickets/search?q={query}
     // Búsqueda global por palabra clave: asunto, descripción, cliente,

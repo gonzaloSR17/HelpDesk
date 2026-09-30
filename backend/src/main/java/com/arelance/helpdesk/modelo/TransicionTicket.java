@@ -14,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,6 +38,15 @@ public class TransicionTicket {
  
     @Column(name = "fecha_cambio", nullable = false)
     private LocalDateTime fechaCambio;
+
+    @Column(name = "asunto", nullable = false)
+    private String asunto;
+
+    // Para guardar la fecha y la hora
+    @PrePersist
+    public void antesDeInsertar() {
+        fechaCambio = LocalDateTime.now();
+    }
 
     @ManyToOne
     @JoinColumn(name = "id_ticket", nullable = false)

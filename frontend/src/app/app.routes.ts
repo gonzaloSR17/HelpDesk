@@ -15,6 +15,8 @@ import { MisAsignadosComponent } from './tecnico/helpdesk-tecnico-main/component
 
 // para proteger la ruta según el rol
 import { rolGuard } from '../guards/rol.guard';
+import { HistoryTicketComponent } from './shared/history-ticket/history-ticket.component';
+import { ListadoClientesComponent } from './admin/helpdesk-main/components-admin/listado-clientes/listado-clientes.component';
 
 
 
@@ -27,7 +29,9 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'panel', pathMatch: 'full' },
       { path: 'panel', component: PanelTicketComponent },
-      { path: 'listado', component: ListadoTicketComponent }
+      { path: 'listado', component: ListadoTicketComponent },
+      { path: 'clientes', component: ListadoClientesComponent },
+      { path: 'detalles', component: HistoryTicketComponent }
     ]
   },
   {

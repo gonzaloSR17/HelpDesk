@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../../../../../interfaces/cliente';
 import { ClienteService } from '../../../../../services/cliente.service';
+import { Categoria } from '../../../../../interfaces/categoria';
+import { CategoriaService } from '../../../../../services/categoria.service';
 
 @Component({
   selector: 'app-crear-ticket',
@@ -10,11 +12,17 @@ import { ClienteService } from '../../../../../services/cliente.service';
 })
 export class CrearTicketComponent implements OnInit {
 
-  constructor (private clienteServices: ClienteService) {}
+  constructor (private clienteServices: ClienteService,
+    private categoriaService: CategoriaService
+  ) {}
+
+  // Lista de tickets para almacenar
+  categorias: Categoria[] = [];
 
   // Creación básica
   cliente: Cliente = {
     idCliente: 0,
+    empresa: '',
     nombre: '',
     apellido: '',
     cif: '',
@@ -37,6 +45,7 @@ export class CrearTicketComponent implements OnInit {
     //   this.cargarContadores();
     //   this.imprimirSocios();
     // });
+    this.imprimirCategoria();
   }
 
   imprimirCliente() {
@@ -46,5 +55,18 @@ export class CrearTicketComponent implements OnInit {
       console.log(this.cliente)
     })
   }
+
+  imprimirCategoria() {
+  // Obtener la lista de categorías
+  this.categoriaService.imprimirCategorias().subscribe({
+    next: (data) => {
+      this.categorias = data; 
+      console.log(this.categorias);
+    },
+    error: (err) => {
+      console.error('Error al obtener categorías:', err);
+    }
+  });
+}
 
 }

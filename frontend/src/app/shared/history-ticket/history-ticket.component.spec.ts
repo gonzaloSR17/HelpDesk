@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidebarHelpdeskComponent } from './sidebar-helpdesk.component';
+import { HistoryTicketComponent } from './history-ticket.component';
 
-describe('SidebarHelpdeskComponent', () => {
-  let component: SidebarHelpdeskComponent;
-  let fixture: ComponentFixture<SidebarHelpdeskComponent>;
+describe('HistoryTicketComponent', () => {
+  let component: HistoryTicketComponent;
+  let fixture: ComponentFixture<HistoryTicketComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SidebarHelpdeskComponent]
+      imports: [HistoryTicketComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SidebarHelpdeskComponent);
+    fixture = TestBed.createComponent(HistoryTicketComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

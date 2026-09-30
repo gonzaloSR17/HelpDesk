@@ -2,7 +2,9 @@ package com.arelance.helpdesk.controlador;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.HashMap;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -184,8 +187,50 @@ public class TicketController {
     public Page<Ticket> consultarPagina(
             @RequestParam(required = false) Ticket.Estado estado,
             @RequestParam(required = false) Ticket.Prioridad prioridad,
+            @RequestParam(defaultValue = "false") boolean ordenarPorPrioridad,
+            @RequestParam(defaultValue = "false") boolean ordenarPorEstado,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "8") int size) {
-        return ticketRepo.filtrar(estado, prioridad, PageRequest.of(page, size));
+        return ticketRepo.filtrar(estado, prioridad, ordenarPorPrioridad, ordenarPorEstado, PageRequest.of(page, size));
     }
+
+    @GetMapping("/count/categories-total")
+    public ResponseEntity<Map<String, Object>> totalPorCategorias() {
+        long total = ticketRepo.countByCategoriaIsNotNull();
+        return ResponseEntity.ok(Map.of("total_categories", total));
+    }
+
+    @GetMapping("/count/categorias")
+    public ResponseEntity<Map<String, Long>> contarTicketsPorCategoria() {
+        List<String> categorias = List.of("RED", "SOFTWARE", "HARDWARE", "ACCESOS");
+        Map<String, Long> resultado = new HashMap<>();
+
+        for (String cat : categorias) {
+            // Llama al repositorio mapeando cada nombre de categoría con su recuento
+            resultado.put(cat, ticketRepo.recuentoTicketTipo(cat));
+        }   
+
+        return ResponseEntity.ok(resultado);
+    }
+
+     @GetMapping("/buscar/{id}")
+    public ResponseEntity<Optional<Ticket>> buscarTicketID(@PathVariable Long id) {
+        return ResponseEntity.ok(ticketRepo.findById(id));
+    }
+
+    @PutMapping("/actualizar/{id}")
+    @Operation(summary = "Actualiza un Ticket por id")
+    public ResponseEntity<Ticket> actualizar(
+        @PathVariable Long id, @RequestBody Ticket t) {
+            return ticketRepo.findById(id)
+        .map(ticketExistente -> {
+            // Forzamos que el id sea el del path, no el que venga en el body
+            t.setIdTicket(id);
+            Ticket actualizado = ticketRepo.save(t);
+            return ResponseEntity.ok(actualizado);
+        })
+        .orElse(ResponseEntity.notFound().build());
+    }
+
+
 }

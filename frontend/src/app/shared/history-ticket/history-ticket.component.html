@@ -1,0 +1,146 @@
+<div class="container-fluid p-3">
+
+  <!-- CABECERA -->
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row align-items-center g-3">
+      <div class="col-lg-4">
+        <h5 class="fw-bold mb-2">Ticket {{ ticket()?.idTicket }}</h5>
+        <div class="col">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge rounded-pill text-uppercase"  [style.background]="colorPrioridad[ticket()?.prioridad ?? 'BAJA']">
+              {{ ticket()?.prioridad }}
+            </span>
+
+            <span class="badge rounded-pill text-uppercase" [style.background]="colorEstado[ticket()?.estado ?? 'abierto']">
+              {{ ticket()?.estado }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <div class="text-secondary small">Cliente</div>
+        <div class="fw-semibold">{{ ticket()?.cliente?.empresa}} {{ ticket()?.cliente?.apellido }}</div>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <div class="text-secondary small">Técnico</div>
+        <div class="fw-semibold">{{ ticket()?.tecnico?.nombre }} {{ ticket()?.tecnico?.apellido }}</div>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <div class="text-secondary small">Categoría</div>
+        <div class="fw-semibold">{{ ticket()?.categoria?.grupo }}</div>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <div class="text-secondary small">SLA restante</div>
+        <div class="fw-semibold">01 h 12 min</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- PESTAÑAS -->
+  <ul class="nav nav-tabs mb-3" id="ticketTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-seguimiento" type="button" role="tab">Seguimiento</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-cliente" type="button" role="tab">Datos del cliente</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-comentarios" type="button" role="tab">Comentarios</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-adjuntos" type="button" role="tab">Adjuntos</button>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+
+    <!-- SEGUIMIENTO -->
+    <div class="tab-pane fade show active" id="tab-seguimiento" role="tabpanel">
+      <div class="row g-3">
+
+        <!-- Histórico de estados -->
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-header bg-white fw-bold">Histórico de estados</div>
+            <div class="card-body">
+              <ul class="timeline list-unstyled mb-0">
+                @for (h of historial(); track h.idTransicion) {
+                  <li class="timeline-item" th:each="h : ${ticket.historico}">
+                    <!-- Accedemos al diccionario guardado junto al modelo ticket transaction -->
+                  <span class="timeline-dot"  [style.background]="colorEstado[h.estado]"></span> 
+                  <div class="d-flex justify-content-between">
+                    <span class="fw-semibold" th:text="${h.estadoNombre}">{{ h.estado }}</span>
+                    <small class="text-secondary" th:text="${#temporals.format(h.fecha, 'dd/MM HH:mm')}">{{ h.fechaCambio }}</small>
+                  </div>
+                  <small class="text-secondary" th:text="${h.detalle}">{{ h.asunto }}</small>
+                </li>
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contrato y SLA -->
+        <div class="col-lg-6">
+          <div class="card h-100">
+            <div class="card-header bg-white fw-bold">Contrato y SLA</div>
+            <div class="card-body d-flex flex-column gap-2">
+
+              <div class="sla-item d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="fw-semibold" th:text="${ticket.contrato.codigo} + ' · ' + ${ticket.contrato.tipo}">CT-2024-011 · Premium</div>
+                  <small class="text-secondary" th:text="'Resolución crítica: ' + ${ticket.contrato.resolucionCritica}">Resolución crítica: 4 h</small>
+                </div>
+                <span class="badge rounded-pill text-uppercase"
+                      th:classappend="${ticket.contrato.vigente} ? 'badge-ok-dark' : 'text-bg-secondary'"
+                      th:text="${ticket.contrato.vigente} ? 'Vigente' : 'Caducado'">Vigente</span>
+              </div>
+
+              <div class="sla-item d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="fw-semibold">Tiempo de respuesta</div>
+                  <small class="text-secondary"
+                         th:text="'Objetivo: ' + ${ticket.sla.respuestaObjetivo} + ' · Real: ' + ${ticket.sla.respuestaReal}">Objetivo: 30 min · Real: 6 min</small>
+                </div>
+                <span class="badge rounded-pill text-uppercase"
+                      th:classappend="${ticket.sla.respuestaOk} ? 'badge-ok-dark' : 'text-bg-danger'"
+                      th:text="${ticket.sla.respuestaOk} ? 'OK' : 'Incumplido'">OK</span>
+              </div>
+
+              <div class="sla-item d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="fw-semibold">Tiempo de resolución</div>
+                  <small class="text-secondary"
+                         th:text="'Objetivo: ' + ${ticket.sla.resolucionObjetivo} + ' · Transcurrido: ' + ${ticket.sla.resolucionTranscurrido}">Objetivo: 4 h · Transcurrido: 2 h 48</small>
+                </div>
+                <span class="badge rounded-pill text-uppercase"
+                      th:classappend="${ticket.sla.resolucionEnPlazo} ? 'badge-plazo' : 'text-bg-danger'"
+                      th:text="${ticket.sla.resolucionEnPlazo} ? 'En plazo' : 'Fuera de plazo'">En plazo</span>
+              </div>
+
+              <div class="sla-item">
+                <div class="fw-semibold">Histórico del cliente</div>
+                <small class="text-secondary"
+                       th:text="${ticket.clienteStats.totalTickets} + ' tickets · ' + ${#numbers.formatDecimal(ticket.clienteStats.porcentajeEnPlazo, 1, 1, 'COMMA')} + ' % en plazo'">142 tickets · 98,6 % en plazo</small>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resto de pestañas (vacías por ahora) -->
+    <div class="tab-pane fade" id="tab-cliente" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab-comentarios" role="tabpanel"></div>
+    <div class="tab-pane fade" id="tab-adjuntos" role="tabpanel"></div>
+  </div>
+</div>

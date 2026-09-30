@@ -49,9 +49,9 @@
             <label for="categoria" class="form-label">Categoría <span>*</span></label>
             <select id="categoria" class="form-select" required>
               <option value="" selected disabled>Seleccionar categoría...</option>
-              <!-- @for (c of categorias; track c) {
-                <option [value]="c">{{ c }}</option>
-              } -->
+               @for (c of categorias; track c) {
+                <option [value]="c.idCategoria">{{ c.nombre }} // {{ c.grupo }}</option>
+                }
             </select>
             <div class="invalid-feedback">Indica la categoría de la incidencia.</div>
           </div>

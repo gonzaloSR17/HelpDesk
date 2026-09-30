@@ -21,7 +21,7 @@ export class HelpdeskMainComponent {
   adminMenu: MenuItem[] = [
     { label: 'Panel', route: '/admin/panel' },
     { label: 'Listado', route: '/admin/listado' },
-    { label: 'Usuarios', route: '/admin/usuarios' },
+    { label: 'Clientes', route: '/admin/clientes' },
     { label: 'Técnicos', route: '/admin/tecnicos' },
     { label: 'SLA', route: '/admin/sla' },
     { label: 'Informes', route: '/admin/informes' },

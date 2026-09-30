@@ -18,6 +18,7 @@ import com.arelance.helpdesk.modelo.Tecnico;
 import com.arelance.helpdesk.repositorio.CategoriaRepo;
 import com.arelance.helpdesk.repositorio.ClienteRepo;
 import com.arelance.helpdesk.repositorio.TecnicoRepo;
+import com.arelance.helpdesk.servicios.ClienteServices;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,9 +33,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class ClienteController {
 
     private final ClienteRepo clienterepo;
+    private final ClienteServices clienteServices;
 
-    public ClienteController(ClienteRepo clienterepo) {
+    public ClienteController(ClienteRepo clienterepo, ClienteServices clienteServices) {
         this.clienterepo = clienterepo;
+        this.clienteServices = clienteServices;
     }
 
     @PostMapping("/crear")
@@ -47,5 +50,11 @@ public class ClienteController {
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Optional<Cliente>> obtenerCliente(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(clienterepo.findById(id));
+    }
+
+    @GetMapping("/consultar")
+    @Operation(summary = "Consulta una cantidad de cliente", description = "Devuelve una lista limitada de clientes registrados en la base de datos")
+    public ResponseEntity<Page<Cliente>> consultarCliente(@RequestParam(defaultValue = "0") int pagina) {
+        return ResponseEntity.ok(clienteServices.obtenerClientes(pagina));
     }
 }

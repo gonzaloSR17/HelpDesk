@@ -36,6 +36,12 @@ public class TransicionTicketController {
         this.transicionTicketRepo = transicionTicketRepo;
     }
 
+    // Endpoint para devolver el historial de un ticket especifico 
+    @GetMapping("/devolver/{id}")
+    public ResponseEntity<List<TransicionTicket>> getTransaction(@PathVariable Long id) {
+        return ResponseEntity.ok(transicionTicketRepo.findByTicket_IdTicketOrderByFechaCambioAsc(id));
+    }
+
     @PostMapping("/crear")
     public ResponseEntity<List<TransicionTicket>> crearActividad(@RequestBody List<TransicionTicket> a) {
         //TODO: process POST request
@@ -43,4 +49,13 @@ public class TransicionTicketController {
         return ResponseEntity.status(HttpStatus.CREATED).body(transicionTicketRepo.saveAll(a));
     };
 
+    @PostMapping("/pasar")
+    public ResponseEntity<TransicionTicket> pasarTransiccion(@RequestBody TransicionTicket a) {
+         // Creamos nuevo objeto ticker, no añadimos fecha, se agregara automaticamente,l
+        TransicionTicket transicion = new TransicionTicket();
+        transicion.setEstado(a.getEstado());
+        transicion.setAsunto(a.getAsunto());
+        transicion.setTicket(a.getTicket());
+        return ResponseEntity.status(HttpStatus.CREATED).body(transicionTicketRepo.save(a));
+    }
 }

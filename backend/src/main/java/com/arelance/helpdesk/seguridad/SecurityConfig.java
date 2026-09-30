@@ -76,6 +76,10 @@ public class SecurityConfig {
                     // Tickets de un cliente y crear ticket: cliente
                     .requestMatchers(HttpMethod.GET, "/api/v1/tickets/cliente/**").hasRole("CLIENTE")
                     .requestMatchers(HttpMethod.POST, "/api/v1/tickets").hasRole("CLIENTE")
+                    .requestMatchers(HttpMethod.GET, "/api/contrato/**").hasRole("CLIENTE")
+
+                    // Permitir consultar categorías y clientes a cualquier usuario autenticado
+                    .requestMatchers(HttpMethod.GET, "/api/categoria/**", "/api/cliente/**").authenticated()
 
                     // Altas masivas heredadas de la plantilla: solo administrador
                     .requestMatchers("/api/v1/tickets/crear", "/api/cliente/**", "/api/tecnico/**",

@@ -1,0 +1,36 @@
+/* Línea de tiempo */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: var(--bs-border-color);
+}
+.timeline-item { position: relative; padding-bottom: 1.5rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -2rem; top: 4px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #6c757d;
+}
+.dot-abierto   { background: #0d6efd; }
+.dot-asignado  { background: #20c997; }
+.dot-en_curso  { background: #fd7e14; }
+.dot-escalado  { background: #6f42c1; }
+.dot-resuelto  { background: #198754; }
+.dot-cerrado   { background: #6c757d; }
+
+/* Tarjetas de SLA */
+.sla-item {
+  padding: .75rem 1rem;
+  background: var(--bs-tertiary-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: .5rem;
+}
+
+/* Badges personalizados */
+.badge-ok-dark { background-color: #157347; color: #fff; }
+.badge-plazo   { background-color: #20c997; color: #fff; }

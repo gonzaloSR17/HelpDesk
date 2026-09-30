@@ -187,9 +187,11 @@ public class TicketController {
     public Page<Ticket> consultarPagina(
             @RequestParam(required = false) Ticket.Estado estado,
             @RequestParam(required = false) Ticket.Prioridad prioridad,
+            @RequestParam(defaultValue = "false") boolean ordenarPorPrioridad,
+            @RequestParam(defaultValue = "false") boolean ordenarPorEstado,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "8") int size) {
-        return ticketRepo.filtrar(estado, prioridad, PageRequest.of(page, size));
+        return ticketRepo.filtrar(estado, prioridad, ordenarPorPrioridad, ordenarPorEstado, PageRequest.of(page, size));
     }
 
     @GetMapping("/count/categories-total")

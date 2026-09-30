@@ -22,6 +22,7 @@ export class CrearTicketComponent implements OnInit {
   // Creación básica
   cliente: Cliente = {
     idCliente: 0,
+    empresa: '',
     nombre: '',
     apellido: '',
     cif: '',

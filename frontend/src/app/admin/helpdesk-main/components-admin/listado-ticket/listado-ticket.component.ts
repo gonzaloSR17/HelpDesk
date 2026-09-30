@@ -13,7 +13,7 @@ import { Ticket } from '../../../../../interfaces/tickets';
 })
 export class ListadoTicketComponent {
 
-  private ticketServices = inject(TicketServicesService);
+  ticketServices = inject(TicketServicesService);
 
   // Signals directamente del servicio: la fuente única de verdad
   tickets = this.ticketServices.tickets;

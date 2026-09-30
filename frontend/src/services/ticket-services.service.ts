@@ -30,6 +30,12 @@ export class TicketServicesService {
   filtroEstado = this._filtroEstado.asReadonly();
   filtroPrioridad = this._filtroPrioridad.asReadonly();
 
+  private _ordenarPorPrioridad = signal(false);
+  ordenarPorPrioridad = this._ordenarPorPrioridad.asReadonly();
+
+  private _ordenarPorEstado = signal(false);
+  ordenarPorEstado = this._ordenarPorEstado.asReadonly();
+
   constructor(private http: HttpClient) {}
 
   setTicketSeleccionado(ticket: Ticket) {
@@ -49,18 +55,21 @@ export class TicketServicesService {
     pagina: number = this._paginaActual(),
     estado: string = this._filtroEstado(),
     prioridad: string = this._filtroPrioridad(),
+    ordenarPorPrioridad: boolean = this._ordenarPorPrioridad(),
+    ordenarPorEstado: boolean = this._ordenarPorEstado(),
     tamanoPagina: number = 8
   ) {
     this._paginaActual.set(pagina);
     this._filtroEstado.set(estado);
     this._filtroPrioridad.set(prioridad);
+    this._ordenarPorPrioridad.set(ordenarPorPrioridad);   
+    this._ordenarPorEstado.set(ordenarPorEstado)
 
-    this.listar(estado, prioridad, pagina, tamanoPagina).subscribe({
-      next: (page: Page<Ticket>) => this._pageTickets.set(page),
+    this.listar(estado, prioridad, ordenarPorPrioridad, ordenarPorEstado, pagina, tamanoPagina).subscribe({
+      next: (page) => this._pageTickets.set(page),
       error: (err) => console.error('Error al cargar tickets:', err)
     });
   }
-
   // --- Parchea un ticket ya cargado, SIN pedir nada al backend ---
   // Esto es lo que evita que se mueva la página/filtro al asignar técnico
   actualizarTicketEnLista(ticketActualizado: Ticket) {
@@ -90,16 +99,18 @@ export class TicketServicesService {
     return this.http.get<number>(`/api/v1/tickets/contar/hoy`, { params });
   }
 
-  listar(estado: string, prioridad: string, pagina: number, tamanoPagina: number): Observable<Page<Ticket>> {
-    let params = new HttpParams()
-      .set('page', pagina.toString())
-      .set('size', tamanoPagina.toString());
+listar(estado: string, prioridad: string, ordenarPorPrioridad: boolean, ordenarPorEstado: boolean, pagina: number, tamanoPagina: number): Observable<Page<Ticket>> {
+  let params = new HttpParams()
+    .set('page', pagina.toString())
+    .set('size', tamanoPagina.toString())
+    .set('ordenarPorPrioridad', ordenarPorPrioridad) 
+    .set('ordenarPorEstado', ordenarPorEstado);
 
-    if (estado) params = params.set('estado', estado);
-    if (prioridad) params = params.set('prioridad', prioridad);
+  if (estado) params = params.set('estado', estado);
+  if (prioridad) params = params.set('prioridad', prioridad);
 
-    return this.http.get<Page<Ticket>>(`/api/v1/tickets/listado`, { params });
-  }
+  return this.http.get<Page<Ticket>>(`/api/v1/tickets/listado`, { params });
+}
 
   imprimirTicketDeUsuarios(page: number, id: number): Observable<Page<Ticket>> {
     const params = new HttpParams().set('pagina', page.toString());
@@ -126,5 +137,25 @@ export class TicketServicesService {
     return this.http.put<Ticket>(`/api/v1/tickets/actualizar/${id}`, t);
   }
 
+  // Para ordenar prioridad de mas urgente al menos urgente actualizamos la tabla entera
+  toggleOrdenPrioridad() {
+  this.cargarTickets(
+    0,
+    this._filtroEstado(),
+    this._filtroPrioridad(),
+    !this._ordenarPorPrioridad(),
+    this._ordenarPorEstado()
+  );
+}
+
+toggleOrdenEstado() {
+  this.cargarTickets(
+    0,
+    this._filtroEstado(),
+    this._filtroPrioridad(),
+    this._ordenarPorPrioridad(),
+    !this._ordenarPorEstado()
+  );
+}
 
 }

@@ -86,7 +86,7 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
             LocalDateTime hasta);
 
 
-    // Busca tickets filtrando por estado y prioridad
+    // Busca tickets ordenados solo por fecha filtrando por estado y prioridad
     @Query("""
         SELECT t FROM Ticket t WHERE
         (:estado IS NULL OR t.estado = :estado) AND
@@ -97,6 +97,44 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
             @Param("estado") Ticket.Estado estado,
             @Param("prioridad") Ticket.Prioridad prioridad,
             Pageable pageable);
+
+        @Query("""
+        SELECT t FROM Ticket t
+        WHERE (:estado IS NULL OR t.estado = :estado)
+        AND (:prioridad IS NULL OR t.prioridad = :prioridad)
+        ORDER BY
+        CASE WHEN :ordenarPorPrioridad = true THEN
+                CASE t.prioridad
+                WHEN 'CRITICA' THEN 1
+                WHEN 'ALTA'    THEN 2
+                WHEN 'MEDIA'   THEN 3
+                WHEN 'BAJA'    THEN 4
+                ELSE 5
+                END
+        ELSE 0 END ASC,
+        CASE WHEN :ordenarPorEstado = true THEN
+            CASE t.estado
+              WHEN 'EN_ABIERTO' THEN 1
+              WHEN 'ASIGNADO'   THEN 2
+              WHEN 'EN_CURSO'   THEN 3
+              WHEN 'ESCALADO'   THEN 4
+              WHEN 'RESUELTO'   THEN 5
+              WHEN 'CERRADO'    THEN 6
+              WHEN 'CADUCADO'   THEN 7
+              WHEN 'CANCELADO'  THEN 8
+              ELSE 9
+            END
+          ELSE 0 END ASC,
+        t.fechaApertura DESC
+        """)
+        Page<Ticket> filtrar(
+                @Param("estado") Ticket.Estado estado,
+                @Param("prioridad") Ticket.Prioridad prioridad,
+                @Param("ordenarPorPrioridad") boolean ordenarPorPrioridad,
+                @Param("ordenarPorEstado") boolean ordenarPorEstado,
+                Pageable pageable);
+
+               
 
 
     // --- Rubén (Analysis) ------------------------------------

@@ -69,7 +69,7 @@
             @for (t of tickets(); track t.idTicket) {
             <tr>
               <td class="py-1">TCK-{{ t.idTicket }}</td>
-              <td class="py-1">{{ t.cliente?.nombre }}</td>
+              <td class="py-1">{{ t.cliente?.empresa }}</td>
               <td class="py-1">{{ t.categoria?.nombre }}</td>
 
               @if (t.tecnico != null) {

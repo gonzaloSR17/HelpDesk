@@ -53,8 +53,17 @@
                             <th class="py-2">CLIENTE</th>
                             <th class="py-2">CATEGORÍA</th>
                             <th class="py-2">TÉCNICO</th>
-                            <th class="py-2">PRIORIDAD</th>
-                            <th class="py-2">ESTADO</th>
+                            <th class="py-2">
+                            Prioridad
+                            <button type="button" class="btn btn-link p-0 border-0 text-dark" (click)="ticketServices.toggleOrdenPrioridad()">
+                                <i class="bi" [class.bi-caret-down-fill]="ticketServices.ordenarPorPrioridad()" [class.bi-caret-up-fill]="!ticketServices.ordenarPorPrioridad()"></i>
+                            </button>
+                            </th>
+                            <th class="py-2">ESTADO
+                            <button type="button" class="btn btn-link p-0 border-0 text-dark" (click)="ticketServices.toggleOrdenEstado()">
+                                <i class="bi" [class.bi-caret-down-fill]="ticketServices.ordenarPorEstado()" [class.bi-caret-up-fill]="!ticketServices.ordenarPorEstado()"></i>
+                            </button>
+                            </th>
                             <th class="py-2">ACCIONES</th>
                         </tr>
                     </thead>
@@ -62,7 +71,7 @@
                         @for (t of tickets(); track t.idTicket) {
                         <tr>
                             <td class="fw-bold px-3">TCK-{{ t.idTicket }}</td>
-                            <td class="py-2">{{ t.cliente?.nombre }} {{ t.cliente?.apellido }}</td>
+                            <td class="py-2">{{ t.cliente?.nombre }} {{ t.cliente?.apellido }} - {{ t.cliente?.empresa }}</td>
                             <td>{{ t.categoria?.nombre }}</td>
                              @if (t.tecnico != null) {
                                 <td class="py-1">{{ t.tecnico?.nombre?.charAt(0) }}. {{ t.tecnico?.apellido }}</td>

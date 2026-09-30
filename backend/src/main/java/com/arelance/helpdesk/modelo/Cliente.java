@@ -32,6 +32,9 @@ public class Cliente extends Usuario {
     private String apellido;
 
     @Column
+    private String empresa;
+
+    @Column
     private String cif;
 
 

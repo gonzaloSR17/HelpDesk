@@ -17,6 +17,8 @@ import { MisAsignadosComponent } from './tecnico/helpdesk-tecnico-main/component
 import { rolGuard } from '../guards/rol.guard';
 import { HistoryTicketComponent } from './shared/history-ticket/history-ticket.component';
 import { ListadoClientesComponent } from './admin/helpdesk-main/components-admin/listado-clientes/listado-clientes.component';
+import { ListadoTecnicosComponent } from './admin/helpdesk-main/components-admin/listado-tecnicos/listado-tecnicos.component';
+import { PanelSlaComponent } from './admin/helpdesk-main/components-admin/panel-sla/panel-sla.component';
 
 
 
@@ -31,7 +33,9 @@ export const routes: Routes = [
       { path: 'panel', component: PanelTicketComponent },
       { path: 'listado', component: ListadoTicketComponent },
       { path: 'clientes', component: ListadoClientesComponent },
-      { path: 'detalles', component: HistoryTicketComponent }
+      { path: 'detalles', component: HistoryTicketComponent },
+      { path: 'tecnicos', component: ListadoTecnicosComponent },
+      { path: 'sla', component: PanelSlaComponent },
     ]
   },
   {

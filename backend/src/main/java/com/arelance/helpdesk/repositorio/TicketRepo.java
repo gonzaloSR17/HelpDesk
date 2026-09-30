@@ -52,10 +52,6 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
     // Suma total acumulada de tickets repartidos por categoría.
     long countByCategoriaIsNotNull();
 
-<<<<<<< HEAD
-=======
-
->>>>>>> gonzalo-fronted
     // Servicios para filtrar las primeras 8 páginas en el panel principal
     Page<Ticket> findByEstadoNotOrderByFechaAperturaDesc(
             Ticket.Estado estado,
@@ -92,29 +88,20 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
             LocalDateTime desde,
             LocalDateTime hasta);
 
-<<<<<<< HEAD
-    // Busca tickets filtrando por estado y prioridad
-=======
-
     // Busca tickets ordenados solo por fecha filtrando por estado y prioridad
->>>>>>> gonzalo-fronted
     @Query("""
         SELECT t FROM Ticket t WHERE
         (:estado IS NULL OR t.estado = :estado) AND
         (:prioridad IS NULL OR t.prioridad = :prioridad)
-<<<<<<< HEAD
-=======
         ORDER BY t.fechaApertura DESC
->>>>>>> gonzalo-fronted
         """)
     Page<Ticket> filtrar(
             @Param("estado") Ticket.Estado estado,
             @Param("prioridad") Ticket.Prioridad prioridad,
             Pageable pageable);
 
-<<<<<<< HEAD
-=======
-        @Query("""
+    // Busca tickets con ordenación dinámica por prioridad y/o estado
+    @Query("""
         SELECT t FROM Ticket t
         WHERE (:estado IS NULL OR t.estado = :estado)
         AND (:prioridad IS NULL OR t.prioridad = :prioridad)
@@ -143,17 +130,13 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
           ELSE 0 END ASC,
         t.fechaApertura DESC
         """)
-        Page<Ticket> filtrar(
-                @Param("estado") Ticket.Estado estado,
-                @Param("prioridad") Ticket.Prioridad prioridad,
-                @Param("ordenarPorPrioridad") boolean ordenarPorPrioridad,
-                @Param("ordenarPorEstado") boolean ordenarPorEstado,
-                Pageable pageable);
+    Page<Ticket> filtrar(
+            @Param("estado") Ticket.Estado estado,
+            @Param("prioridad") Ticket.Prioridad prioridad,
+            @Param("ordenarPorPrioridad") boolean ordenarPorPrioridad,
+            @Param("ordenarPorEstado") boolean ordenarPorEstado,
+            Pageable pageable);
 
-               
-
-
->>>>>>> gonzalo-fronted
     // --- Rubén (Analysis) ------------------------------------
     // GET /api/v1/tickets/search?q={query}
     // Búsqueda global por palabra clave: asunto, descripción, cliente,
